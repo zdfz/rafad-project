@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rifad Project - Secure Checkout Page">
+    <meta name="theme-color" content="#001F3F">
+    <title>Secure Checkout - Rifad</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="rifad-logo.png" type="image/png">
+</head>
+<body class="payment-page" style="background: #001F3F;">
+    <!-- Loading Screen -->
+    <div class="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" data-en="Loading secure checkout..." data-ar="جاري تحميل صفحة الدفع الآمن..."></div>
+    </div>
+
+    <!-- Back to Home Link -->
+    <a href="index.html" class="back-to-home" data-en="Back to Home" data-ar="العودة للرئيسية">
+        <i class="fas fa-arrow-left"></i>
+    </a>
+
+    <!-- Language Toggle -->
+    <button class="language-toggle" onclick="toggleLanguage()">
+        <span class="en">العربية</span>
+        <span class="ar">English</span>
+    </button>
+
+    <div class="payment-container">
+        <!-- Order Progress -->
+        <div class="payment-steps">
+            <div class="step active">
+                <div class="step-number">1</div>
+                <div class="step-text" data-en="Order Details" data-ar="تفاصيل الطلب"></div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-text" data-en="Shipping" data-ar="الشحن"></div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-text" data-en="Payment" data-ar="الدفع"></div>
+            </div>
+        </div>
+
+        <!-- Product Summary -->
+        <div class="product-summary glass-card">
+            <div class="product-image">
+                <img src="rifad.png" alt="Product Image">
+            </div>
+            <div class="product-details">
+                <h3 class="product-name" data-en="Premium Ihram" data-ar="إحرام فاخر"></h3>
+                <div class="product-specs">
+                    <div class="spec-item">
+                        <i class="fas fa-ruler"></i>
+                        <span data-en="Size: 220 x 110 cm" data-ar="المقاس: 220 × 110 سم"></span>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-weight"></i>
+                        <span data-en="Weight: 500g" data-ar="الوزن: 500 جرام"></span>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-palette"></i>
+                        <span data-en="Color: White" data-ar="اللون: أبيض"></span>
+                    </div>
+                </div>
+                <div class="product-price">
+                    <span class="price-label" data-en="Price:" data-ar="السعر:"></span>
+                    <span class="price-amount">199 ريال</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Form -->
+        <form id="paymentForm" class="payment-form glass-card">
+            <!-- Personal Information -->
+            <div class="form-section">
+                <h3 class="section-title" data-en="Personal Information" data-ar="المعلومات الشخصية"></h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName" data-en="Full Name" data-ar="الاسم الكامل"></label>
+                        <input type="text" id="fullName" required pattern="[A-Za-z\u0600-\u06FF\s]{3,}" 
+                               data-en-placeholder="Enter your full name" 
+                               data-ar-placeholder="أدخل اسمك الكامل">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" data-en="Phone Number" data-ar="رقم الجوال"></label>
+                        <input type="tel" id="phone" required pattern="05[0-9]{8}"
+                               data-en-placeholder="05XXXXXXXX" 
+                               data-ar-placeholder="05XXXXXXXX">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Shipping Address -->
+            <div class="form-section">
+                <h3 class="section-title" data-en="Shipping Address" data-ar="عنوان الشحن"></h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city" data-en="City" data-ar="المدينة"></label>
+                        <select id="city" required>
+                            <option value="" data-en="Select City" data-ar="اختر المدينة"></option>
+                            <option value="makkah" data-en="Makkah" data-ar="مكة المكرمة"></option>
+                            <option value="madinah" data-en="Madinah" data-ar="المدينة المنورة"></option>
+                            <option value="riyadh" data-en="Riyadh" data-ar="الرياض"></option>
+                            <option value="jeddah" data-en="Jeddah" data-ar="جدة"></option>
+                            <option value="dammam" data-en="Dammam" data-ar="الدمام"></option>
+                            <option value="khobar" data-en="Khobar" data-ar="الخبر"></option>
+                            <option value="taif" data-en="Taif" data-ar="الطائف"></option>
+                        </select>
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="form-group">
+                        <label for="postalCode" data-en="Postal Code" data-ar="الرمز البريدي"></label>
+                        <input type="text" id="postalCode" required pattern="[0-9]{5}"
+                               data-en-placeholder="5 digits" 
+                               data-ar-placeholder="5 أرقام">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" data-en="Detailed Address" data-ar="العنوان التفصيلي"></label>
+                    <textarea id="address" required rows="3"
+                              data-en-placeholder="Enter your detailed address" 
+                              data-ar-placeholder="أدخل عنوانك التفصيلي"></textarea>
+                    <i class="fas fa-map"></i>
+                </div>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-section">
+                <h3 class="section-title" data-en="Payment Method" data-ar="طريقة الدفع"></h3>
+                <div class="payment-methods">
+                    <div class="payment-method active">
+                        <img src="images/mada.png" class="payment-icon">
+                        <span data-en="Mada" data-ar="مدى"></span>
+                    </div>
+                    <div class="payment-method">
+                        <img src="images/visa.png" class="payment-icon">
+                        <span>Visa</span>
+                    </div>
+                    <div class="payment-method">
+                        <img src="images/mastercard.png" class="payment-icon">
+                        <span>Mastercard</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="order-summary glass-card">
+                <h3 class="section-title" data-en="Order Summary" data-ar="ملخص الطلب"></h3>
+                <div class="summary-items">
+                    <div class="summary-item">
+                        <span data-en="Subtotal" data-ar="المجموع الفرعي"></span>
+                        <span>199 ريال</span>
+                    </div>
+                    <div class="summary-item">
+                        <span data-en="Shipping" data-ar="الشحن"></span>
+                        <span>0 ريال</span>
+                    </div>
+                    <div class="summary-item">
+                        <span data-en="VAT (15%)" data-ar="الضريبة (15%)"></span>
+                        <span>29.85 ريال</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span data-en="Total" data-ar="المجموع الكلي"></span>
+                        <span>228.85 ريال</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="security-notice">
+                <i class="fas fa-lock"></i>
+                <span data-en="Secure Checkout - Your information is encrypted" 
+                      data-ar="دفع آمن - معلوماتك مشفرة"></span>
+            </div>
+
+            <!-- Pay Button -->
+            <button type="submit" class="pay-button">
+                <i class="fas fa-lock"></i>
+                <span data-en="Pay Now" data-ar="ادفع الآن"></span>
+            </button>
+        </form>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" style="display: none;">
+        <div class="success-content glass-card">
+            <i class="fas fa-check-circle"></i>
+            <h2 data-en="Order Successful!" data-ar="تم الطلب بنجاح!"></h2>
+            <p class="order-number" data-en="Order Number:" data-ar="رقم الطلب:"></p>
+            <p class="order-date" data-en="Order Date:" data-ar="تاريخ الطلب:"></p>
+            <a href="index.html" class="back-to-home" data-en="Back to Home" data-ar="العودة للرئيسية">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Language Toggle
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const currentLang = html.getAttribute('lang');
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+            const newDir = newLang === 'ar' ? 'rtl' : 'ltr';
+            
+            html.setAttribute('lang', newLang);
+            html.setAttribute('dir', newDir);
+            
+            updateContent(newLang);
+        }
+
+        function updateContent(lang) {
+            document.querySelectorAll('[data-en]').forEach(element => {
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                    element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
+                } else {
+                    element.textContent = element.getAttribute(`data-${lang}`);
+                }
+            });
+        }
+
+        // Form Validation
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            document.querySelector('.success-message').style.display = 'flex';
+            
+            // Generate order number
+            const orderNumber = 'RIF' + Math.floor(Math.random() * 1000000);
+            document.querySelector('.order-number').textContent = 
+                `${document.querySelector('.order-number').getAttribute('data-' + document.documentElement.lang)} ${orderNumber}`;
+            
+            // Set order date
+            const now = new Date();
+            document.querySelector('.order-date').textContent = 
+                `${document.querySelector('.order-date').getAttribute('data-' + document.documentElement.lang)} ${now.toLocaleDateString()}`;
+        });
+
+        // Phone Number Formatting
+        document.getElementById('phone').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0 && !value.startsWith('05')) {
+                value = '05' + value.substring(1);
+            }
+            e.target.value = value;
+        });
+
+        // Postal Code Formatting
+        document.getElementById('postalCode').addEventListener('input', function(e) {
+            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 5);
+        });
+
+        // Payment Method Selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelector('.loading').classList.add('hidden');
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 
