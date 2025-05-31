@@ -486,6 +486,10 @@
                      <img src="images/mastercard.png" alt="MasterCard" class="payment-icon">
                      <span class="en">MasterCard</span><span class="ar">ماستركارد</span>
                  </div>
+                  <div class="payment-method" data-method="mada">
+                     <img src="images/mada.png" alt="Mada" class="payment-icon">
+                     <span class="en">Mada</span><span class="ar">مدى</span>
+                 </div>
                   <!-- Add more payment methods as needed -->
              </div>
 
@@ -587,11 +591,16 @@
 
                  // Update total cost
                  const price = productInfo.price;
+                 const shippingCost = 20; // Fixed shipping cost in SAR
+                 const vatRate = 0.15; // 15% VAT rate
+                 const vatAmount = price * vatRate;
+                 const total = price + shippingCost + vatAmount;
+
                   if (lang === 'en') {
-                      totalAmountSpan.textContent = `SAR ${price.toFixed(2)}`;
-                  } else { // ar
-                      totalAmountSpan.textContent = `${price} ريال`;
-                  }
+                      totalAmountSpan.textContent = `SAR ${total.toFixed(2)}`;
+                   } else { // ar
+                      totalAmountSpan.textContent = `${total.toFixed(2)} ريال`;
+                   }
              } else {
                  // Handle case where product type is not found
                  productNameElement.textContent = lang === 'en' ? 'Product Not Found' : 'المنتج غير موجود';
