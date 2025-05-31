@@ -544,6 +544,14 @@
 
         let selectedProductType = 'cotton'; // Default or determined from URL
 
+        // Localized cost labels
+        const COST_LABELS = {
+            price: { en: "Price", ar: "السعر" },
+            shipping: { en: "Shipping", ar: "الشحن" },
+            vat: { en: "VAT", ar: "ضريبة القيمة المضافة" },
+            total: { en: "Total", ar: "الإجمالي" }
+        };
+
         // Function to update text content based on current language
         function updateTextContent() {
             const lang = document.documentElement.lang;
@@ -585,7 +593,7 @@
          function updateProductDetails() {
              const productInfo = PRODUCT_INFO[selectedProductType];
              const productNameElement = document.querySelector('.product-details h3[data-product-name]');
-             const totalAmountSpan = document.getElementById('totalAmount');
+             const totalCostDiv = document.querySelector('.total-cost');
              const lang = document.documentElement.lang;
 
              if (productInfo) {
@@ -599,15 +607,32 @@
                  const vatAmount = price * vatRate;
                  const total = price + shippingCost + vatAmount;
 
-                  if (lang === 'en') {
-                      totalAmountSpan.textContent = `SAR ${total.toFixed(2)}`;
-                   } else { // ar
-                      totalAmountSpan.textContent = `${total.toFixed(2)} ريال`;
-                   }
+                 // Construct the HTML for the cost breakdown
+                 let costBreakdownHTML = `
+                     <div class="cost-item">
+                         <span class="cost-label">${COST_LABELS.price[lang] || COST_LABELS.price.en}:</span>
+                         <span class="cost-value">${lang === 'en' ? `SAR ${price.toFixed(2)}` : `${price.toFixed(2)} ريال`}</span>
+                     </div>
+                     <div class="cost-item">
+                         <span class="cost-label">${COST_LABELS.shipping[lang] || COST_LABELS.shipping.en}:</span>
+                         <span class="cost-value">${lang === 'en' ? `SAR ${shippingCost.toFixed(2)}` : `${shippingCost.toFixed(2)} ريال`}</span>
+                     </div>
+                     <div class="cost-item">
+                         <span class="cost-label">${COST_LABELS.vat[lang] || COST_LABELS.vat.en} (${(vatRate * 100).toFixed(0)}%):</span>
+                         <span class="cost-value">${lang === 'en' ? `SAR ${vatAmount.toFixed(2)}` : `${vatAmount.toFixed(2)} ريال`}</span>
+                     </div>
+                     <div class="cost-total">
+                         <span class="total-label">${COST_LABELS.total[lang] || COST_LABELS.total.en}:</span>
+                         <span class="total-amount">${lang === 'en' ? `SAR ${total.toFixed(2)}` : `${total.toFixed(2)} ريال`}</span>
+                     </div>
+                 `;
+
+                 totalCostDiv.innerHTML = costBreakdownHTML;
+
              } else {
                  // Handle case where product type is not found
                  productNameElement.textContent = lang === 'en' ? 'Product Not Found' : 'المنتج غير موجود';
-                 totalAmountSpan.textContent = '';
+                 totalCostDiv.innerHTML = ''; // Clear the total cost section
              }
          }
 
