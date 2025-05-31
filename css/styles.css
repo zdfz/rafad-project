@@ -2000,4 +2000,30 @@
             gap: 1.5rem;
             padding: 0 1rem;
         }
+    }
+
+    .footer-links-button {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--light-text);
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 20px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .footer-links-button:hover {
+        background-color: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+
+    body.dark-mode .footer-links-button {
+        background-color: var(--dark-accent);
+        color: var(--dark-primary);
+    }
+
+    body.dark-mode .footer-links-button:hover {
+        background-color: var(--dark-secondary);
     } 
