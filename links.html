@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Rifad Project - Links" data-ar="مشروع رفاد - الروابط">Rifad Project - Links</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
+    <style>
+        /* Basic styling for the links page */
+        body {
+            font-family: var(--font-en);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-background);
+            color: var(--dark-text);
+        }
+
+         body[dir="rtl"] {
+            font-family: var(--font-ar);
+         }
+
+        .container {
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .link-button {
+            display: block;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .link-button i {
+            font-size: 1.4rem;
+        }
+
+        .link-button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+         body.dark-mode .link-button {
+             background-color: var(--dark-primary);
+             color: var(--dark-text);
+         }
+
+          body.dark-mode .link-button:hover {
+             background-color: var(--dark-accent);
+             color: var(--dark-primary);
+          }
+
+         /* Language Toggle */
+        .language-toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-toggle {
+             background: var(--glass-bg);
+             border: 1px solid var(--glass-border);
+             color: var(--text-color);
+             padding: 0.5rem 1rem;
+             border-radius: 4px;
+             cursor: pointer;
+             transition: all var(--transition-speed);
+        }
+
+        .language-toggle:hover {
+            background: var(--accent-color);
+            color: var(--light-text);
+        }
+
+        .language-toggle span {
+            display: none;
+        }
+
+        [lang="en"] .language-toggle .en,
+        [lang="ar"] .language-toggle .ar {
+            display: inline-block;
+        }
+
+        [lang="ar"] {
+            direction: rtl;
+        }
+
+        [lang="ar"] .language-toggle-container {
+            right: auto;
+            left: 20px;
+        }
+
+         [lang="ar"] .link-button {
+              flex-direction: row-reverse;
+         }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="language-toggle-container">
+        <button id="language-toggle" class="language-toggle" aria-label="Toggle language">
+             <span class="en">عربي</span>
+             <span class="ar">English</span>
+         </button>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Rifad Project Logo">
+        </div>
+        <h1 data-en="Rifad Project Accounts" data-ar="حسابات مشروع رفاد">Rifad Project Accounts</h1>
+
+        <!-- Social Media Links -->
+        <a href="https://www.facebook.com/rifadproject" class="link-button" data-en="Facebook" data-ar="فيسبوك">
+            <i class="fab fa-facebook"></i>
+            <span class="en">Facebook</span>
+            <span class="ar">فيسبوك</span>
+        </a>
+        <a href="https://twitter.com/rifadproject" class="link-button" data-en="Twitter" data-ar="تويتر">
+            <i class="fab fa-twitter"></i>
+            <span class="en">Twitter</span>
+            <span class="ar">تويتر</span>
+        </a>
+        <a href="https://www.instagram.com/rifadproject" class="link-button" data-en="Instagram" data-ar="انستغرام">
+            <i class="fab fa-instagram"></i>
+            <span class="en">Instagram</span>
+            <span class="ar">انستغرام</span>
+        </a>
+        <a href="https://www.linkedin.com/company/rifadproject" class="link-button" data-en="LinkedIn" data-ar="لينكد إن">
+            <i class="fab fa-linkedin"></i>
+            <span class="en">LinkedIn</span>
+            <span class="ar">لينكد إن</span>
+        </a>
+        <!-- Add more links as needed -->
+         <a href="https://www.tiktok.com/@rifadproject" class="link-button" data-en="TikTok" data-ar="تيك توك">
+            <i class="fab fa-tiktok"></i>
+            <span class="en">TikTok</span>
+            <span class="ar">تيك توك</span>
+        </a>
+        <a href="mailto:info@rifadproject.com" class="link-button" data-en="Email" data-ar="البريد الإلكتروني">
+            <i class="fas fa-envelope"></i>
+            <span class="en">Email</span>
+            <span class="ar">البريد الإلكتروني</span>
+        </a>
+        <a href="tel:+966500000000" class="link-button" data-en="Phone" data-ar="الهاتف">
+            <i class="fas fa-phone"></i>
+            <span class="en">Phone</span>
+            <span class="ar">الهاتف</span>
+        </a>
+
+    </div>
+
+     <script>
+        const languageToggle = document.getElementById('language-toggle');
+        const html = document.documentElement;
+
+        // Function to update text content based on language
+        function updateContent(lang) {
+            document.querySelectorAll('[data-en], [data-ar]').forEach(element => {
+                if (lang === 'en') {
+                    element.textContent = element.getAttribute('data-en');
+                } else if (lang === 'ar') {
+                    element.textContent = element.getAttribute('data-ar');
+                }
+            });
+             // Manually update the title tag content
+            const titleElement = document.querySelector('head title');
+            if (titleElement) {
+                 if (lang === 'en') {
+                    titleElement.textContent = titleElement.getAttribute('data-en');
+                } else if (lang === 'ar') {
+                    titleElement.textContent = titleElement.getAttribute('data-ar');
+                }
+            }
+
+             // Update spans within link-buttons separately
+            document.querySelectorAll('.link-button span').forEach(span => {
+                 const parentButton = span.closest('.link-button');
+                 if (parentButton) {
+                     if (lang === 'en' && span.classList.contains('en')) {
+                        span.style.display = 'inline';
+                     } else if (lang === 'ar' && span.classList.contains('ar')) {
+                         span.style.display = 'inline';
+                     } else {
+                         span.style.display = 'none';
+                     }
+                 }
+             });
+
+
+        }
+
+        // Set initial language from html tag
+        const initialLang = html.getAttribute('lang') || 'en';
+        updateContent(initialLang);
+
+        // Toggle language on button click
+        languageToggle.addEventListener('click', () => {
+            const currentLang = html.getAttribute('lang');
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+            html.setAttribute('lang', newLang);
+            html.setAttribute('dir', newLang === 'ar' ? 'rtl' : 'ltr');
+            updateContent(newLang);
+        });
+
+    </script>
+
+</body>
+</html> 
