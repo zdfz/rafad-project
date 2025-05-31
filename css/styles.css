@@ -1933,4 +1933,64 @@
 
     html[lang="ar"] .language-toggle span.ar {
         display: inline; /* Show Arabic text in toggle when Arabic is active */
+    }
+
+    /* Our Team Section */
+    .team .section-header {
+        margin-bottom: var(--spacing-xl);
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin: 2rem auto;
+        max-width: 1000px; /* Adjust max-width as needed */
+        padding: 0 1.5rem;
+    }
+
+    .team-member {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 2rem 1.5rem;
+        /* Inherits glass-card styles */
+    }
+
+    .team-image {
+        width: 120px; /* Adjust size as needed */
+        height: 120px; /* Adjust size as needed */
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 1.2rem;
+        border: 3px solid var(--accent-color);
+        box-shadow: var(--shadow-md);
+    }
+
+    .team-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .team-details h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+    }
+
+    .team-details p {
+        font-size: 1.1rem;
+        color: var(--text-color);
+        opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+        .team-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
     } 
