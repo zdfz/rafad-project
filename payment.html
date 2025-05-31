@@ -273,6 +273,31 @@
                 document.querySelector('.loading').classList.add('hidden');
             }, 1000);
         });
+        
+        // Dynamic product type and price
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get('type');
+            let name = 'Premium Ihram';
+            let price = 199;
+            if (type === 'polyester') {
+                name = 'Polyester Ihram';
+                price = 187.46;
+            } else if (type === 'cotton') {
+                name = 'Cotton Ihram';
+                price = 224.96;
+            } else if (type === 'mixed') {
+                name = 'Mixed Material Ihram';
+                price = 262.46;
+            }
+            document.querySelector('.product-name').textContent = name;
+            document.querySelector('.price-amount').textContent = price + ' ريال';
+            // Update order summary
+            document.querySelectorAll('.summary-item span:last-child')[0].textContent = price + ' ريال';
+            const vat = +(price * 0.15).toFixed(2);
+            document.querySelectorAll('.summary-item span:last-child')[2].textContent = vat + ' ريال';
+            document.querySelectorAll('.summary-item span:last-child')[3].textContent = (price + vat).toFixed(2) + ' ريال';
+        })();
     </script>
 </body>
 </html> 
