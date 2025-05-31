@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -658,6 +658,7 @@
 
     <script src="js/main.js"></script>
     <script>
+    /*
     // Shopping Cart Functionality
     let cart = [];
     const shippingCost = 18.75;
@@ -792,8 +793,36 @@
 
     });
     
+    */
     </script>
     <!-- Shopping Cart functionality script remains or is removed based on your needs -->
+
+    <script>
+        // Language Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('language-toggle');
+            const htmlElement = document.documentElement;
+
+            toggleButton.addEventListener('click', () => {
+                const currentLang = htmlElement.getAttribute('lang');
+                if (currentLang === 'ar') {
+                    htmlElement.setAttribute('lang', 'en');
+                    htmlElement.setAttribute('dir', 'ltr');
+                } else {
+                    htmlElement.setAttribute('lang', 'ar');
+                    htmlElement.setAttribute('dir', 'rtl');
+                }
+                 // The display of .en and .ar elements is handled by CSS based on html[lang]
+            });
+        });
+
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelector('.loading').classList.add('hidden');
+            }, 1000);
+        });
+    </script>
 
 </body>
 </html> 
