@@ -1111,8 +1111,8 @@
 
     /* Ensure gradient text is visible in dark mode with a solid color */
     body.dark-mode .gradient-text {
-        -webkit-text-fill-color: var(--dark-accent);
-        color: var(--dark-accent); /* Fallback */
+        -webkit-text-fill-color: var(--light-text);
+        color: var(--light-text); /* Fallback */
         background: none; /* Remove gradient background in dark mode */
     }
 
