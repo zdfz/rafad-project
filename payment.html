@@ -311,7 +311,7 @@
         }
 
         .pay-button {
-            display: block;a
+            display: block;
             width: 100%;
             padding: 12px;
             border: none;
@@ -453,21 +453,13 @@
          <div class="product-summary">
              <img src="images/rifad.png" alt="Rifad Bag">
              <div class="product-details">
-                 <h3 data-product-name><span class="en">Rifad Bag</span><span class="ar">حقيبة رفاد</span></h3>
+                 <h3 data-product-name></h3>
                  <p data-product-description><span class="en">A durable bag available in different materials.</span><span class="ar">حقيبة متينة متوفرة بخامات مختلفة.</span></p>
              </div>
          </div>
 
         <form id="paymentForm" novalidate>
              <div class="form-group">
-                <label for="fabricType"><i class="fas fa-palette"></i> <span class="en">Fabric Type</span><span class="ar">نوع القماش</span>:</label>
-                <select id="fabricType" required onchange="updateTotalCost()">
-                     <option value="cotton"><span class="en">Cotton</span><span class="ar">قطن</span></option>
-                     <option value="mixed"><span class="en">Mixed Fabric</span><span class="ar">قماش مخلوط</span></option>
-                     <option value="polyester"><span class="en">Polyester</span><span class="ar">بوليستر</span></option>
-                </select>
-            </div>
-            <div class="form-group">
                 <label for="name"><i class="fas fa-user"></i> <span class="en">Full Name</span><span class="ar">الاسم الكامل</span>:</label>
                 <input type="text" id="name" required>
             </div>
@@ -527,12 +519,23 @@
     <script>
         // Embedded JavaScript
 
-        // Product prices
-        const PRICES = {
-            cotton: 60,
-            mixed: 45,
-            polyester: 30
+        // Product prices and names based on type
+        const PRODUCT_INFO = {
+            cotton: {
+                name: { en: "Cotton Ihram", ar: "إحرام قطن" },
+                price: 60
+            },
+            mixed: {
+                name: { en: "Mixed Material Ihram", ar: "إحرام قماش مخلوط" },
+                price: 45
+            },
+            polyester: {
+                name: { en: "Polyester Ihram", ar: "إحرام بوليستر" },
+                price: 30
+            }
         };
+
+        let selectedProductType = 'cotton'; // Default or determined from URL
 
         // Function to update text content based on current language
         function updateTextContent() {
@@ -567,37 +570,32 @@
                  }
              });
 
-             // Update select option texts
-              document.querySelectorAll('#fabricType option').forEach(option => {
-                   const enText = option.value.charAt(0).toUpperCase() + option.value.slice(1); // Basic capitalization
-                   const arText = {
-                       'cotton': 'قطن',
-                       'mixed': 'قماش مخلوط',
-                       'polyester': 'بوليستر'
-                   }[option.value];
-                   option.textContent = lang === 'en' ? enText : arText;
-              });
-
-            updateTotalCost(); // Update total cost display format
+            updateProductDetails(); // Update product name and total cost
              updatePaymentMethodText(); // Update payment method text
         }
 
-         // Function to update the total cost display
-         function updateTotalCost() {
-             const fabricTypeSelect = document.getElementById('fabricType');
-             const selectedType = fabricTypeSelect.value;
-             const price = PRICES[selectedType];
+         // Function to update the displayed product details and total cost
+         function updateProductDetails() {
+             const productInfo = PRODUCT_INFO[selectedProductType];
+             const productNameElement = document.querySelector('.product-details h3[data-product-name]');
              const totalAmountSpan = document.getElementById('totalAmount');
              const lang = document.documentElement.lang;
 
-             if (price !== undefined) {
+             if (productInfo) {
+                 // Update product name
+                 productNameElement.textContent = productInfo.name[lang] || productInfo.name.en; // Fallback to English
+
+                 // Update total cost
+                 const price = productInfo.price;
                   if (lang === 'en') {
                       totalAmountSpan.textContent = `SAR ${price.toFixed(2)}`;
                   } else { // ar
                       totalAmountSpan.textContent = `${price} ريال`;
                   }
              } else {
-                  totalAmountSpan.textContent = '';
+                 // Handle case where product type is not found
+                 productNameElement.textContent = lang === 'en' ? 'Product Not Found' : 'المنتج غير موجود';
+                 totalAmountSpan.textContent = '';
              }
          }
 
@@ -687,6 +685,17 @@
             const initialLang = document.documentElement.lang || 'en'; // Default to English
             document.documentElement.dir = initialLang === 'ar' ? 'rtl' : 'ltr';
 
+            // Get product type from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type');
+            if (type && PRODUCT_INFO[type]) {
+                selectedProductType = type;
+            } else {
+                 // Default or handle error if type is not valid
+                 selectedProductType = 'cotton'; // Fallback
+                 console.warn('Invalid or missing product type in URL, defaulting to cotton.');
+            }
+
             // Apply initial language texts and placeholders
             updateTextContent();
 
@@ -717,17 +726,6 @@
                        input.placeholder = placeholderText;
                   }
              });
-
-              // Update select option texts initially
-              document.querySelectorAll('#fabricType option').forEach(option => {
-                   const enText = option.value.charAt(0).toUpperCase() + option.value.slice(1);
-                   const arText = {
-                       'cotton': 'قطن',
-                       'mixed': 'قماش مخلوط',
-                       'polyester': 'بوليستر'
-                   }[option.value];
-                   option.textContent = initialLang === 'en' ? enText : arText;
-              });
 
              // Select the first payment method by default (optional)
              const firstPaymentMethod = document.querySelector('.payment-method');
