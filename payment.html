@@ -47,30 +47,22 @@
             </div>
         </div>
 
-        <!-- Product Summary -->
+        <!-- Product Summary (Refactored for Clothing Store) -->
         <div class="product-summary glass-card">
-            <div class="product-image">
-                <img src="images\rifad.png" alt="Product Image">
+            <div class="product-image" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="images/rifad.png" alt="Product Image" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 1rem;">
+                <img src="images/logo.png" alt="Logo" style="width: 60px; height: 60px; object-fit: contain;">
             </div>
             <div class="product-details">
-                <h3 class="product-name" data-en="Cotton Ihram" data-ar="احرام القطن"></h3>
+                <h3 class="product-name" data-en="" data-ar=""></h3>
                 <div class="product-specs">
                     <div class="spec-item">
-                        <i class="fas fa-ruler"></i>
-                        <span data-en="Size: 220 x 110 cm" data-ar="المقاس: 220 × 110 سم"></span>
-                    </div>
-                    <div class="spec-item">
-                        <i class="fas fa-weight"></i>
-                        <span data-en="Weight: 500g" data-ar="الوزن: 500 جرام"></span>
-                    </div>
-                    <div class="spec-item">
-                        <i class="fas fa-palette"></i>
-                        <span data-en="Color: White" data-ar="اللون: أبيض"></span>
+                        <span class="product-desc" data-en="" data-ar=""></span>
                     </div>
                 </div>
                 <div class="product-price">
-                    <span class="price-label" data-en="Price:" data-ar="السعر:"></span>
-                    <span class="price-amount">60 SAR</span>
+                    <span class="price-label" data-en="Price:" data-ar=":السعر"></span>
+                    <span class="price-amount"></span>
                 </div>
             </div>
         </div>
@@ -204,28 +196,58 @@
     </div>
 
     <script>
-        // Language Toggle
-        function toggleLanguage() {
-            const html = document.documentElement;
-            const currentLang = html.getAttribute('lang');
-            const newLang = currentLang === 'en' ? 'ar' : 'en';
-            const newDir = newLang === 'ar' ? 'rtl' : 'ltr';
-            
-            html.setAttribute('lang', newLang);
-            html.setAttribute('dir', newDir);
-            
-            updateContent(newLang);
+        // Product data
+        const PRODUCTS = {
+            polyester: {
+                en: { name: 'Polyester Ihram', desc: 'Lightweight, quick-dry, wrinkle-resistant', price: 30, priceStr: 'SAR 30' },
+                ar: { name: 'إحرام بوليستر', desc: 'خفيف الوزن، سريع الجفاف، مقاوم للتجعد', price: 30, priceStr: '٣٠ ريال' }
+            },
+            cotton: {
+                en: { name: 'Cotton Ihram', desc: 'Natural, breathable, soft on skin', price: 60, priceStr: 'SAR 60' },
+                ar: { name: 'إحرام قطن', desc: 'طبيعي، يسمح بالتنفس، ناعم على البشرة', price: 60, priceStr: '٦٠ ريال' }
+            },
+            mixed: {
+                en: { name: 'Mixed Fabric Ihram', desc: 'Durable, quick-dry, breathable', price: 45, priceStr: 'SAR 45' },
+                ar: { name: 'إحرام قماش مخلوط', desc: 'متين، سريع الجفاف، يسمح بالتنفس', price: 45, priceStr: '٤٥ ريال' }
+            }
+        };
+
+        function getLang() {
+            return document.documentElement.lang === 'ar' ? 'ar' : 'en';
         }
 
-        function updateContent(lang) {
-            document.querySelectorAll('[data-en]').forEach(element => {
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = element.getAttribute(`data-${lang}-placeholder`);
-                } else {
-                    element.textContent = element.getAttribute(`data-${lang}`);
+        function updateProductDisplay() {
+            const params = new URLSearchParams(window.location.search);
+            let type = params.get('type');
+            if (!type || !PRODUCTS[type]) type = 'cotton'; // default
+            const lang = getLang();
+            const product = PRODUCTS[type][lang];
+            document.querySelector('.product-name').textContent = product.name;
+            document.querySelector('.product-desc').textContent = product.desc;
+            document.querySelector('.price-amount').textContent = product.priceStr;
+            document.querySelector('.price-label').textContent = lang === 'ar' ? ':السعر' : 'Price:';
+        }
+
+        // Language toggle logic
+        function toggleLanguage() {
+            const html = document.documentElement;
+            const newLang = html.lang === 'en' ? 'ar' : 'en';
+            html.lang = newLang;
+            html.dir = newLang === 'ar' ? 'rtl' : 'ltr';
+            updateProductDisplay();
+            // Update all [data-en] and [data-ar] elements
+            document.querySelectorAll('[data-en], [data-ar]').forEach(el => {
+                if (el.hasAttribute('data-' + newLang)) {
+                    el.textContent = el.getAttribute('data-' + newLang);
                 }
             });
         }
+
+        // Initial render
+        updateProductDisplay();
+        // Ensure toggle button works
+        const langBtn = document.querySelector('.language-toggle');
+        if (langBtn) langBtn.onclick = toggleLanguage;
 
         // Form Validation
         document.getElementById('paymentForm').addEventListener('submit', function(e) {
@@ -273,62 +295,6 @@
                 document.querySelector('.loading').classList.add('hidden');
             }, 1000);
         });
-        
-        // Dynamic product type and price
-        (function() {
-            const params = new URLSearchParams(window.location.search);
-            const type = params.get('type');
-            let name = 'Premium Ihram';
-            let price = 199;
-            let img = 'rifad.png';
-            let specs = [
-                { icon: 'fas fa-ruler', text: 'Size: 220 x 110 cm' },
-                { icon: 'fas fa-weight', text: 'Weight: 500g' },
-                { icon: 'fas fa-palette', text: 'Color: White' }
-            ];
-            if (type === 'polyester') {
-                name = 'Polyester Ihram';
-                price = 30.00;
-                img = 'images/polyester.png';
-                specs = [
-                    { icon: 'fas fa-ruler', text: 'Size: 220 x 110 cm' },
-                    { icon: 'fas fa-weight', text: 'Weight: 480g' },
-                    { icon: 'fas fa-tint', text: 'Quick-dry' }
-                ];
-            } else if (type === 'cotton') {
-                name = 'Cotton Ihram';
-                price = 60.00;
-                img = 'images/cotton.png';
-                specs = [
-                    { icon: 'fas fa-ruler', text: 'Size: 220 x 110 cm' },
-                    { icon: 'fas fa-weight', text: 'Weight: 520g' },
-                    { icon: 'fas fa-leaf', text: 'Natural Cotton' }
-                ];
-            } else if (type === 'mixed') {
-                name = 'Mixed Material Ihram';
-                price = 45.00;
-                img = 'images/mixed.png';
-                specs = [
-                    { icon: 'fas fa-ruler', text: 'Size: 220 x 110 cm' },
-                    { icon: 'fas fa-weight', text: 'Weight: 500g' },
-                    { icon: 'fas fa-cogs', text: 'Durable Blend' }
-                ];
-            } else {
-                img = 'rifad.png';
-            }
-            document.querySelector('.product-name').textContent = name;
-            document.querySelector('.price-amount').textContent = price + ' ريال';
-            // Update product image
-            document.querySelector('.product-image img').src = img;
-            // Update specs
-            const specsContainer = document.querySelector('.product-specs');
-            specsContainer.innerHTML = specs.map(s => `<div class="spec-item"><i class="${s.icon}"></i><span>${s.text}</span></div>`).join('');
-            // Update order summary
-            document.querySelectorAll('.summary-item span:last-child')[0].textContent = price + ' ريال';
-            const vat = +(price * 0.15).toFixed(2);
-            document.querySelectorAll('.summary-item span:last-child')[2].textContent = vat + ' ريال';
-            document.querySelectorAll('.summary-item span:last-child')[3].textContent = (price + vat).toFixed(2) + ' ريال';
-        })();
     </script>
 </body>
 </html> 
