@@ -1352,34 +1352,70 @@ footer {
     color: #fff;
 }
 
+.payment-page .form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
 .payment-page .form-group input,
 .payment-page .form-group select,
 .payment-page .form-group textarea {
     background: #f4f8fb;
-    border: 2px solid #e0e7ef;
+    border: 1.5px solid #e0e7ef;
     color: #222;
     border-radius: 0.7rem;
-    padding: 0.9rem 1.1rem 0.9rem 2.5rem;
+    padding: 0.9rem 1.1rem 0.9rem 2.8rem;
     font-size: 1rem;
-    margin-bottom: 0.7rem;
     width: 100%;
-    transition: border-color 0.3s, background 0.3s;
+    transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
 }
+
+.payment-page .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.payment-page .form-group i {
+    position: absolute;
+    left: 1rem;
+    top: calc(0.9rem + 0.5rem + 50%);
+    transform: translateY(-50%);
+    color: #0074D9;
+    font-size: 1.1rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.payment-page .form-group textarea ~ i {
+    top: 1.8rem;
+    transform: none;
+}
+
 .payment-page .form-group input:focus,
 .payment-page .form-group select:focus,
 .payment-page .form-group textarea:focus {
     border-color: #0074D9;
     background: #fff;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 116, 217, 0.1);
 }
-.payment-page .form-group i {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #36ffe0;
-    font-size: 1.3rem;
-    pointer-events: none;
+
+.payment-page[dir="rtl"] .form-group input,
+.payment-page[dir="rtl"] .form-group select,
+.payment-page[dir="rtl"] .form-group textarea {
+    padding: 0.9rem 2.8rem 0.9rem 1.1rem;
+}
+
+.payment-page[dir="rtl"] .form-group i {
+    left: auto;
+    right: 1rem;
+}
+
+.payment-page[dir="rtl"] .form-group textarea ~ i {
+    right: 1rem;
+    left: auto;
 }
 
 .payment-page .payment-methods {
