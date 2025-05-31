@@ -1109,6 +1109,13 @@
         margin-bottom: var(--spacing-md);
     }
 
+    /* Ensure gradient text is visible in dark mode with a solid color */
+    body.dark-mode .gradient-text {
+        -webkit-text-fill-color: var(--dark-accent);
+        color: var(--dark-accent); /* Fallback */
+        background: none; /* Remove gradient background in dark mode */
+    }
+
     .section-divider {
         width: 100px;
         height: 3px;
