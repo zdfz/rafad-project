@@ -280,18 +280,49 @@
             const type = params.get('type');
             let name = 'Premium Ihram';
             let price = 199;
+            let img = 'rifad.png';
+            let specs = [
+                { icon: 'fas fa-ruler', text: 'Size: 220 x 110 cm' },
+                { icon: 'fas fa-weight', text: 'Weight: 500g' },
+                { icon: 'fas fa-palette', text: 'Color: White' }
+            ];
             if (type === 'polyester') {
                 name = 'Polyester Ihram';
-                price = 187.46;
+                price = 30.00;
+                img = 'images/polyester.png';
+                specs = [
+                    { icon: 'fas fa-ruler', text: 'Size: 220 x 110 cm' },
+                    { icon: 'fas fa-weight', text: 'Weight: 480g' },
+                    { icon: 'fas fa-tint', text: 'Quick-dry' }
+                ];
             } else if (type === 'cotton') {
                 name = 'Cotton Ihram';
-                price = 224.96;
+                price = 60.00;
+                img = 'images/cotton.png';
+                specs = [
+                    { icon: 'fas fa-ruler', text: 'Size: 220 x 110 cm' },
+                    { icon: 'fas fa-weight', text: 'Weight: 520g' },
+                    { icon: 'fas fa-leaf', text: 'Natural Cotton' }
+                ];
             } else if (type === 'mixed') {
                 name = 'Mixed Material Ihram';
-                price = 262.46;
+                price = 45.00;
+                img = 'images/mixed.png';
+                specs = [
+                    { icon: 'fas fa-ruler', text: 'Size: 220 x 110 cm' },
+                    { icon: 'fas fa-weight', text: 'Weight: 500g' },
+                    { icon: 'fas fa-cogs', text: 'Durable Blend' }
+                ];
+            } else {
+                img = 'rifad.png';
             }
             document.querySelector('.product-name').textContent = name;
             document.querySelector('.price-amount').textContent = price + ' ريال';
+            // Update product image
+            document.querySelector('.product-image img').src = img;
+            // Update specs
+            const specsContainer = document.querySelector('.product-specs');
+            specsContainer.innerHTML = specs.map(s => `<div class="spec-item"><i class="${s.icon}"></i><span>${s.text}</span></div>`).join('');
             // Update order summary
             document.querySelectorAll('.summary-item span:last-child')[0].textContent = price + ' ريال';
             const vat = +(price * 0.15).toFixed(2);
