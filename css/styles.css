@@ -1794,4 +1794,60 @@ footer {
 .payment-page[dir="rtl"] .language-toggle {
     right: auto;
     left: 2rem;
+}
+
+/* Language specific classes - Ensure these correctly toggle display based on html[lang] */
+.en, .ar {
+    display: none; /* Hidden by default */
+}
+
+html[lang="en"] .en {
+    display: block; /* Or inline, flex, etc. based on context */
+}
+
+html[lang="ar"] .ar {
+    display: block; /* Or inline, flex, etc. based on context */
+}
+
+/* Adjust specific elements if needed */
+html[lang="en"] .nav-links a.en,
+html[lang="ar"] .nav-links a.ar,
+html[lang="en"] .footer-links .link-group.en,
+html[lang="ar"] .footer-links .link-group.ar,
+html[lang="en"] .social-links .social-group.en,
+html[lang="ar"] .social-links .social-group.ar,
+html[lang="en"] .loading-text.en,
+html[lang="ar"] .loading-text.ar,
+html[lang="en"] .copyright p.en,
+html[lang="ar"] .copyright p.ar {
+     display: initial; /* Use initial to revert to default display type for these elements */
+}
+
+/* Ensure content containers toggle correctly */
+html[lang="en"] .content-container.en {
+    display: block; /* Ensure the main English content container is shown */
+}
+
+html[lang="ar"] .content-container.ar {
+    display: block; /* Ensure the main Arabic content container is shown */
+}
+
+/* Hide the inactive content container */
+html[lang="ar"] .content-container.en,
+html[lang="en"] .content-container.ar {
+    display: none;
+}
+
+/* Language toggle spans */
+.language-toggle span.en,
+.language-toggle span.ar {
+    display: none;
+}
+
+html[lang="en"] .language-toggle span.en {
+     display: inline; /* Show English text in toggle when English is active */
+}
+
+html[lang="ar"] .language-toggle span.ar {
+     display: inline; /* Show Arabic text in toggle when Arabic is active */
 } 
