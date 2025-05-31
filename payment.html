@@ -4,90 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Clothing Store Payment Form">
-    <title>Payment - Clothing Store</title>
+    <title data-en="Payment - Rifad Store" data-ar="الدفع - متجر رفاد">Payment - Rifad Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Embedded CSS */
+        :root {
+            --background-color-light: #f4f4f4;
+            --text-color-light: #333;
+            --container-background-light: #ffffff;
+            --border-color-light: #ccc;
+            --input-background-light: #eee;
+            --input-text-light: #333;
+            --accent-color-light: #007bff;
+            --shadow-color-light: rgba(0, 0, 0, 0.1);
+            --button-background-light: #007bff;
+            --button-text-light: #fff;
+
+            --background-color-dark: #1a2b3c;
+            --text-color-dark: #ffffff;
+            --container-background-dark: #2a3b4c;
+            --border-color-dark: #0a192f;
+            --input-background-dark: #0a192f;
+            --input-text-dark: #e6f1ff;
+            --accent-color-dark: #64ffda;
+            --shadow-color-dark: rgba(0, 0, 0, 0.5);
+            --button-background-dark: #64ffda;
+            --button-text-dark: #0a192f;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a2b3c; /* Dark background */
-            color: #ffffff; /* White text */
+            background-color: var(--background-color-light);
+            color: var(--text-color-light);
             margin: 0;
             padding: 20px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align to top initially */
+            align-items: flex-start;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--background-color-dark);
+            color: var(--text-color-dark);
         }
 
         .payment-container {
-            background-color: #2a3b4c; /* Slightly lighter dark background for container */
+            background-color: var(--container-background-light);
             padding: 30px;
             border-radius: 10px;
-            max-width: 400px; /* Centered max width */
+            max-width: 400px;
             width: 100%;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 20px var(--shadow-color-light);
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Spacing between sections */
+            gap: 20px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .logo, .product-image-container {
+        body.dark-mode .payment-container {
+            background-color: var(--container-background-dark);
+            box-shadow: 0 0 20px var(--shadow-color-dark);
+        }
+
+        .logo {
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
         }
 
-        .logo img, .product-image-container img {
+        .logo img {
             max-width: 80px;
             height: auto;
         }
 
-        .product-image-container img {
-            max-width: 150px;
-        }
-
-
         h2 {
             text-align: center;
-            color: #64ffda; /* Accent color for headings */
+            color: var(--accent-color-light);
             margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode h2 {
+            color: var(--accent-color-dark);
         }
 
         .form-group {
-            margin-bottom: 15px; /* Space between form groups */
-            position: relative; /* Needed for icon positioning */
+            margin-bottom: 15px;
+            position: relative;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
-            color: #e6f1ff; /* Light text color for labels */
-            position: relative; /* For icon placement */
-            padding-left: 30px; /* Space for icon */
+            color: var(--text-color-light);
+            position: relative;
+            padding-left: 30px;
             line-height: 1.5;
+            transition: color 0.3s ease;
         }
+
+         body.dark-mode .form-group label {
+             color: var(--text-color-dark);
+         }
 
         .form-group label i {
             position: absolute;
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            color: #64ffda; /* Icon color */
+            color: var(--accent-color-light);
             font-size: 1.1em;
+            transition: color 0.3s ease;
         }
+
+         body.dark-mode .form-group label i {
+             color: var(--accent-color-dark);
+         }
 
         [dir="rtl"] .form-group label {
             padding-left: 0;
-            padding-right: 30px; /* Space for icon in RTL */
+            padding-right: 30px;
         }
 
         [dir="rtl"] .form-group label i {
             left: auto;
             right: 0;
         }
-
 
         .form-group input[type="text"],
         .form-group input[type="tel"],
@@ -98,77 +143,272 @@
             padding: 10px;
             padding-left: 10px; /* Reset LTR padding */
             padding-right: 10px; /* Reset RTL padding */
-            border: 1px solid #0a192f; /* Darker border */
+            border: 1px solid var(--border-color-light);
             border-radius: 5px;
-            background-color: #0a192f; /* Input background */
-            color: #e6f1ff; /* Input text color */
+            background-color: var(--input-background-light);
+            color: var(--input-text-light);
             font-size: 1em;
-            box-sizing: border-box; /* Include padding and border in element's total width */
+            box-sizing: border-box;
+            transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
         }
 
-        [dir="rtl"] .form-group input[type="text"],
-        [dir="rtl"] .form-group input[type="tel"],
-        [dir="rtl"] .form-group input[type="email"],
-        [dir="rtl"] .form-group textarea,
-        [dir="rtl"] .form-group select {
-             /* No specific padding adjustment needed here if label padding is handled */
+        body.dark-mode .form-group input[type="text"],
+        body.dark-mode .form-group input[type="tel"],
+        body.dark-mode .form-group input[type="email"],
+        body.dark-mode .form-group textarea,
+        body.dark-mode .form-group select {
+            border: 1px solid var(--border-color-dark);
+            background-color: var(--input-background-dark);
+            color: var(--input-text-dark);
         }
-
 
         .form-group textarea {
-            resize: vertical; /* Allow vertical resize */
+            resize: vertical;
             min-height: 80px;
         }
 
-         .total-cost {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid #0a192f; /* Separator line */
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #64ffda; /* Accent color for total */
-            text-align: right; /* Align total to the right */
-        }
-         [dir="rtl"] .total-cost {
-             text-align: left; /* Align total to the left in RTL */
+         .product-summary {
+             display: flex;
+             gap: 20px;
+             align-items: center;
+             margin-bottom: 20px;
+             padding-bottom: 20px;
+             border-bottom: 1px solid var(--border-color-light);
+             transition: border-color 0.3s ease;
          }
 
-        button {
-            display: block;
+         body.dark-mode .product-summary {
+             border-bottom: 1px solid var(--border-color-dark);
+         }
+
+         .product-summary img {
+             max-width: 80px;
+             height: auto;
+             border-radius: 5px;
+         }
+
+         .product-details {
+             flex-grow: 1;
+         }
+
+         .product-details h3 {
+             margin: 0 0 5px 0;
+             color: var(--text-color-light);
+             transition: color 0.3s ease;
+         }
+
+          body.dark-mode .product-details h3 {
+              color: var(--text-color-dark);
+          }
+
+         .product-details p {
+             margin: 0;
+             font-size: 0.9em;
+             color: #666;
+              transition: color 0.3s ease;
+         }
+         body.dark-mode .product-details p {
+             color: #aaa;
+         }
+
+         [dir="rtl"] .product-summary {
+             flex-direction: row-reverse;
+         }
+
+         [dir="rtl"] .product-details h3,
+         [dir="rtl"] .product-details p {
+             text-align: right;
+         }
+
+        .payment-methods {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color-light);
+            transition: border-color 0.3s ease;
+        }
+
+         body.dark-mode .payment-methods {
+              border-top: 1px solid var(--border-color-dark);
+         }
+
+        .payment-methods h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            color: var(--accent-color-light);
+            transition: color 0.3s ease;
+        }
+         body.dark-mode .payment-methods h3 {
+             color: var(--accent-color-dark);
+         }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid var(--border-color-light);
+            border-radius: 5px;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        body.dark-mode .payment-method {
+            border: 1px solid var(--border-color-dark);
+        }
+
+        .payment-method:hover {
+             background-color: #f0f0f0;
+        }
+        body.dark-mode .payment-method:hover {
+            background-color: #3a4b5c;
+        }
+
+        .payment-method.selected {
+            border-color: var(--accent-color-light);
+        }
+         body.dark-mode .payment-method.selected {
+             border-color: var(--accent-color-dark);
+         }
+
+        .payment-icon {
+            width: 40px;
+            height: auto;
+            margin-right: 15px;
+        }
+         [dir="rtl"] .payment-icon {
+              margin-right: 0;
+              margin-left: 15px;
+         }
+
+        .payment-method span {
+            font-weight: bold;
+            color: var(--text-color-light);
+            transition: color 0.3s ease;
+        }
+         body.dark-mode .payment-method span {
+             color: var(--text-color-dark);
+         }
+
+        .total-cost {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color-light);
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--accent-color-light);
+            text-align: right;
+            transition: border-color 0.3s ease, color 0.3s ease;
+        }
+
+         body.dark-mode .total-cost {
+             border-top: 1px solid var(--border-color-dark);
+             color: var(--accent-color-dark);
+         }
+
+        [dir="rtl"] .total-cost {
+            text-align: left;
+        }
+
+        .pay-button {
+            display: block;a
             width: 100%;
             padding: 12px;
             border: none;
             border-radius: 5px;
-            background-color: #64ffda; /* Button background */
-            color: #0a192f; /* Button text color */
+            background-color: var(--button-background-light);
+            color: var(--button-text-light);
             font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
+             margin-top: 20px;
         }
 
-        button:hover {
-            background-color: #36ffe0; /* Darker shade on hover */
+        body.dark-mode .pay-button {
+            background-color: var(--button-background-dark);
+            color: var(--button-text-dark);
         }
 
-        .language-toggle {
+        .pay-button:hover {
+            opacity: 0.9;
+        }
+
+        .language-toggle, .theme-toggle {
             position: absolute;
             top: 20px;
-            right: 20px;
-            background-color: #0a192f;
-            color: #e6f1ff;
-            border: 1px solid #2a3b4c;
+            background-color: var(--container-background-light);
+            color: var(--text-color-light);
+            border: 1px solid var(--border-color-light);
             padding: 8px 12px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9em;
-            z-index: 10; /* Ensure it's above other content */
+            z-index: 10;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
+
+        body.dark-mode .language-toggle, body.dark-mode .theme-toggle {
+            background-color: var(--container-background-dark);
+            color: var(--text-color-dark);
+            border: 1px solid var(--border-color-dark);
+        }
+
+        .language-toggle {
+             right: 20px;
+        }
+
+        .theme-toggle {
+            right: 100px; /* Adjust position relative to language toggle */
+        }
+
         [dir="rtl"] .language-toggle {
              right: auto;
              left: 20px;
         }
 
+         [dir="rtl"] .theme-toggle {
+             right: auto;
+             left: 100px; /* Adjust position for RTL */
+         }
+
+        /* Language specific classes */
+        .en, .ar {
+            display: none;
+        }
+        html[lang="en"] .en {
+            display: inline;
+        }
+        html[lang="ar"] .ar {
+            display: inline;
+        }
+
+        /* Success Message */
+        .success-message {
+             display: none; /* Hidden by default */
+             text-align: center;
+             padding: 30px;
+             border-radius: 10px;
+             background-color: #d4edda;
+             color: #155724;
+             border: 1px solid #c3e6cb;
+             margin-top: 20px;
+        }
+
+        body.dark-mode .success-message {
+            background-color: #1a3632;
+            color: #64ffda;
+            border-color: #3a5a52;
+        }
+
+        .success-message h2 {
+            color: #155724;
+            margin-top: 0;
+        }
+
+        body.dark-mode .success-message h2 {
+             color: #64ffda;
+        }
 
         /* Responsive adjustments */
         @media (max-width: 480px) {
@@ -178,64 +418,111 @@
             body {
                 padding: 10px;
             }
+             .language-toggle, .theme-toggle {
+                 top: 10px;
+                 padding: 6px 10px;
+             }
+            .language-toggle {
+                 right: 10px;
+            }
+            .theme-toggle {
+                 right: 80px;
+            }
+             [dir="rtl"] .language-toggle {
+                 left: 10px;
+                 right: auto;
+             }
+              [dir="rtl"] .theme-toggle {
+                 left: 80px;
+                 right: auto;
+             }
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
 
     <div class="payment-container">
         <div class="logo">
-            <img src="images/logo.png" alt="Logo">
+            <img src="images/logo.png" alt="Rifad Project Logo">
         </div>
          <h2>
-             <span data-en="Payment Information" data-ar="معلومات الدفع"></span>
+             <span class="en">Payment Information</span>
+             <span class="ar">معلومات الدفع</span>
          </h2>
-        <form id="paymentForm">
+
+         <div class="product-summary">
+             <img src="images/rifad.png" alt="Rifad Bag">
+             <div class="product-details">
+                 <h3 data-product-name><span class="en">Rifad Bag</span><span class="ar">حقيبة رفاد</span></h3>
+                 <p data-product-description><span class="en">A durable bag available in different materials.</span><span class="ar">حقيبة متينة متوفرة بخامات مختلفة.</span></p>
+             </div>
+         </div>
+
+        <form id="paymentForm" novalidate>
              <div class="form-group">
-                <label for="fabricType"><i class="fas fa-palette"></i> <span data-en="Fabric Type" data-ar="نوع القماش"></span>:</label>
+                <label for="fabricType"><i class="fas fa-palette"></i> <span class="en">Fabric Type</span><span class="ar">نوع القماش</span>:</label>
                 <select id="fabricType" required onchange="updateTotalCost()">
-                     <option value="cotton" data-en="Cotton" data-ar="قطن">Cotton</option>
-                     <option value="mixed" data-en="Mixed Fabric" data-ar="قماش مخلوط">Mixed Fabric</option>
-                     <option value="polyester" data-en="Polyester" data-ar="بوليستر">Polyester</option>
+                     <option value="cotton"><span class="en">Cotton</span><span class="ar">قطن</span></option>
+                     <option value="mixed"><span class="en">Mixed Fabric</span><span class="ar">قماش مخلوط</span></option>
+                     <option value="polyester"><span class="en">Polyester</span><span class="ar">بوليستر</span></option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="name"><i class="fas fa-user"></i> <span data-en="Full Name" data-ar="الاسم الكامل"></span>:</label>
-                <input type="text" id="name" required data-en-placeholder="Enter your name" data-ar-placeholder="أدخل اسمك">
+                <label for="name"><i class="fas fa-user"></i> <span class="en">Full Name</span><span class="ar">الاسم الكامل</span>:</label>
+                <input type="text" id="name" required>
             </div>
             <div class="form-group">
-                <label for="phone"><i class="fas fa-phone"></i> <span data-en="Phone Number" data-ar="رقم الهاتف"></span>:</label>
-                <input type="tel" id="phone" required data-en-placeholder="Enter your phone number" data-ar-placeholder="أدخل رقم هاتفك">
+                <label for="phone"><i class="fas fa-phone"></i> <span class="en">Phone Number</span><span class="ar">رقم الهاتف</span>:</label>
+                <input type="tel" id="phone" required pattern="[0-9]{10,}">
             </div>
             <div class="form-group">
-                <label for="email"><i class="fas fa-envelope"></i> <span data-en="Email Address" data-ar="عنوان البريد الإلكتروني"></span>:</label>
-                <input type="email" id="email" required data-en-placeholder="Enter your email" data-ar-placeholder="أدخل بريدك الإلكتروني">
+                <label for="email"><i class="fas fa-envelope"></i> <span class="en">Email Address</span><span class="ar">عنوان البريد الإلكتروني</span>:</label>
+                <input type="email" id="email" required>
             </div>
              <div class="form-group">
-                <label for="address"><i class="fas fa-map-marker-alt"></i> <span data-en="Address" data-ar="العنوان"></span>:</label>
-                <textarea id="address" required data-en-placeholder="Enter your address" data-ar-placeholder="أدخل عنوانك"></textarea>
+                <label for="address"><i class="fas fa-map-marker-alt"></i> <span class="en">Address</span><span class="ar">العنوان</span>:</label>
+                <textarea id="address" required></textarea>
             </div>
+
+             <div class="payment-methods">
+                 <h3><span class="en">Select Payment Method</span><span class="ar">اختر طريقة الدفع</span></h3>
+                 <div class="payment-method" data-method="visa">
+                     <img src="images/visa.png" alt="Visa" class="payment-icon">
+                     <span class="en">Visa</span><span class="ar">فيزا</span>
+                 </div>
+                  <div class="payment-method" data-method="mastercard">
+                     <img src="images/mastercard.png" alt="MasterCard" class="payment-icon">
+                     <span class="en">MasterCard</span><span class="ar">ماستركارد</span>
+                 </div>
+                  <!-- Add more payment methods as needed -->
+             </div>
 
             <div class="total-cost">
-                <span class="total-label" data-en="Total Cost" data-ar="التكلفة الإجمالية">Total Cost</span>: <span id="totalAmount"></span>
+                <span class="total-label"><span class="en">Total Cost</span><span class="ar">التكلفة الإجمالية</span></span>: <span id="totalAmount"></span>
             </div>
 
-            <button type="submit">
-                <span data-en="Proceed to Payment" data-ar="متابعة الدفع">Proceed to Payment</span>
+            <button type="submit" class="pay-button" aria-label="Proceed to Payment">
+                <span class="en">Proceed to Payment</span>
+                <span class="ar">المتابعة للدفع</span>
             </button>
         </form>
 
-         <div class="product-image-container">
-             <img src="images/rifad.png" alt="Product Image">
+         <div id="successMessage" class="success-message">
+             <h2 class="success-title"><span class="en">Payment Successful!</span><span class="ar">تم الدفع بنجاح!</span></h2>
+             <p><span class="en">Thank you for your purchase. Your order has been placed.</span><span class="ar">شكراً لك على مشترياتك. تم تقديم طلبك بنجاح.</span></p>
          </div>
 
     </div>
 
-    <button class="language-toggle" id="language-toggle">
+    <button class="language-toggle" id="language-toggle" aria-label="Toggle language">
         <span class="en">العربية</span>
         <span class="ar">English</span>
     </button>
 
+     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+         <span class="light-icon">☀️</span>
+         <span class="dark-icon">🌙</span>
+     </button>
 
     <script>
         // Embedded JavaScript
@@ -250,29 +537,49 @@
         // Function to update text content based on current language
         function updateTextContent() {
             const lang = document.documentElement.lang;
-            document.querySelectorAll('[data-en], [data-ar]').forEach(element => {
-                const text = element.getAttribute('data-' + lang);
-                if (text !== null) {
-                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
-                        // Update placeholder for inputs and textareas, options for select
-                        if (element.tagName === 'SELECT') {
-                             element.querySelectorAll('option').forEach(option => {
-                                  const optionText = option.getAttribute('data-' + lang);
-                                  if (optionText !== null) {
-                                       option.textContent = optionText;
-                                  }
-                             });
-                        } else {
-                           element.placeholder = text;
-                        }
 
-                    } else {
-                        // Update text content for other elements
-                        element.textContent = text;
-                    }
+            // Toggle visibility of language-specific spans
+            document.querySelectorAll('.en, .ar').forEach(el => {
+                if (el.classList.contains(lang)) {
+                    el.style.display = ''; // Or 'inline', 'block', etc.
+                } else {
+                    el.style.display = 'none';
                 }
             });
-             updateTotalCost(); // Also update total cost text format
+
+             // Update placeholder texts for inputs and textarea
+             document.querySelectorAll('#paymentForm input, #paymentForm textarea').forEach(input => {
+                 const enPlaceholder = {
+                     'name': 'Enter your name',
+                     'phone': 'Enter your phone number',
+                     'email': 'Enter your email',
+                     'address': 'Enter your address'
+                 };
+                 const arPlaceholder = {
+                     'name': 'أدخل اسمك',
+                     'phone': 'أدخل رقم هاتفك',
+                     'email': 'أدخل بريدك الإلكتروني',
+                     'address': 'أدخل عنوانك'
+                 };
+                 const placeholderText = lang === 'en' ? enPlaceholder[input.id] : arPlaceholder[input.id];
+                 if (placeholderText) {
+                      input.placeholder = placeholderText;
+                 }
+             });
+
+             // Update select option texts
+              document.querySelectorAll('#fabricType option').forEach(option => {
+                   const enText = option.value.charAt(0).toUpperCase() + option.value.slice(1); // Basic capitalization
+                   const arText = {
+                       'cotton': 'قطن',
+                       'mixed': 'قماش مخلوط',
+                       'polyester': 'بوليستر'
+                   }[option.value];
+                   option.textContent = lang === 'en' ? enText : arText;
+              });
+
+            updateTotalCost(); // Update total cost display format
+             updatePaymentMethodText(); // Update payment method text
         }
 
          // Function to update the total cost display
@@ -284,19 +591,29 @@
              const lang = document.documentElement.lang;
 
              if (price !== undefined) {
-                 // Format price based on language
-                 if (lang === 'en') {
-                     totalAmountSpan.textContent = `SAR ${price.toFixed(2)}`;
-                 } else { // ar
-                      // Use Arabic numerals if needed, for now just append ريال
-                     totalAmountSpan.textContent = `${price} ريال`;
-                 }
+                  if (lang === 'en') {
+                      totalAmountSpan.textContent = `SAR ${price.toFixed(2)}`;
+                  } else { // ar
+                      totalAmountSpan.textContent = `${price} ريال`;
+                  }
              } else {
-                 totalAmountSpan.textContent = ''; // Or a default message
+                  totalAmountSpan.textContent = '';
              }
-
          }
 
+        // Function to update payment method text
+        function updatePaymentMethodText() {
+            const lang = document.documentElement.lang;
+            document.querySelectorAll('.payment-method').forEach(methodEl => {
+                methodEl.querySelectorAll('.en, .ar').forEach(span => {
+                    if (span.classList.contains(lang)) {
+                        span.style.display = '';
+                    } else {
+                        span.style.display = 'none';
+                    }
+                });
+            });
+        }
 
         // Language toggle functionality
         document.getElementById('language-toggle').addEventListener('click', function() {
@@ -311,9 +628,112 @@
             updateTextContent(); // Update all text after changing language
         });
 
-        // Initial update on page load
+         // Theme toggle functionality
+         document.getElementById('theme-toggle').addEventListener('click', function() {
+             const body = document.body;
+             body.classList.toggle('dark-mode');
+             // Optionally save theme preference to localStorage
+             const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+             localStorage.setItem('theme', currentTheme);
+         });
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(methodEl => {
+            methodEl.addEventListener('click', function() {
+                // Remove 'selected' class from all payment methods
+                document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+                // Add 'selected' class to the clicked payment method
+                this.classList.add('selected');
+            });
+        });
+
+        // Form submission and success message
+        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent actual form submission
+
+            const form = event.target;
+
+            // Basic form validation
+            if (!form.checkValidity()) {
+                // If form is invalid, the browser will show default validation messages
+                return;
+            }
+
+            // Check if a payment method is selected
+            if (!document.querySelector('.payment-method.selected')) {
+                alert(document.documentElement.lang === 'en' ? 'Please select a payment method.' : 'الرجاء اختيار طريقة الدفع.');
+                return;
+            }
+
+            // Simulate payment processing (replace with actual payment gateway integration)
+            console.log('Processing payment...');
+
+            // Hide the form and show the success message
+            form.style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+
+             // Hide product summary and payment methods after success
+             document.querySelector('.product-summary').style.display = 'none';
+             document.querySelector('.payment-methods').style.display = 'none';
+             document.querySelector('.total-cost').style.display = 'none';
+
+             // Optionally, redirect or provide further actions after a delay
+             // setTimeout(() => { /* redirect or clear form */ }, 5000);
+        });
+
+        // Initial setup on page load
         document.addEventListener('DOMContentLoaded', function() {
-             updateTextContent(); // Set initial language texts
+            // Set initial language and direction
+            const initialLang = document.documentElement.lang || 'en'; // Default to English
+            document.documentElement.dir = initialLang === 'ar' ? 'rtl' : 'ltr';
+
+            // Apply initial language texts and placeholders
+            updateTextContent();
+
+            // Set initial dark mode based on localStorage or system preference
+             const savedTheme = localStorage.getItem('theme');
+             if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                 document.body.classList.add('dark-mode');
+             } else {
+                 document.body.classList.remove('dark-mode');
+             }
+
+             // Update placeholders initially
+             document.querySelectorAll('#paymentForm input, #paymentForm textarea').forEach(input => {
+                 const enPlaceholder = {
+                     'name': 'Enter your name',
+                     'phone': 'Enter your phone number',
+                     'email': 'Enter your email',
+                     'address': 'Enter your address'
+                 };
+                 const arPlaceholder = {
+                     'name': 'أدخل اسمك',
+                     'phone': 'أدخل رقم هاتفك',
+                     'email': 'أدخل بريدك الإلكتروني',
+                     'address': 'أدخل عنوانك'
+                 };
+                 const placeholderText = initialLang === 'en' ? enPlaceholder[input.id] : arPlaceholder[input.id];
+                  if (placeholderText) {
+                       input.placeholder = placeholderText;
+                  }
+             });
+
+              // Update select option texts initially
+              document.querySelectorAll('#fabricType option').forEach(option => {
+                   const enText = option.value.charAt(0).toUpperCase() + option.value.slice(1);
+                   const arText = {
+                       'cotton': 'قطن',
+                       'mixed': 'قماش مخلوط',
+                       'polyester': 'بوليستر'
+                   }[option.value];
+                   option.textContent = initialLang === 'en' ? enText : arText;
+              });
+
+             // Select the first payment method by default (optional)
+             const firstPaymentMethod = document.querySelector('.payment-method');
+             if(firstPaymentMethod) {
+                 firstPaymentMethod.classList.add('selected');
+             }
         });
 
     </script>
