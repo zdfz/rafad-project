@@ -221,4 +221,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     */
-}); 
+});
+// End of js/main.js 
