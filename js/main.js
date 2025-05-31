@@ -24,20 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
     });
     
-    // Language Toggle
-    const languageToggle = document.getElementById('language-toggle');
-    const html = document.documentElement;
-    
-    // Check for saved language preference or default to English
-    const savedLang = localStorage.getItem('language') || 'en';
-    setLanguage(savedLang);
-    
-    languageToggle.addEventListener('click', () => {
-        const currentLang = html.getAttribute('lang');
-        const newLang = currentLang === 'en' ? 'ar' : 'en';
-        setLanguage(newLang);
-    });
-    
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -179,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createScrollProgress();
 
     // Language Management
+    /*
     function setLanguage(lang) {
         // Update HTML direction and language
         html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
@@ -233,4 +220,5 @@ document.addEventListener('DOMContentLoaded', () => {
             text.style.display = text.classList.contains(lang) ? 'block' : 'none';
         });
     }
+    */
 }); 
