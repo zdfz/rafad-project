@@ -767,7 +767,7 @@
         }, 1000);
     });
 
-    // Language Toggle (Ensure consistent logic with payment.html later)
+    // Language Toggle
     document.getElementById('language-toggle').addEventListener('click', function() {
         const html = document.documentElement;
         const currentLang = html.lang;
@@ -777,60 +777,19 @@
         html.lang = newLang;
         html.dir = newDir;
 
-        // Update text content for elements with .en and .ar classes
-        document.querySelectorAll('.en, .ar').forEach(el => {
-            if (el.classList.contains(newLang)) {
-                el.style.display = ''; // Or 'block', 'inline-block', etc. depending on element type
-            } else {
-                el.style.display = 'none';
-            }
-        });
-
-        // Handle elements with data-en and data-ar (if any remain or are needed)
-        document.querySelectorAll('[data-en], [data-ar]').forEach(element => {
-            const text = element.getAttribute('data-' + newLang);
-            if (text !== null) {
-                 element.textContent = text;
-            }
-        });
-
-         // Update placeholder texts (if any)
-         document.querySelectorAll('[data-en-placeholder], [data-ar-placeholder]').forEach(el => {
-             const placeholderText = el.getAttribute('data-' + newLang + '-placeholder');
-             if(placeholderText !== null) {
-                 el.placeholder = placeholderText;
-             }
-         });
+        // The display of .en and .ar elements is now handled by CSS based on html[lang]
+        // No need to manually toggle display here.
 
     });
 
-    // Initial language setup on load (ensure consistency with payment.html)
+    // Initial language setup on load
     document.addEventListener('DOMContentLoaded', function() {
         const initialLang = document.documentElement.lang || 'en'; // Default to English if no lang attribute
         document.documentElement.dir = initialLang === 'ar' ? 'rtl' : 'ltr';
 
-        // Apply initial language display
-         document.querySelectorAll('.en, .ar').forEach(el => {
-             if (el.classList.contains(initialLang)) {
-                 el.style.display = '';
-             } else {
-                 el.style.display = 'none';
-             }
-         });
-         // Handle data attributes for initial load
-         document.querySelectorAll('[data-en], [data-ar]').forEach(element => {
-             const text = element.getAttribute('data-' + initialLang);
-             if (text !== null) {
-                  element.textContent = text;
-             }
-         });
-         // Handle placeholder attributes for initial load
-         document.querySelectorAll('[data-en-placeholder], [data-ar-placeholder]').forEach(el => {
-              const placeholderText = el.getAttribute('data-' + initialLang + '-placeholder');
-              if(placeholderText !== null) {
-                  el.placeholder = placeholderText;
-              }
-          });
+        // The initial display of .en and .ar elements is now handled by CSS based on html[lang]
+        // No need to manually set display here.
+
     });
     
     </script>
