@@ -297,20 +297,105 @@
             margin-top: 20px;
             padding-top: 20px;
             border-top: 1px solid var(--border-color-light);
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(0, 123, 255, 0.05); /* Subtle background */
             font-size: 1.2em;
             font-weight: bold;
             color: var(--accent-color-light);
             text-align: right;
             transition: border-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Space between cost items */
         }
 
          body.dark-mode .total-cost {
              border-top: 1px solid var(--border-color-dark);
              color: var(--accent-color-dark);
+             background-color: rgba(100, 255, 218, 0.05); /* Subtle background in dark mode */
          }
 
         [dir="rtl"] .total-cost {
             text-align: left;
+        }
+
+        .total-cost .cost-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9em; /* Smaller font for individual items */
+            font-weight: normal; /* Reset font-weight from parent */
+            padding-bottom: 5px; /* Space below each item */
+            border-bottom: 1px dashed rgba(0, 123, 255, 0.1); /* Subtle separator */
+        }
+
+        body.dark-mode .total-cost .cost-item {
+             border-bottom: 1px dashed rgba(100, 255, 218, 0.1); /* Subtle separator in dark mode */
+        }
+
+        .total-cost .cost-item:last-child {
+            border-bottom: none; /* No border on the last item before total */
+            padding-bottom: 0;
+        }
+
+        .total-cost .cost-label {
+            color: var(--text-color-light); /* Label color */
+        }
+
+         body.dark-mode .total-cost .cost-label {
+              color: var(--text-color-dark); /* Label color in dark mode */
+         }
+
+        .total-cost .cost-value {
+            color: var(--text-color-light); /* Value color */
+            font-weight: bold;
+        }
+         body.dark-mode .total-cost .cost-value {
+              color: var(--text-color-dark); /* Value color in dark mode */
+         }
+
+        .total-cost .cost-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.3em; /* Larger font for total */
+            font-weight: bold;
+            margin-top: 10px; /* Space above total */
+            padding-top: 10px; /* Padding above total */
+            border-top: 2px solid var(--accent-color-light); /* Thicker border above total */
+        }
+
+        body.dark-mode .total-cost .cost-total {
+             border-top: 2px solid var(--accent-color-dark); /* Thicker border above total in dark mode */
+        }
+
+        .total-cost .total-label {
+             color: var(--accent-color-light); /* Accent color for total label */
+        }
+
+        body.dark-mode .total-cost .total-label {
+              color: var(--accent-color-dark); /* Accent color for total label in dark mode */
+        }
+
+        .total-cost .total-amount {
+            color: var(--accent-color-light); /* Accent color for total amount */
+        }
+
+         body.dark-mode .total-cost .total-amount {
+              color: var(--accent-color-dark); /* Accent color for total amount in dark mode */
+         }
+
+        [dir="rtl"] .total-cost .cost-item,
+        [dir="rtl"] .total-cost .cost-total {
+             flex-direction: row-reverse; /* Reverse order for RTL */
+        }
+
+        [dir="rtl"] .total-cost .cost-label,
+        [dir="rtl"] .total-cost .cost-value,
+        [dir="rtl"] .total-cost .total-label,
+        [dir="rtl"] .total-cost .total-amount {
+            text-align: unset; /* Prevent text-align from interfering with flex layout */
         }
 
         .pay-button {
