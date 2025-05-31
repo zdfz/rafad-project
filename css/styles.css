@@ -108,6 +108,27 @@ body.dark-mode {
     --gradient-end: var(--dark-gradient-end);
 }
 
+/* Logo Visibility based on Theme */
+.logo-light,
+.logo-dark {
+    display: none; /* Hide both by default */
+}
+
+.light-mode .logo-dark {
+    display: block; /* Show dark logo in light mode */
+}
+
+.dark-mode .logo-light {
+    display: block; /* Show light logo in dark mode */
+}
+
+/* Adjust size if needed */
+.logo .logo-light,
+.logo .logo-dark {
+     max-width: 80px; /* Maintain consistent size */
+     height: auto;
+}
+
 /* Loading Screen */
 .loading {
     position: fixed;
