@@ -3,298 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rifad Project - Secure Checkout Page">
-    <meta name="theme-color" content="#001F3F">
-    <title>Secure Checkout - Rifad</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap">
+    <meta name="description" content="Clothing Store Payment Form">
+    <title>Payment - Clothing Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" href="images\rifad-logo.png" type="image/png">
+    <style>
+        /* Embedded CSS */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a2b3c; /* Dark background */
+            color: #ffffff; /* White text */
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align to top initially */
+        }
+
+        .payment-container {
+            background-color: #2a3b4c; /* Slightly lighter dark background for container */
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px; /* Centered max width */
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Spacing between sections */
+        }
+
+        .logo, .product-image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img, .product-image-container img {
+            max-width: 80px;
+            height: auto;
+        }
+
+        .product-image-container img {
+            max-width: 150px;
+        }
+
+
+        h2 {
+            text-align: center;
+            color: #64ffda; /* Accent color for headings */
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px; /* Space between form groups */
+            position: relative; /* Needed for icon positioning */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #e6f1ff; /* Light text color for labels */
+            position: relative; /* For icon placement */
+            padding-left: 30px; /* Space for icon */
+            line-height: 1.5;
+        }
+
+        .form-group label i {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64ffda; /* Icon color */
+            font-size: 1.1em;
+        }
+
+        [dir="rtl"] .form-group label {
+            padding-left: 0;
+            padding-right: 30px; /* Space for icon in RTL */
+        }
+
+        [dir="rtl"] .form-group label i {
+            left: auto;
+            right: 0;
+        }
+
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            padding-left: 10px; /* Reset LTR padding */
+            padding-right: 10px; /* Reset RTL padding */
+            border: 1px solid #0a192f; /* Darker border */
+            border-radius: 5px;
+            background-color: #0a192f; /* Input background */
+            color: #e6f1ff; /* Input text color */
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding and border in element's total width */
+        }
+
+        [dir="rtl"] .form-group input[type="text"],
+        [dir="rtl"] .form-group input[type="tel"],
+        [dir="rtl"] .form-group input[type="email"],
+        [dir="rtl"] .form-group textarea,
+        [dir="rtl"] .form-group select {
+             /* No specific padding adjustment needed here if label padding is handled */
+        }
+
+
+        .form-group textarea {
+            resize: vertical; /* Allow vertical resize */
+            min-height: 80px;
+        }
+
+         .total-cost {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #0a192f; /* Separator line */
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #64ffda; /* Accent color for total */
+            text-align: right; /* Align total to the right */
+        }
+         [dir="rtl"] .total-cost {
+             text-align: left; /* Align total to the left in RTL */
+         }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background-color: #64ffda; /* Button background */
+            color: #0a192f; /* Button text color */
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #36ffe0; /* Darker shade on hover */
+        }
+
+        .language-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #0a192f;
+            color: #e6f1ff;
+            border: 1px solid #2a3b4c;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            z-index: 10; /* Ensure it's above other content */
+        }
+        [dir="rtl"] .language-toggle {
+             right: auto;
+             left: 20px;
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .payment-container {
+                padding: 20px;
+            }
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
-<body class="payment-page" style="background: #001F3F;">
-    <!-- Loading Screen -->
-    <div class="loading">
-        <div class="loading-spinner"></div>
-        <div class="loading-text" data-en="Loading secure checkout..." data-ar="جاري تحميل صفحة الدفع الآمن..."></div>
+<body>
+
+    <div class="payment-container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+        </div>
+         <h2>
+             <span data-en="Payment Information" data-ar="معلومات الدفع"></span>
+         </h2>
+        <form id="paymentForm">
+             <div class="form-group">
+                <label for="fabricType"><i class="fas fa-palette"></i> <span data-en="Fabric Type" data-ar="نوع القماش"></span>:</label>
+                <select id="fabricType" required onchange="updateTotalCost()">
+                     <option value="cotton" data-en="Cotton" data-ar="قطن">Cotton</option>
+                     <option value="mixed" data-en="Mixed Fabric" data-ar="قماش مخلوط">Mixed Fabric</option>
+                     <option value="polyester" data-en="Polyester" data-ar="بوليستر">Polyester</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="name"><i class="fas fa-user"></i> <span data-en="Full Name" data-ar="الاسم الكامل"></span>:</label>
+                <input type="text" id="name" required data-en-placeholder="Enter your name" data-ar-placeholder="أدخل اسمك">
+            </div>
+            <div class="form-group">
+                <label for="phone"><i class="fas fa-phone"></i> <span data-en="Phone Number" data-ar="رقم الهاتف"></span>:</label>
+                <input type="tel" id="phone" required data-en-placeholder="Enter your phone number" data-ar-placeholder="أدخل رقم هاتفك">
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> <span data-en="Email Address" data-ar="عنوان البريد الإلكتروني"></span>:</label>
+                <input type="email" id="email" required data-en-placeholder="Enter your email" data-ar-placeholder="أدخل بريدك الإلكتروني">
+            </div>
+             <div class="form-group">
+                <label for="address"><i class="fas fa-map-marker-alt"></i> <span data-en="Address" data-ar="العنوان"></span>:</label>
+                <textarea id="address" required data-en-placeholder="Enter your address" data-ar-placeholder="أدخل عنوانك"></textarea>
+            </div>
+
+            <div class="total-cost">
+                <span class="total-label" data-en="Total Cost" data-ar="التكلفة الإجمالية">Total Cost</span>: <span id="totalAmount"></span>
+            </div>
+
+            <button type="submit">
+                <span data-en="Proceed to Payment" data-ar="متابعة الدفع">Proceed to Payment</span>
+            </button>
+        </form>
+
+         <div class="product-image-container">
+             <img src="images/rifad.png" alt="Product Image">
+         </div>
+
     </div>
 
-    <!-- Back to Home Link -->
-    <a href="index.html" class="back-to-home" data-en="Back to Home" data-ar="العودة للرئيسية">
-        <i class="fas fa-arrow-left"></i>
-    </a>
-
-    <!-- Language Toggle -->
-    <button class="language-toggle" onclick="toggleLanguage()">
+    <button class="language-toggle" id="language-toggle">
         <span class="en">العربية</span>
         <span class="ar">English</span>
     </button>
 
-    <div class="payment-container">
-        <!-- Order Progress -->
-        <div class="payment-steps">
-            <div class="step active">
-                <div class="step-number">1</div>
-                <div class="step-text" data-en="Order Details" data-ar="تفاصيل الطلب"></div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-text" data-en="Shipping" data-ar="الشحن"></div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-text" data-en="Payment" data-ar="الدفع"></div>
-            </div>
-        </div>
-
-        <!-- Product Summary (Refactored for Clothing Store) -->
-        <div class="product-summary glass-card">
-            <div class="product-image" style="display: flex; flex-direction: column; align-items: center;">
-                <img src="images/rifad.png" alt="Product Image" style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 1rem;">
-                <img src="images/logo.png" alt="Logo" style="width: 60px; height: 60px; object-fit: contain;">
-            </div>
-            <div class="product-details">
-                <h3 class="product-name" data-en="" data-ar=""></h3>
-                <div class="product-specs">
-                    <div class="spec-item">
-                        <span class="product-desc" data-en="" data-ar=""></span>
-                    </div>
-                </div>
-                <div class="product-price">
-                    <span class="price-label" data-en="Price:" data-ar=":السعر"></span>
-                    <span class="price-amount"></span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Payment Form -->
-        <form id="paymentForm" class="payment-form glass-card">
-            <!-- Personal Information -->
-            <div class="form-section">
-                <h3 class="section-title" data-en="Personal Information" data-ar="المعلومات الشخصية"></h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fullName" data-en="Full Name" data-ar="الاسم الكامل"></label>
-                        <input type="text" id="fullName" required pattern="[A-Za-z\u0600-\u06FF\s]{3,}" 
-                               data-en-placeholder="Enter your full name" 
-                               data-ar-placeholder="أدخل اسمك الكامل">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone" data-en="Phone Number" data-ar="رقم الجوال"></label>
-                        <input type="tel" id="phone" required pattern="05[0-9]{8}"
-                               data-en-placeholder="05XXXXXXXX" 
-                               data-ar-placeholder="05XXXXXXXX">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Shipping Address -->
-            <div class="form-section">
-                <h3 class="section-title" data-en="Shipping Address" data-ar="عنوان الشحن"></h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="city" data-en="City" data-ar="المدينة"></label>
-                        <select id="city" required>
-                            <option value="" data-en="Select City" data-ar="اختر المدينة"></option>
-                            <option value="makkah" data-en="Makkah" data-ar="مكة المكرمة"></option>
-                            <option value="madinah" data-en="Madinah" data-ar="المدينة المنورة"></option>
-                            <option value="riyadh" data-en="Riyadh" data-ar="الرياض"></option>
-                            <option value="jeddah" data-en="Jeddah" data-ar="جدة"></option>
-                            <option value="dammam" data-en="Dammam" data-ar="الدمام"></option>
-                            <option value="khobar" data-en="Khobar" data-ar="الخبر"></option>
-                            <option value="taif" data-en="Taif" data-ar="الطائف"></option>
-                        </select>
-                        <i class="fas fa-city"></i>
-                    </div>
-                    <div class="form-group">
-                        <label for="postalCode" data-en="Postal Code" data-ar="الرمز البريدي"></label>
-                        <input type="text" id="postalCode" required pattern="[0-9]{5}"
-                               data-en-placeholder="5 digits" 
-                               data-ar-placeholder="5 أرقام">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="address" data-en="Detailed Address" data-ar="العنوان التفصيلي"></label>
-                    <textarea id="address" required rows="3"
-                              data-en-placeholder="Enter your detailed address" 
-                              data-ar-placeholder="أدخل عنوانك التفصيلي"></textarea>
-                    <i class="fas fa-map"></i>
-                </div>
-            </div>
-
-            <!-- Payment Method -->
-            <div class="form-section">
-                <h3 class="section-title" data-en="Payment Method" data-ar="طريقة الدفع"></h3>
-                <div class="payment-methods">
-                    <div class="payment-method active">
-                        <img src="images/mada.png" class="payment-icon">
-                        <span data-en="Mada" data-ar="مدى"></span>
-                    </div>
-                    <div class="payment-method">
-                        <img src="images/visa.png" class="payment-icon">
-                        <span>Visa</span>
-                    </div>
-                    <div class="payment-method">
-                        <img src="images/mastercard.png" class="payment-icon">
-                        <span>Mastercard</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Order Summary -->
-            <div class="order-summary glass-card">
-                <h3 class="section-title" data-en="Order Summary" data-ar="ملخص الطلب"></h3>
-                <div class="summary-items">
-                    <div class="summary-item">
-                        <span data-en="Subtotal" data-ar="المجموع الفرعي"></span>
-                        <span>60.0 SAR</span>
-                    </div>
-                    <div class="summary-item">
-                        <span data-en="Shipping" data-ar="الشحن"></span>
-                        <span>20.0 SAR</span>
-                    </div>
-                    <div class="summary-item">
-                        <span data-en="VAT (15%)" data-ar="الضريبة (15%)"></span>
-                        <span>9.0 SAR</span>
-                    </div>
-                    <div class="summary-item total">
-                        <span data-en="Total" data-ar="المجموع الكلي"></span>
-                        <span>89.0 SAR</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Security Notice -->
-            <div class="security-notice">
-                <i class="fas fa-lock"></i>
-                <span data-en="Secure Checkout - Your information is encrypted" 
-                      data-ar="دفع آمن - معلوماتك مشفرة"></span>
-            </div>
-
-            <!-- Pay Button -->
-            <button type="submit" class="pay-button">
-                <i class="fas fa-lock"></i>
-                <span data-en="Pay Now" data-ar="ادفع الآن"></span>
-            </button>
-        </form>
-    </div>
-
-    <!-- Success Message -->
-    <div class="success-message" style="display: none;">
-        <div class="success-content glass-card">
-            <i class="fas fa-check-circle"></i>
-            <h2 data-en="Order Successful!" data-ar="تم الطلب بنجاح!"></h2>
-            <p class="order-number" data-en="Order Number:" data-ar="رقم الطلب:"></p>
-            <p class="order-date" data-en="Order Date:" data-ar="تاريخ الطلب:"></p>
-            <a href="index.html" class="back-to-home" data-en="Back to Home" data-ar="العودة للرئيسية">
-                <i class="fas fa-home"></i>
-            </a>
-        </div>
-    </div>
 
     <script>
-        // Product data
-        const PRODUCTS = {
-            polyester: {
-                en: { name: 'Polyester Ihram', desc: 'Lightweight, quick-dry, wrinkle-resistant', price: 30, priceStr: 'SAR 30' },
-                ar: { name: 'إحرام بوليستر', desc: 'خفيف الوزن، سريع الجفاف، مقاوم للتجعد', price: 30, priceStr: '٣٠ ريال' }
-            },
-            cotton: {
-                en: { name: 'Cotton Ihram', desc: 'Natural, breathable, soft on skin', price: 60, priceStr: 'SAR 60' },
-                ar: { name: 'إحرام قطن', desc: 'طبيعي، يسمح بالتنفس، ناعم على البشرة', price: 60, priceStr: '٦٠ ريال' }
-            },
-            mixed: {
-                en: { name: 'Mixed Fabric Ihram', desc: 'Durable, quick-dry, breathable', price: 45, priceStr: 'SAR 45' },
-                ar: { name: 'إحرام قماش مخلوط', desc: 'متين، سريع الجفاف، يسمح بالتنفس', price: 45, priceStr: '٤٥ ريال' }
-            }
+        // Embedded JavaScript
+
+        // Product prices
+        const PRICES = {
+            cotton: 60,
+            mixed: 45,
+            polyester: 30
         };
 
-        function getLang() {
-            return document.documentElement.lang === 'ar' ? 'ar' : 'en';
-        }
+        // Function to update text content based on current language
+        function updateTextContent() {
+            const lang = document.documentElement.lang;
+            document.querySelectorAll('[data-en], [data-ar]').forEach(element => {
+                const text = element.getAttribute('data-' + lang);
+                if (text !== null) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || element.tagName === 'SELECT') {
+                        // Update placeholder for inputs and textareas, options for select
+                        if (element.tagName === 'SELECT') {
+                             element.querySelectorAll('option').forEach(option => {
+                                  const optionText = option.getAttribute('data-' + lang);
+                                  if (optionText !== null) {
+                                       option.textContent = optionText;
+                                  }
+                             });
+                        } else {
+                           element.placeholder = text;
+                        }
 
-        function updateProductDisplay() {
-            const params = new URLSearchParams(window.location.search);
-            let type = params.get('type');
-            if (!type || !PRODUCTS[type]) type = 'cotton'; // default
-            const lang = getLang();
-            const product = PRODUCTS[type][lang];
-            document.querySelector('.product-name').textContent = product.name;
-            document.querySelector('.product-desc').textContent = product.desc;
-            document.querySelector('.price-amount').textContent = product.priceStr;
-            document.querySelector('.price-label').textContent = lang === 'ar' ? ':السعر' : 'Price:';
-        }
-
-        // Language toggle logic
-        function toggleLanguage() {
-            const html = document.documentElement;
-            const newLang = html.lang === 'en' ? 'ar' : 'en';
-            html.lang = newLang;
-            html.dir = newLang === 'ar' ? 'rtl' : 'ltr';
-            updateProductDisplay();
-            // Update all [data-en] and [data-ar] elements
-            document.querySelectorAll('[data-en], [data-ar]').forEach(el => {
-                if (el.hasAttribute('data-' + newLang)) {
-                    el.textContent = el.getAttribute('data-' + newLang);
+                    } else {
+                        // Update text content for other elements
+                        element.textContent = text;
+                    }
                 }
             });
+             updateTotalCost(); // Also update total cost text format
         }
 
-        // Initial render
-        updateProductDisplay();
-        // Ensure toggle button works
-        const langBtn = document.querySelector('.language-toggle');
-        if (langBtn) langBtn.onclick = toggleLanguage;
+         // Function to update the total cost display
+         function updateTotalCost() {
+             const fabricTypeSelect = document.getElementById('fabricType');
+             const selectedType = fabricTypeSelect.value;
+             const price = PRICES[selectedType];
+             const totalAmountSpan = document.getElementById('totalAmount');
+             const lang = document.documentElement.lang;
 
-        // Form Validation
-        document.getElementById('paymentForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show success message
-            document.querySelector('.success-message').style.display = 'flex';
-            
-            // Generate order number
-            const orderNumber = 'RIF' + Math.floor(Math.random() * 1000000);
-            document.querySelector('.order-number').textContent = 
-                `${document.querySelector('.order-number').getAttribute('data-' + document.documentElement.lang)} ${orderNumber}`;
-            
-            // Set order date
-            const now = new Date();
-            document.querySelector('.order-date').textContent = 
-                `${document.querySelector('.order-date').getAttribute('data-' + document.documentElement.lang)} ${now.toLocaleDateString()}`;
+             if (price !== undefined) {
+                 // Format price based on language
+                 if (lang === 'en') {
+                     totalAmountSpan.textContent = `SAR ${price.toFixed(2)}`;
+                 } else { // ar
+                      // Use Arabic numerals if needed, for now just append ريال
+                     totalAmountSpan.textContent = `${price} ريال`;
+                 }
+             } else {
+                 totalAmountSpan.textContent = ''; // Or a default message
+             }
+
+         }
+
+
+        // Language toggle functionality
+        document.getElementById('language-toggle').addEventListener('click', function() {
+            const html = document.documentElement;
+            const currentLang = html.lang;
+            const newLang = currentLang === 'en' ? 'ar' : 'en';
+            const newDir = newLang === 'ar' ? 'rtl' : 'ltr';
+
+            html.lang = newLang;
+            html.dir = newDir;
+
+            updateTextContent(); // Update all text after changing language
         });
 
-        // Phone Number Formatting
-        document.getElementById('phone').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length > 0 && !value.startsWith('05')) {
-                value = '05' + value.substring(1);
-            }
-            e.target.value = value;
+        // Initial update on page load
+        document.addEventListener('DOMContentLoaded', function() {
+             updateTextContent(); // Set initial language texts
         });
 
-        // Postal Code Formatting
-        document.getElementById('postalCode').addEventListener('input', function(e) {
-            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 5);
-        });
-
-        // Payment Method Selection
-        document.querySelectorAll('.payment-method').forEach(method => {
-            method.addEventListener('click', function() {
-                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Loading Screen
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                document.querySelector('.loading').classList.add('hidden');
-            }, 1000);
-        });
     </script>
+
 </body>
-</html> 
+</html>
