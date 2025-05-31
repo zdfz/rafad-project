@@ -1580,7 +1580,7 @@ footer {
 .goals-grid,
 .audience-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
     gap: 2rem;
     margin: 2rem auto;
     max-width: 1000px; /* Consistent max-width for grids */
@@ -1622,7 +1622,7 @@ footer {
     .vision-mission-grid,
     .goals-grid,
     .audience-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Stack on smaller screens */
         gap: 1.5rem;
         padding: 0 1rem;
     }
