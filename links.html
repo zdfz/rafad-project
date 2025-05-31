@@ -22,6 +22,7 @@
             align-items: center;
             transition: background-color 0.3s ease, color 0.3s ease;
             line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         body.dark-mode {
@@ -31,81 +32,100 @@
 
          body[dir="rtl"] {
             font-family: var(--font-ar);
+            direction: rtl; /* Ensure RTL direction */
          }
 
         .container {
             text-align: center;
             max-width: 500px;
             width: 100%;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: var(--container-background-light); /* Using a variable from styles.css */
-            border-radius: var(--radius-lg); /* Using a variable from styles.css */
-            box-shadow: var(--shadow-md); /* Using a variable from styles.css */
+            margin-top: 50px; /* Increased top margin */
+            padding: 30px 20px; /* Adjusted padding */
+            background-color: var(--container-background-light); 
+            border-radius: var(--radius-xl); /* Larger border radius */
+            box-shadow: var(--shadow-lg); /* Stronger shadow */
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative; /* Needed for potential absolute positioning inside */
         }
 
          body.dark-mode .container {
-             background-color: var(--container-background-dark); /* Using a variable from styles.css */
-             box-shadow: var(--shadow-lg); /* Slightly stronger shadow in dark mode */
+             background-color: var(--container-background-dark); 
+             box-shadow: var(--shadow-xl); /* Even stronger shadow in dark mode */
          }
 
         .logo {
-            margin-bottom: 25px;
+            margin-bottom: 30px; /* Increased bottom margin */
         }
 
         .logo img {
-            max-width: 120px; /* Slightly larger logo */
+            max-width: 150px; /* Larger logo */
             height: auto;
+            transition: transform 0.3s ease;
         }
+         .logo img:hover {
+             transform: scale(1.05); /* Slight zoom on hover */
+         }
 
         h1 {
             color: var(--accent-color);
-            margin-bottom: 30px;
-            font-size: 2.2rem; /* Slightly larger title */
-            font-weight: 600;
+            margin-bottom: 40px; /* Increased bottom margin */
+            font-size: 2.5rem; /* Larger title */
+            font-weight: 700; /* Bolder title */
              transition: color 0.3s ease;
         }
          body.dark-mode h1 {
              color: var(--dark-accent);
          }
 
+        /* Link Button Styling */
         .link-button {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px; /* Increased gap */
-            background-color: var(--primary-color); /* Using variables */
-            color: var(--light-text); /* Using variables */
-            padding: 15px 25px; /* Adjusted padding */
-            margin-bottom: 15px;
-            border-radius: var(--radius-md); /* Using variables */
+            justify-content: flex-start; /* Align content to the start */
+            gap: 20px; /* Increased gap between icon and text */
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); /* Gradient background */
+            color: var(--light-text); 
+            padding: 18px 30px; /* Increased padding */
+            margin-bottom: 20px; /* Increased bottom margin */
+            border-radius: var(--radius-lg); /* Larger border radius */
             text-decoration: none;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
-            box-shadow: var(--shadow-sm); /* Added subtle shadow */
+            font-size: 1.2rem; /* Slightly larger font size */
+            font-weight: 600; /* Bolder text */
+            transition: all 0.3s ease; /* Smooth transition for all properties */
+            box-shadow: var(--shadow-md); /* Subtle shadow */
+            width: 100%; /* Make buttons take full width of container */
         }
 
         .link-button i {
-            font-size: 1.5rem; /* Slightly larger icon */
+            font-size: 1.8rem; /* Larger icon size */
+            color: var(--light-text); /* Icon color */
+             transition: transform 0.3s ease;
         }
 
         .link-button:hover {
-            background-color: var(--secondary-color); /* Hover color */
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md); /* Larger shadow on hover */
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color)); /* Reverse gradient on hover */
+            transform: translateY(-5px); /* Lift button on hover */
+            box-shadow: var(--shadow-lg); /* Larger shadow on hover */
         }
-
-         body.dark-mode .link-button {
-             background-color: var(--dark-primary); /* Dark mode variables */
-             color: var(--dark-text); /* Dark mode variables */
-              box-shadow: var(--shadow-sm); /* Dark mode shadow */
+         
+         .link-button:hover i {
+             transform: scale(1.1); /* Slightly enlarge icon on hover */
          }
 
+         body.dark-mode .link-button {
+             background: linear-gradient(90deg, var(--dark-primary), var(--dark-secondary)); /* Dark mode gradient */
+             color: var(--dark-text); 
+              box-shadow: var(--shadow-md); /* Dark mode shadow */
+         }
+
+          body.dark-mode .link-button i {
+              color: var(--dark-accent); /* Dark mode icon color */
+          }
+
           body.dark-mode .link-button:hover {
-             background-color: var(--dark-accent); /* Dark mode hover color */
-             color: var(--dark-primary); /* Dark mode hover text */
-             box-shadow: var(--shadow-md); /* Dark mode hover shadow */
+             background: linear-gradient(90deg, var(--dark-secondary), var(--dark-primary)); /* Dark mode reverse gradient */
+             color: var(--dark-accent); /* Dark mode hover text color */
+             box-shadow: var(--shadow-lg); /* Dark mode hover shadow */
           }
 
          /* Language Toggle */
@@ -125,14 +145,17 @@
              cursor: pointer;
              transition: all var(--transition-speed);
              font-size: 0.9rem;
+             backdrop-filter: blur(5px);
+             -webkit-backdrop-filter: blur(5px);
         }
 
         .language-toggle:hover {
             background: var(--accent-color);
             color: var(--light-text);
+             border-color: var(--accent-color);
         }
 
-        .language-toggle span { /* Keep original span display handling */
+        .language-toggle span { 
             display: none;
         }
 
@@ -141,18 +164,19 @@
             display: inline-block;
         }
 
-        [lang="ar"] {
-            direction: rtl;
-        }
-
         [lang="ar"] .language-toggle-container {
             right: auto;
             left: 20px;
         }
 
-         [lang="ar"] .link-button {
-              flex-direction: row-reverse; /* Ensure icon is on the left in RTL */
+         /* RTL adjustments for link buttons */
+         body[dir="rtl"] .link-button {
+              justify-content: flex-end; /* Align content to the end in RTL */
          }
+
+          body[dir="rtl"] .link-button i {
+               /* No change needed, flex handles order */
+          }
     </style>
 </head>
 <body class="light-mode">
