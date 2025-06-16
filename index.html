@@ -11,8 +11,131 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" href="rifad-logo.png" type="image/png">
+    <style>
+        .choice-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 31, 63, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .choice-container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .choice-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .choice-title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .choice-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .choice-button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            min-width: 200px;
+        }
+
+        .choice-button:hover {
+            background: white;
+            color: #001F3F;
+        }
+
+        .choice-button i {
+            margin-right: 0.5rem;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .language-button {
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .language-button:hover {
+            background: white;
+            color: #001F3F;
+        }
+
+        .language-button.active {
+            background: white;
+            color: #001F3F;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
 <body class="light-mode">
+    <!-- Choice Selection Screen -->
+    <div class="choice-overlay" id="choiceOverlay">
+        <div class="choice-container">
+            <img src="images/logo.png" alt="Rifad Project Logo" class="choice-logo">
+            <h1 class="choice-title">
+                <span class="en">Welcome to Rifad Project</span>
+                <span class="ar">مرحباً بك في مشروع رفاد</span>
+            </h1>
+            <div class="choice-buttons">
+                <button class="choice-button" onclick="selectChoice('individual')">
+                    <i class="fas fa-user"></i>
+                    <span class="en">Individual</span>
+                    <span class="ar">فردي</span>
+                </button>
+                <button class="choice-button" onclick="selectChoice('business')">
+                    <i class="fas fa-building"></i>
+                    <span class="en">Business</span>
+                    <span class="ar">شركة</span>
+                </button>
+            </div>
+            <div class="language-buttons">
+                <button class="language-button active" onclick="changeLanguage('en')">
+                    <i class="fas fa-globe"></i> English
+                </button>
+                <button class="language-button" onclick="changeLanguage('ar')">
+                    <i class="fas fa-globe"></i> العربية
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Loading Screen -->
     <div class="loading">
         <div class="loading-spinner"></div>
@@ -906,7 +1029,39 @@
 
     <script src="js/main.js"></script>
     <script>
-        // Language Toggle
+        // Choice Selection
+        function selectChoice(type) {
+            // Hide the choice overlay
+            document.getElementById('choiceOverlay').classList.add('hidden');
+            
+            // Show the loading screen
+            document.querySelector('.loading').classList.remove('hidden');
+            
+            // After a short delay, hide the loading screen
+            setTimeout(() => {
+                document.querySelector('.loading').classList.add('hidden');
+            }, 1000);
+        }
+
+        // Language Change in Choice Screen
+        function changeLanguage(lang) {
+            const htmlElement = document.documentElement;
+            const languageButtons = document.querySelectorAll('.language-button');
+            
+            // Update HTML lang and dir attributes
+            htmlElement.setAttribute('lang', lang);
+            htmlElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            // Update active state of language buttons
+            languageButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.textContent.includes(lang === 'en' ? 'English' : 'العربية')) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // Language Toggle in Main Navigation
         document.addEventListener('DOMContentLoaded', () => {
             const toggleButton = document.getElementById('language-toggle');
             const htmlElement = document.documentElement;
