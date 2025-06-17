@@ -8,6 +8,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title data-en="Payment - Rifad Store" data-ar="الدفع - متجر رفاد">Payment - Rifad Store</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* Embedded CSS */
@@ -33,10 +35,14 @@
             --shadow-color-dark: rgba(0, 0, 0, 0.5);
             --button-background-dark: #64ffda;
             --button-text-dark: #0a192f;
+
+            /* Typography */
+            --font-en: 'Poppins', sans-serif;
+            --font-ar: 'Tajawal', sans-serif;
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: var(--font-en);
             background-color: var(--background-color-light);
             color: var(--text-color-light);
             margin: 0;
@@ -51,6 +57,10 @@
         body.dark-mode {
             background-color: var(--background-color-dark);
             color: var(--text-color-dark);
+        }
+
+        body[dir="rtl"] {
+            font-family: var(--font-ar);
         }
 
         .payment-container {
@@ -235,63 +245,81 @@
          }
 
         .payment-methods h3 {
-            margin-top: 0;
             margin-bottom: 15px;
-            text-align: center;
-            color: var(--accent-color-light);
+            color: var(--text-color-light);
             transition: color 0.3s ease;
         }
          body.dark-mode .payment-methods h3 {
-             color: var(--accent-color-dark);
+             color: var(--text-color-dark);
          }
 
         .payment-method {
             display: flex;
             align-items: center;
+            padding: 15px;
             margin-bottom: 10px;
+            border: 2px solid var(--border-color-light);
+            border-radius: 8px;
             cursor: pointer;
-            padding: 10px;
-            border: 1px solid var(--border-color-light);
-            border-radius: 5px;
-            transition: border-color 0.3s ease, background-color 0.3s ease;
+            transition: all 0.3s ease;
+            background-color: var(--input-background-light);
         }
 
         body.dark-mode .payment-method {
-            border: 1px solid var(--border-color-dark);
+            border-color: var(--border-color-dark);
+            background-color: var(--input-background-dark);
         }
 
         .payment-method:hover {
-             background-color: #f0f0f0;
+            border-color: var(--accent-color-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         body.dark-mode .payment-method:hover {
-            background-color: #3a4b5c;
+            border-color: var(--accent-color-dark);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .payment-method.selected {
             border-color: var(--accent-color-light);
+            background-color: rgba(0, 123, 255, 0.1);
         }
          body.dark-mode .payment-method.selected {
              border-color: var(--accent-color-dark);
+             background-color: rgba(100, 255, 218, 0.1);
          }
 
-        .payment-icon {
-            width: 40px;
-            height: auto;
+        .payment-method .payment-icon {
+            width: 60px;
+            height: 40px;
+            object-fit: contain;
             margin-right: 15px;
+            border-radius: 4px;
         }
-         [dir="rtl"] .payment-icon {
+         [dir="rtl"] .payment-method .payment-icon {
               margin-right: 0;
               margin-left: 15px;
          }
 
         .payment-method span {
-            font-weight: bold;
+            font-weight: 500;
             color: var(--text-color-light);
             transition: color 0.3s ease;
         }
          body.dark-mode .payment-method span {
              color: var(--text-color-dark);
          }
+
+        .payment-method .en,
+        .payment-method .ar {
+            display: none;
+        }
+
+        [lang="en"] .payment-method .en,
+        [lang="ar"] .payment-method .ar {
+            display: inline;
+        }
 
         .total-cost {
             margin-top: 20px;
@@ -525,6 +553,218 @@
                  right: auto;
              }
         }
+
+        .payment-page .payment-method .payment-icon {
+            width: 40px;
+            height: 25px;
+            object-fit: contain;
+            margin-right: 10px;
+        }
+
+        .shipping-companies {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color-light);
+            transition: border-color 0.3s ease;
+        }
+
+        body.dark-mode .shipping-companies {
+            border-top: 1px solid var(--border-color-dark);
+        }
+
+        .shipping-companies h3 {
+            margin-bottom: 15px;
+            color: var(--text-color-light);
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .shipping-companies h3 {
+            color: var(--text-color-dark);
+        }
+
+        .shipping-company {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 2px solid var(--border-color-light);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: var(--input-background-light);
+        }
+
+        body.dark-mode .shipping-company {
+            border-color: var(--border-color-dark);
+            background-color: var(--input-background-dark);
+        }
+
+        .shipping-company:hover {
+            border-color: var(--accent-color-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .shipping-company:hover {
+            border-color: var(--accent-color-dark);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .shipping-company.selected {
+            border-color: var(--accent-color-light);
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
+        body.dark-mode .shipping-company.selected {
+            border-color: var(--accent-color-dark);
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        .shipping-company .shipping-icon {
+            width: 60px;
+            height: 40px;
+            object-fit: contain;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .shipping-company span {
+            font-weight: 500;
+            color: var(--text-color-light);
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .shipping-company span {
+            color: var(--text-color-dark);
+        }
+
+        .shipping-company .en,
+        .shipping-company .ar {
+            display: none;
+        }
+
+        [lang="en"] .shipping-company .en,
+        [lang="ar"] .shipping-company .ar {
+            display: inline;
+        }
+
+        .quantity-selector {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color-light);
+            transition: border-color 0.3s ease;
+        }
+
+        body.dark-mode .quantity-selector {
+            border-top: 1px solid var(--border-color-dark);
+        }
+
+        .quantity-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .quantity-selector h3 {
+            margin-bottom: 0;
+            color: var(--text-color-light);
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        body.dark-mode .quantity-selector h3 {
+            color: var(--text-color-dark);
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--border-color-light);
+            border-radius: 8px;
+            background-color: var(--input-background-light);
+            color: var(--text-color-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        body.dark-mode .quantity-btn {
+            border-color: var(--border-color-dark);
+            background-color: var(--input-background-dark);
+            color: var(--text-color-dark);
+        }
+
+        .quantity-btn:hover {
+            border-color: var(--accent-color-light);
+            background-color: var(--accent-color-light);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .quantity-btn:hover {
+            border-color: var(--accent-color-dark);
+            background-color: var(--accent-color-dark);
+            color: var(--dark-background);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .quantity-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .quantity-btn:disabled:hover {
+            border-color: var(--border-color-light);
+            background-color: var(--input-background-light);
+            color: var(--text-color-light);
+        }
+
+        body.dark-mode .quantity-btn:disabled {
+            border-color: var(--border-color-dark);
+            background-color: var(--input-background-dark);
+            color: var(--text-color-dark);
+        }
+
+        #quantity {
+            width: 80px;
+            height: 40px;
+            text-align: center;
+            border: 2px solid var(--border-color-light);
+            border-radius: 8px;
+            background-color: var(--input-background-light);
+            color: var(--text-color-light);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: default;
+        }
+
+        body.dark-mode #quantity {
+            border-color: var(--border-color-dark);
+            background-color: var(--input-background-dark);
+            color: var(--text-color-dark);
+        }
+
+        #quantity:focus {
+            outline: none;
+            border-color: var(--accent-color-light);
+        }
+
+        body.dark-mode #quantity:focus {
+            border-color: var(--accent-color-dark);
+        }
     </style>
 </head>
 <body class="light-mode">
@@ -539,10 +779,13 @@
          </h2>
 
          <div class="product-summary">
-             <img src="images/rifad.png" alt="Rifad Bag">
+             <img src="images/rifad.png" alt="Rifad Ihram's">
              <div class="product-details">
                  <h3 data-product-name></h3>
-                 <p data-product-description><span class="en">A durable bag available in different materials.</span><span class="ar">حقيبة متينة متوفرة بخامات مختلفة.</span></p>
+                 <p data-product-description>
+                     <span class="en">A cooling Ihram designed for maximum comfort during your spiritual journey.</span>
+                     <span class="ar">إحرام مبرد مصمم لأقصى درجات الراحة خلال رحلتك الروحية.</span>
+                 </p>
              </div>
          </div>
 
@@ -564,6 +807,18 @@
                 <textarea id="address" required></textarea>
             </div>
 
+             <div class="shipping-companies">
+                 <h3><span class="en">Select Shipping Company</span><span class="ar">اختر شركة الشحن</span></h3>
+                 <div class="shipping-company" data-company="smsa">
+                     <img src="images/smsa.jpg" alt="SMSA" class="shipping-icon">
+                     <span class="en">SMSA</span><span class="ar">سمسا</span>
+                 </div>
+                 <div class="shipping-company" data-company="aramex">
+                     <img src="images/aramex.png" alt="Aramex" class="shipping-icon">
+                     <span class="en">Aramex</span><span class="ar">أرامكس</span>
+                 </div>
+             </div>
+
              <div class="payment-methods">
                  <h3><span class="en">Select Payment Method</span><span class="ar">اختر طريقة الدفع</span></h3>
                  <div class="payment-method" data-method="visa">
@@ -579,6 +834,21 @@
                      <span class="en">Mada</span><span class="ar">مدى</span>
                  </div>
                   <!-- Add more payment methods as needed -->
+             </div>
+
+             <div class="quantity-selector">
+                 <div class="quantity-header">
+                     <h3><span class="en">Quantity</span><span class="ar">الكمية</span></h3>
+                     <div class="quantity-controls">
+                         <button type="button" class="quantity-btn minus" onclick="changeQuantity(-1)">
+                             <i class="fas fa-minus"></i>
+                         </button>
+                         <input type="number" id="quantity" value="1" min="1" max="10" readonly>
+                         <button type="button" class="quantity-btn plus" onclick="changeQuantity(1)">
+                             <i class="fas fa-plus"></i>
+                         </button>
+                     </div>
+                 </div>
              </div>
 
             <div class="total-cost">
@@ -613,21 +883,43 @@
 
         // Product prices and names based on type
         const PRODUCT_INFO = {
-            cotton: {
-                name: { en: "Cotton Ihram", ar: "إحرام قطن" },
-                price: 60
+            ihram: {
+                name: { en: "Rifad Ihram's", ar: "إحرام رفاد" },
+                price: 80, // Default price for individual
+                image: "images/rifad.png",
+                description: {
+                    en: "A cooling Ihram designed for maximum comfort during your spiritual journey.",
+                    ar: "إحرام مبرد مصمم لأقصى درجات الراحة خلال رحلتك الروحية."
+                }
             },
-            mixed: {
-                name: { en: "Mixed Material Ihram", ar: "إحرام قماش مخلوط" },
-                price: 45
-            },
-            polyester: {
-                name: { en: "Polyester Ihram", ar: "إحرام بوليستر" },
-                price: 30
+            package: {
+                name: { en: "Rifad Package's", ar: "حزمة رفاد" },
+                price: 100, // Default price for individual
+                image: "images/rifad with belt.png",
+                description: {
+                    en: "Complete package including cooling Ihram with a convenient belt for secure wearing.",
+                    ar: "حزمة كاملة تشمل إحرام مبرد مع حزام مريح للارتداء الآمن."
+                }
             }
         };
 
-        let selectedProductType = 'cotton'; // Default or determined from URL
+        let selectedProductType = 'ihram'; // Default or determined from URL
+
+        // Function to get price based on user type
+        function getProductPrice(productType) {
+            const userType = localStorage.getItem('userType') || 'individual';
+            const prices = {
+                individual: {
+                    ihram: 80,
+                    package: 100
+                },
+                business: {
+                    ihram: 60,
+                    package: 90
+                }
+            };
+            return prices[userType][productType] || PRODUCT_INFO[productType].price;
+        }
 
         // Localized cost labels
         const COST_LABELS = {
@@ -672,12 +964,15 @@
 
             updateProductDetails(); // Update product name and total cost
              updatePaymentMethodText(); // Update payment method text
+             updateShippingCompanyText(); // Update shipping company text
         }
 
          // Function to update the displayed product details and total cost
          function updateProductDetails() {
              const productInfo = PRODUCT_INFO[selectedProductType];
              const productNameElement = document.querySelector('.product-details h3[data-product-name]');
+             const productImageElement = document.querySelector('.product-summary img');
+             const productDescriptionElement = document.querySelector('[data-product-description]');
              const totalCostDiv = document.querySelector('.total-cost');
              const lang = document.documentElement.lang;
 
@@ -685,18 +980,34 @@
                  // Update product name
                  productNameElement.textContent = productInfo.name[lang] || productInfo.name.en; // Fallback to English
 
+                 // Update product image
+                 if (productImageElement && productInfo.image) {
+                     productImageElement.src = productInfo.image;
+                     productImageElement.alt = productInfo.name[lang] || productInfo.name.en;
+                 }
+
+                 // Update product description
+                 if (productDescriptionElement && productInfo.description) {
+                     const enSpan = productDescriptionElement.querySelector('.en');
+                     const arSpan = productDescriptionElement.querySelector('.ar');
+                     if (enSpan) enSpan.textContent = productInfo.description.en;
+                     if (arSpan) arSpan.textContent = productInfo.description.ar;
+                 }
+
                  // Update total cost
-                 const price = productInfo.price;
+                 const price = getProductPrice(selectedProductType);
+                 const quantity = parseInt(document.getElementById('quantity').value) || 1;
+                 const subtotal = price * quantity;
                  const shippingCost = 20; // Fixed shipping cost in SAR
                  const vatRate = 0.15; // 15% VAT rate
-                 const vatAmount = price * vatRate;
-                 const total = price + shippingCost + vatAmount;
+                 const vatAmount = subtotal * vatRate;
+                 const total = subtotal + shippingCost + vatAmount;
 
                  // Construct the HTML for the cost breakdown
                  let costBreakdownHTML = `
                      <div class="cost-item">
                          <span class="cost-label">${COST_LABELS.price[lang] || COST_LABELS.price.en}:</span>
-                         <span class="cost-value">${lang === 'en' ? `SAR ${price.toFixed(2)}` : `${price.toFixed(2)} ريال`}</span>
+                         <span class="cost-value">${lang === 'en' ? `SAR ${price.toFixed(2)}` : `${price.toFixed(2)} ريال`} × ${quantity}</span>
                      </div>
                      <div class="cost-item">
                          <span class="cost-label">${COST_LABELS.shipping[lang] || COST_LABELS.shipping.en}:</span>
@@ -726,6 +1037,20 @@
             const lang = document.documentElement.lang;
             document.querySelectorAll('.payment-method').forEach(methodEl => {
                 methodEl.querySelectorAll('.en, .ar').forEach(span => {
+                    if (span.classList.contains(lang)) {
+                        span.style.display = '';
+                    } else {
+                        span.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        // Function to update shipping company text
+        function updateShippingCompanyText() {
+            const lang = document.documentElement.lang;
+            document.querySelectorAll('.shipping-company').forEach(companyEl => {
+                companyEl.querySelectorAll('.en, .ar').forEach(span => {
                     if (span.classList.contains(lang)) {
                         span.style.display = '';
                     } else {
@@ -767,6 +1092,16 @@
             });
         });
 
+        // Shipping company selection
+        document.querySelectorAll('.shipping-company').forEach(companyEl => {
+            companyEl.addEventListener('click', function() {
+                // Remove 'selected' class from all shipping companies
+                document.querySelectorAll('.shipping-company').forEach(el => el.classList.remove('selected'));
+                // Add 'selected' class to the clicked shipping company
+                this.classList.add('selected');
+            });
+        });
+
         // Form submission and success message
         document.getElementById('paymentForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent actual form submission
@@ -785,8 +1120,18 @@
                 return;
             }
 
+            // Check if a shipping company is selected
+            if (!document.querySelector('.shipping-company.selected')) {
+                alert(document.documentElement.lang === 'en' ? 'Please select a shipping company.' : 'الرجاء اختيار شركة الشحن.');
+                return;
+            }
+
             // Simulate payment processing (replace with actual payment gateway integration)
             console.log('Processing payment...');
+            console.log('Product:', selectedProductType);
+            console.log('Quantity:', document.getElementById('quantity').value);
+            console.log('Shipping Company:', document.querySelector('.shipping-company.selected')?.dataset.company);
+            console.log('Payment Method:', document.querySelector('.payment-method.selected')?.dataset.method);
 
             // Hide the form and show the success message
             form.style.display = 'none';
@@ -795,6 +1140,8 @@
              // Hide product summary and payment methods after success
              document.querySelector('.product-summary').style.display = 'none';
              document.querySelector('.payment-methods').style.display = 'none';
+             document.querySelector('.shipping-companies').style.display = 'none';
+             document.querySelector('.quantity-selector').style.display = 'none';
              document.querySelector('.total-cost').style.display = 'none';
 
              // Optionally, redirect or provide further actions after a delay
@@ -814,8 +1161,8 @@
                 selectedProductType = type;
             } else {
                  // Default or handle error if type is not valid
-                 selectedProductType = 'cotton'; // Fallback
-                 console.warn('Invalid or missing product type in URL, defaulting to cotton.');
+                 selectedProductType = 'ihram'; // Fallback
+                 console.warn('Invalid or missing product type in URL, defaulting to ihram.');
             }
 
             // Apply initial language texts and placeholders, which also updates product details
@@ -854,7 +1201,72 @@
              if(firstPaymentMethod) {
                  firstPaymentMethod.classList.add('selected');
              }
+
+             // Select the first shipping company by default (optional)
+             const firstShippingCompany = document.querySelector('.shipping-company');
+             if(firstShippingCompany) {
+                 firstShippingCompany.classList.add('selected');
+             }
+
+             // Initialize quantity buttons
+             updateQuantityButtons();
+
+             // Update quantity input attributes based on user type
+             updateQuantityInput();
+             
+             // Update product details after setting quantity
+             updateProductDetails();
         });
+
+        // Function to get quantity limits based on user type
+        function getQuantityLimits() {
+            const userType = localStorage.getItem('userType') || 'individual';
+            return userType === 'business' ? { min: 100, max: 500 } : { min: 1, max: 10 };
+        }
+
+        // Function to change quantity
+        function changeQuantity(change) {
+            const quantityInput = document.getElementById('quantity');
+            const currentQuantity = parseInt(quantityInput.value);
+            const newQuantity = currentQuantity + change;
+            const limits = getQuantityLimits();
+            
+            // Ensure quantity stays within bounds based on user type
+            if (newQuantity >= limits.min && newQuantity <= limits.max) {
+                quantityInput.value = newQuantity;
+                updateProductDetails(); // Recalculate total with new quantity
+                updateQuantityButtons(); // Update button states
+            }
+        }
+
+        // Function to update quantity button states
+        function updateQuantityButtons() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const limits = getQuantityLimits();
+            const minusBtn = document.querySelector('.quantity-btn.minus');
+            const plusBtn = document.querySelector('.quantity-btn.plus');
+            
+            // Disable minus button if quantity is at minimum
+            minusBtn.disabled = quantity <= limits.min;
+            
+            // Disable plus button if quantity is at maximum
+            plusBtn.disabled = quantity >= limits.max;
+        }
+
+        // Function to update quantity input attributes based on user type
+        function updateQuantityInput() {
+            const quantityInput = document.getElementById('quantity');
+            const limits = getQuantityLimits();
+            
+            // Update min, max, and value attributes
+            quantityInput.min = limits.min;
+            quantityInput.max = limits.max;
+            
+            // Set initial value to minimum for business users
+            if (limits.min > 1) {
+                quantityInput.value = limits.min;
+            }
+        }
 
     </script>
 
