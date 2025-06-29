@@ -1635,24 +1635,30 @@
         max-width: 800px;
     }
 
-    .vision-mission-grid {
+    .vision-mission-grid, .goals-grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Always 2 columns for Vision & Mission */
-        gap: 2rem;
-        margin: 2rem auto;
-        max-width: 1400px;
-        padding: 0 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+        justify-items: center;
+        align-items: stretch;
+        justify-content: center;
+        max-width: 1300px;
+        margin: 0 auto;
     }
 
-    .vision-card, .mission-card, .goal-card, .audience-card {
+    .vision-card, .mission-card, .goal-card, .value-card, .audience-card {
+        width: 100%;
+        min-height: 240px;
+        padding: 2.5rem 2rem;
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         text-align: center;
-        padding: 2rem 1.5rem;
+        box-sizing: border-box;
     }
 
-    .vision-card .card-icon, .mission-card .card-icon, .goal-card .card-icon, .audience-card .card-icon {
+    .vision-card .card-icon, .mission-card .card-icon, .goal-card .card-icon {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1660,71 +1666,10 @@
         font-size: 2.5rem;
     }
 
-    .vision-card h3, .mission-card h3, .goal-card h3, .audience-card h3 {
+    .vision-card h3, .mission-card h3, .goal-card h3 {
         margin-bottom: 0.7rem;
         font-size: 1.3rem;
-    }
-
-    .vision-card .card-divider, .mission-card .card-divider, .goal-card .card-divider, .audience-card .card-divider {
-        margin: 0.7rem auto 1.2rem auto;
-    }
-
-    .vision-card p, .mission-card p, .goal-card p, .audience-card p {
-        font-size: 1.1rem;
-        line-height: 1.6;
-        margin: 0 auto;
-    }
-
-    @media (max-width: 768px) {
-        .vision-mission-grid {
-            grid-template-columns: 1fr; /* Stack on smaller screens */
-            gap: 1.5rem;
-            padding: 0 1rem;
-        }
-    }
-
-    .vision-content i, .mission-content i {
-        display: block;
-        margin: 0 auto 1.2rem auto;
-        font-size: 2.5rem;
-    }
-
-    .vision-content p, .mission-content p {
-        font-size: 1.25rem;
-        line-height: 1.7;
-        margin: 0 auto;
-        max-width: 700px;
-    }
-
-    @media (max-width: 600px) {
-    .vision-content, .mission-content {
-        padding: 1.2rem 0.5rem;
-        margin: 1.2rem 0;
-    }
-    .vision-content p, .mission-content p {
-        font-size: 1rem;
-        max-width: 95vw;
-    }
-    }
-
-    /* Center and space goal cards */
-    .goal-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
         text-align: center;
-        margin: 1.5rem auto;
-        padding: 2rem 1.5rem;
-        max-width: 400px;
-    }
-
-    .goal-card .card-icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.2rem;
-        font-size: 2.5rem;
     }
 
     .goal-card h3 {
@@ -1753,6 +1698,17 @@
         font-size: 1rem;
         max-width: 95vw;
     }
+    }
+
+    @media (max-width: 900px) {
+        .vision-mission-grid, .goals-grid {
+            grid-template-columns: 1fr;
+        }
+        .vision-card, .mission-card, .goal-card {
+            min-width: unset;
+            max-width: 100%;
+            width: 100%;
+        }
     }
 
     /* Center and space audience cards */
@@ -2040,22 +1996,56 @@
         }
     }
 
-    .goals-grid,
-    .audience-grid {
+    .values-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* Always 3 columns for Goals and Audience */
-        gap: 2rem;
-        margin: 2rem auto;
-        max-width: 1400px;
-        padding: 0 1.5rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-lg);
+        margin-top: var(--spacing-xl);
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
-    @media (max-width: 768px) {
-        .goals-grid,
-        .audience-grid {
-            grid-template-columns: 1fr; /* Stack on smaller screens */
-            gap: 1.5rem;
-            padding: 0 1rem;
+    .value-card {
+        padding: var(--spacing-lg);
+        text-align: center;
+        transition: all var(--transition-normal);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .value-card .card-icon {
+        background: none !important;
+        box-shadow: none !important;
+        width: 60px;
+        height: 60px;
+        margin: 0 auto var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--gradient-primary);
+        transition: all var(--transition-normal);
+    }
+
+    .value-card h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+        color: var(--text-color);
+    }
+
+    .value-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .value-card:hover .card-icon {
+        transform: scale(1.1);
+    }
+
+    @media (max-width: 900px) {
+        .values-grid {
+            grid-template-columns: 1fr;
         }
     }
 
@@ -2167,4 +2157,39 @@
     }
     .footer-quote .en {
         font-family: var(--font-en);
+    }
+
+    @media (max-width: 900px) {
+        .vision-mission-grid, .goals-grid {
+            grid-template-columns: 1fr;
+        }
+        .vision-card, .mission-card, .goal-card {
+            min-width: unset;
+            max-width: 100%;
+            width: 100%;
+        }
+    }
+
+    .audience-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        justify-items: center;
+        align-items: stretch;
+        max-width: 1300px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 900px) {
+        .audience-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .vision-card .card-content,
+    .mission-card .card-content,
+    .goal-card .card-content,
+    .value-card .card-content,
+    .audience-card .card-content {
+        padding: 0 2rem;
     } 
