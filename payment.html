@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title data-en="Payment - Rifad Store" data-ar="الدفع - متجر رفاد">Payment - Rifad Store</title>
+    <title data-en="Payment - Rafad Store" data-ar="الدفع - متجر رفاد">Payment - Rafad Store</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -765,13 +765,34 @@
         body.dark-mode #quantity:focus {
             border-color: var(--accent-color-dark);
         }
+
+        .back-button {
+            margin-top: 10px;
+            background: transparent;
+            color: var(--accent-color-light);
+            border: 2px solid var(--accent-color-light);
+            padding: 10px 24px;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s;
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body.dark-mode .back-button {
+            color: var(--accent-color-dark);
+            border-color: var(--accent-color-dark);
+        }
     </style>
 </head>
 <body class="light-mode">
 
     <div class="payment-container">
         <div class="logo">
-            <img src="images/logo.png" alt="Rifad Project Logo">
+            <img src="images/logo.png" alt="Rafad Project Logo">
         </div>
          <h2>
              <span class="en">Payment Information</span>
@@ -779,7 +800,7 @@
          </h2>
 
          <div class="product-summary">
-             <img src="images/rifad.png" alt="Rifad Ihram's">
+             <img src="images/rifad.png" alt="Rafad Ihram's">
              <div class="product-details">
                  <h3 data-product-name></h3>
                  <p data-product-description>
@@ -849,6 +870,10 @@
                          </button>
                      </div>
                  </div>
+                 <div id="business-min-note" style="display:none; color:#e67e22; font-size:0.95em; margin-top:8px;">
+                     <span class="en">Minimum quantity for business orders is 100.</span>
+                     <span class="ar">الحد الأدنى للكمية لطلبات الأعمال هو 100.</span>
+                 </div>
              </div>
 
             <div class="total-cost">
@@ -860,6 +885,11 @@
                 <span class="ar">المتابعة للدفع</span>
             </button>
         </form>
+
+        <button type="button" class="back-button" onclick="history.back()">
+            <span class="en">&#8592; Back</span>
+            <span class="ar">&#8592; رجوع</span>
+        </button>
 
          <div id="successMessage" class="success-message">
              <h2 class="success-title"><span class="en">Payment Successful!</span><span class="ar">تم الدفع بنجاح!</span></h2>
@@ -884,8 +914,8 @@
         // Product prices and names based on type
         const PRODUCT_INFO = {
             ihram: {
-                name: { en: "Rifad Ihram's", ar: "إحرام رفاد" },
-                price: 80, // Default price for individual
+                name: { en: "Rafad Ihram's", ar: "إحرام رفاد" },
+                price: 95, // Updated price for individual
                 image: "images/rifad.png",
                 description: {
                     en: "A cooling Ihram designed for maximum comfort during your spiritual journey.",
@@ -893,8 +923,8 @@
                 }
             },
             package: {
-                name: { en: "Rifad Package's", ar: "حزمة رفاد" },
-                price: 100, // Default price for individual
+                name: { en: "Rafad Package's", ar: "حزمة رفاد" },
+                price: 110, // Updated price for individual
                 image: "images/rifad with belt.png",
                 description: {
                     en: "Complete package including cooling Ihram with a convenient belt for secure wearing.",
@@ -910,12 +940,12 @@
             const userType = localStorage.getItem('userType') || 'individual';
             const prices = {
                 individual: {
-                    ihram: 80,
-                    package: 100
+                    ihram: 95,
+                    package: 110
                 },
                 business: {
-                    ihram: 60,
-                    package: 90
+                    ihram: 80,
+                    package: 95
                 }
             };
             return prices[userType][productType] || PRODUCT_INFO[productType].price;
@@ -1267,6 +1297,16 @@
                 quantityInput.value = limits.min;
             }
         }
+
+        // Show business minimum note if userType is business
+        function updateBusinessMinNote() {
+            const userType = localStorage.getItem('userType') || 'individual';
+            const note = document.getElementById('business-min-note');
+            if (note) {
+                note.style.display = (userType === 'business') ? '' : 'none';
+            }
+        }
+        document.addEventListener('DOMContentLoaded', updateBusinessMinNote);
 
     </script>
 
