@@ -915,7 +915,7 @@
         const PRODUCT_INFO = {
             ihram: {
                 name: { en: "Rafad Ihram's", ar: "إحرام رفاد" },
-                price: 95, // Updated price for individual
+                price: 80,
                 image: "images/rifad.png",
                 description: {
                     en: "A cooling Ihram designed for maximum comfort during your spiritual journey.",
@@ -924,11 +924,20 @@
             },
             package: {
                 name: { en: "Rafad Package's", ar: "حزمة رفاد" },
-                price: 110, // Updated price for individual
+                price: 100,
                 image: "images/rifad with belt.png",
                 description: {
                     en: "Complete package including cooling Ihram with a convenient belt for secure wearing.",
                     ar: "حزمة كاملة تشمل إحرام مبرد مع حزام مريح للارتداء الآمن."
+                }
+            },
+            vest: {
+                name: { en: "Rafad Cooling Vest", ar: "صدرية رفاد المبردة" },
+                price: 60,
+                image: "images/vest.png",
+                description: {
+                    en: "Advanced cooling vest technology for enhanced comfort during your spiritual journey.",
+                    ar: "تقنية صدرية التبريد المتقدمة لراحة محسنة خلال رحلتك الروحية."
                 }
             }
         };
@@ -940,12 +949,14 @@
             const userType = localStorage.getItem('userType') || 'individual';
             const prices = {
                 individual: {
-                    ihram: 95,
-                    package: 110
+                    ihram: 80,
+                    package: 100,
+                    vest: 60
                 },
                 business: {
                     ihram: 80,
-                    package: 95
+                    package: 100,
+                    vest: 70
                 }
             };
             return prices[userType][productType] || PRODUCT_INFO[productType].price;
