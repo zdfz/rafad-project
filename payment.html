@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title data-en="Payment - Rafad Store" data-ar="الدفع - متجر رفاد">Payment - Rafad Store</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -119,9 +121,9 @@
             transition: color 0.3s ease;
         }
 
-         body.dark-mode .form-group label {
-             color: var(--text-color-dark);
-         }
+        body.dark-mode .form-group label {
+            color: var(--text-color-dark);
+        }
 
         .form-group label i {
             position: absolute;
@@ -133,9 +135,9 @@
             transition: color 0.3s ease;
         }
 
-         body.dark-mode .form-group label i {
-             color: var(--accent-color-dark);
-         }
+        body.dark-mode .form-group label i {
+            color: var(--accent-color-dark);
+        }
 
         [dir="rtl"] .form-group label {
             padding-left: 0;
@@ -154,8 +156,10 @@
         .form-group select {
             width: 100%;
             padding: 10px;
-            padding-left: 10px; /* Reset LTR padding */
-            padding-right: 10px; /* Reset RTL padding */
+            padding-left: 10px;
+            /* Reset LTR padding */
+            padding-right: 10px;
+            /* Reset RTL padding */
             border: 1px solid var(--border-color-light);
             border-radius: 5px;
             background-color: var(--input-background-light);
@@ -180,58 +184,59 @@
             min-height: 80px;
         }
 
-         .product-summary {
-             display: flex;
-             gap: 20px;
-             align-items: center;
-             margin-bottom: 20px;
-             padding-bottom: 20px;
-             border-bottom: 1px solid var(--border-color-light);
-             transition: border-color 0.3s ease;
-         }
+        .product-summary {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color-light);
+            transition: border-color 0.3s ease;
+        }
 
-         body.dark-mode .product-summary {
-             border-bottom: 1px solid var(--border-color-dark);
-         }
+        body.dark-mode .product-summary {
+            border-bottom: 1px solid var(--border-color-dark);
+        }
 
-         .product-summary img {
-             max-width: 80px;
-             height: auto;
-             border-radius: 5px;
-         }
+        .product-summary img {
+            max-width: 80px;
+            height: auto;
+            border-radius: 5px;
+        }
 
-         .product-details {
-             flex-grow: 1;
-         }
+        .product-details {
+            flex-grow: 1;
+        }
 
-         .product-details h3 {
-             margin: 0 0 5px 0;
-             color: var(--text-color-light);
-             transition: color 0.3s ease;
-         }
+        .product-details h3 {
+            margin: 0 0 5px 0;
+            color: var(--text-color-light);
+            transition: color 0.3s ease;
+        }
 
-          body.dark-mode .product-details h3 {
-              color: var(--text-color-dark);
-          }
+        body.dark-mode .product-details h3 {
+            color: var(--text-color-dark);
+        }
 
-         .product-details p {
-             margin: 0;
-             font-size: 0.9em;
-             color: #666;
-              transition: color 0.3s ease;
-         }
-         body.dark-mode .product-details p {
-             color: #aaa;
-         }
+        .product-details p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+            transition: color 0.3s ease;
+        }
 
-         [dir="rtl"] .product-summary {
-             flex-direction: row-reverse;
-         }
+        body.dark-mode .product-details p {
+            color: #aaa;
+        }
 
-         [dir="rtl"] .product-details h3,
-         [dir="rtl"] .product-details p {
-             text-align: right;
-         }
+        [dir="rtl"] .product-summary {
+            flex-direction: row-reverse;
+        }
+
+        [dir="rtl"] .product-details h3,
+        [dir="rtl"] .product-details p {
+            text-align: right;
+        }
 
         .payment-methods {
             margin-top: 20px;
@@ -240,18 +245,19 @@
             transition: border-color 0.3s ease;
         }
 
-         body.dark-mode .payment-methods {
-              border-top: 1px solid var(--border-color-dark);
-         }
+        body.dark-mode .payment-methods {
+            border-top: 1px solid var(--border-color-dark);
+        }
 
         .payment-methods h3 {
             margin-bottom: 15px;
             color: var(--text-color-light);
             transition: color 0.3s ease;
         }
-         body.dark-mode .payment-methods h3 {
-             color: var(--text-color-dark);
-         }
+
+        body.dark-mode .payment-methods h3 {
+            color: var(--text-color-dark);
+        }
 
         .payment-method {
             display: flex;
@@ -285,10 +291,11 @@
             border-color: var(--accent-color-light);
             background-color: rgba(0, 123, 255, 0.1);
         }
-         body.dark-mode .payment-method.selected {
-             border-color: var(--accent-color-dark);
-             background-color: rgba(100, 255, 218, 0.1);
-         }
+
+        body.dark-mode .payment-method.selected {
+            border-color: var(--accent-color-dark);
+            background-color: rgba(100, 255, 218, 0.1);
+        }
 
         .payment-method .payment-icon {
             width: 60px;
@@ -297,19 +304,21 @@
             margin-right: 15px;
             border-radius: 4px;
         }
-         [dir="rtl"] .payment-method .payment-icon {
-              margin-right: 0;
-              margin-left: 15px;
-         }
+
+        [dir="rtl"] .payment-method .payment-icon {
+            margin-right: 0;
+            margin-left: 15px;
+        }
 
         .payment-method span {
             font-weight: 500;
             color: var(--text-color-light);
             transition: color 0.3s ease;
         }
-         body.dark-mode .payment-method span {
-             color: var(--text-color-dark);
-         }
+
+        body.dark-mode .payment-method span {
+            color: var(--text-color-dark);
+        }
 
         .payment-method .en,
         .payment-method .ar {
@@ -327,7 +336,8 @@
             border-top: 1px solid var(--border-color-light);
             padding: 15px;
             border-radius: 8px;
-            background-color: rgba(0, 123, 255, 0.05); /* Subtle background */
+            background-color: rgba(0, 123, 255, 0.05);
+            /* Subtle background */
             font-size: 1.2em;
             font-weight: bold;
             color: var(--accent-color-light);
@@ -335,14 +345,16 @@
             transition: border-color 0.3s ease, color 0.3s ease;
             display: flex;
             flex-direction: column;
-            gap: 10px; /* Space between cost items */
+            gap: 10px;
+            /* Space between cost items */
         }
 
-         body.dark-mode .total-cost {
-             border-top: 1px solid var(--border-color-dark);
-             color: var(--accent-color-dark);
-             background-color: rgba(100, 255, 218, 0.05); /* Subtle background in dark mode */
-         }
+        body.dark-mode .total-cost {
+            border-top: 1px solid var(--border-color-dark);
+            color: var(--accent-color-dark);
+            background-color: rgba(100, 255, 218, 0.05);
+            /* Subtle background in dark mode */
+        }
 
         [dir="rtl"] .total-cost {
             text-align: left;
@@ -352,78 +364,100 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9em; /* Smaller font for individual items */
-            font-weight: normal; /* Reset font-weight from parent */
-            padding-bottom: 5px; /* Space below each item */
-            border-bottom: 1px dashed rgba(0, 123, 255, 0.1); /* Subtle separator */
+            font-size: 0.9em;
+            /* Smaller font for individual items */
+            font-weight: normal;
+            /* Reset font-weight from parent */
+            padding-bottom: 5px;
+            /* Space below each item */
+            border-bottom: 1px dashed rgba(0, 123, 255, 0.1);
+            /* Subtle separator */
         }
 
         body.dark-mode .total-cost .cost-item {
-             border-bottom: 1px dashed rgba(100, 255, 218, 0.1); /* Subtle separator in dark mode */
+            border-bottom: 1px dashed rgba(100, 255, 218, 0.1);
+            /* Subtle separator in dark mode */
         }
 
         .total-cost .cost-item:last-child {
-            border-bottom: none; /* No border on the last item before total */
+            border-bottom: none;
+            /* No border on the last item before total */
             padding-bottom: 0;
         }
 
         .total-cost .cost-label {
-            color: var(--text-color-light); /* Label color */
+            color: var(--text-color-light);
+            /* Label color */
         }
 
-         body.dark-mode .total-cost .cost-label {
-              color: var(--text-color-dark); /* Label color in dark mode */
-         }
+        body.dark-mode .total-cost .cost-label {
+            color: var(--text-color-dark);
+            /* Label color in dark mode */
+        }
 
         .total-cost .cost-value {
-            color: var(--text-color-light); /* Value color */
+            color: var(--text-color-light);
+            /* Value color */
             font-weight: bold;
         }
-         body.dark-mode .total-cost .cost-value {
-              color: var(--text-color-dark); /* Value color in dark mode */
-         }
+
+        body.dark-mode .total-cost .cost-value {
+            color: var(--text-color-dark);
+            /* Value color in dark mode */
+        }
 
         .total-cost .cost-total {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 1.3em; /* Larger font for total */
+            font-size: 1.3em;
+            /* Larger font for total */
             font-weight: bold;
-            margin-top: 10px; /* Space above total */
-            padding-top: 10px; /* Padding above total */
-            border-top: 2px solid var(--accent-color-light); /* Thicker border above total */
+            margin-top: 10px;
+            /* Space above total */
+            padding-top: 10px;
+            /* Padding above total */
+            border-top: 2px solid var(--accent-color-light);
+            /* Thicker border above total */
         }
 
         body.dark-mode .total-cost .cost-total {
-             border-top: 2px solid var(--accent-color-dark); /* Thicker border above total in dark mode */
+            border-top: 2px solid var(--accent-color-dark);
+            /* Thicker border above total in dark mode */
         }
 
         .total-cost .total-label {
-             color: var(--accent-color-light); /* Accent color for total label */
+            color: var(--accent-color-light);
+            /* Accent color for total label */
         }
 
         body.dark-mode .total-cost .total-label {
-              color: var(--accent-color-dark); /* Accent color for total label in dark mode */
+            color: var(--accent-color-dark);
+            /* Accent color for total label in dark mode */
         }
 
         .total-cost .total-amount {
-            color: var(--accent-color-light); /* Accent color for total amount */
+            color: var(--accent-color-light);
+            /* Accent color for total amount */
         }
 
-         body.dark-mode .total-cost .total-amount {
-              color: var(--accent-color-dark); /* Accent color for total amount in dark mode */
-         }
+        body.dark-mode .total-cost .total-amount {
+            color: var(--accent-color-dark);
+            /* Accent color for total amount in dark mode */
+        }
 
         [dir="rtl"] .total-cost .cost-item,
         [dir="rtl"] .total-cost .cost-total {
-             flex-direction: row-reverse; /* Reverse order for RTL */
+            flex-direction: row-reverse;
+            /* Reverse order for RTL */
         }
 
         [dir="rtl"] .total-cost .cost-label,
         [dir="rtl"] .total-cost .cost-value,
         [dir="rtl"] .total-cost .total-label,
         [dir="rtl"] .total-cost .total-amount {
-            text-align: unset; /* Prevent text-align from interfering with flex layout */
+            text-align: unset;
+            /* Prevent text-align from interfering with flex layout */
         }
 
         .pay-button {
@@ -438,7 +472,7 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
-             margin-top: 20px;
+            margin-top: 20px;
         }
 
         body.dark-mode .pay-button {
@@ -450,7 +484,8 @@
             opacity: 0.9;
         }
 
-        .language-toggle, .theme-toggle {
+        .language-toggle,
+        .theme-toggle {
             position: absolute;
             top: 20px;
             background-color: var(--container-background-light);
@@ -464,51 +499,58 @@
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
-        body.dark-mode .language-toggle, body.dark-mode .theme-toggle {
+        body.dark-mode .language-toggle,
+        body.dark-mode .theme-toggle {
             background-color: var(--container-background-dark);
             color: var(--text-color-dark);
             border: 1px solid var(--border-color-dark);
         }
 
         .language-toggle {
-             right: 20px;
+            right: 20px;
         }
 
         .theme-toggle {
-            right: 100px; /* Adjust position relative to language toggle */
+            right: 100px;
+            /* Adjust position relative to language toggle */
         }
 
         [dir="rtl"] .language-toggle {
-             right: auto;
-             left: 20px;
+            right: auto;
+            left: 20px;
         }
 
-         [dir="rtl"] .theme-toggle {
-             right: auto;
-             left: 100px; /* Adjust position for RTL */
-         }
+        [dir="rtl"] .theme-toggle {
+            right: auto;
+            left: 100px;
+            /* Adjust position for RTL */
+        }
 
         /* Language specific classes */
-        .en, .ar {
+        .en,
+        .ar {
             display: none;
         }
+
         html[lang="en"] .en {
             display: inline;
         }
+
         html[lang="ar"] .ar {
             display: inline;
         }
 
         /* Success Message */
         .success-message {
-             display: none; /* Hidden by default */
-             text-align: center;
-             padding: 30px;
-             border-radius: 10px;
-             background-color: #d4edda;
-             color: #155724;
-             border: 1px solid #c3e6cb;
-             margin-top: 20px;
+            display: none;
+            /* Hidden by default */
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            margin-top: 20px;
         }
 
         body.dark-mode .success-message {
@@ -523,7 +565,7 @@
         }
 
         body.dark-mode .success-message h2 {
-             color: #64ffda;
+            color: #64ffda;
         }
 
         /* Responsive adjustments */
@@ -531,27 +573,34 @@
             .payment-container {
                 padding: 20px;
             }
+
             body {
                 padding: 10px;
             }
-             .language-toggle, .theme-toggle {
-                 top: 10px;
-                 padding: 6px 10px;
-             }
-            .language-toggle {
-                 right: 10px;
-            }
+
+            .language-toggle,
             .theme-toggle {
-                 right: 80px;
+                top: 10px;
+                padding: 6px 10px;
             }
-             [dir="rtl"] .language-toggle {
-                 left: 10px;
-                 right: auto;
-             }
-              [dir="rtl"] .theme-toggle {
-                 left: 80px;
-                 right: auto;
-             }
+
+            .language-toggle {
+                right: 10px;
+            }
+
+            .theme-toggle {
+                right: 80px;
+            }
+
+            [dir="rtl"] .language-toggle {
+                left: 10px;
+                right: auto;
+            }
+
+            [dir="rtl"] .theme-toggle {
+                left: 80px;
+                right: auto;
+            }
         }
 
         .payment-page .payment-method .payment-icon {
@@ -782,102 +831,109 @@
             margin-left: auto;
             margin-right: auto;
         }
+
         body.dark-mode .back-button {
             color: var(--accent-color-dark);
             border-color: var(--accent-color-dark);
         }
     </style>
 </head>
+
 <body class="light-mode">
 
     <div class="payment-container">
         <div class="logo">
             <img src="images/logo.png" alt="Rafad Project Logo">
         </div>
-         <h2>
-             <span class="en">Payment Information</span>
-             <span class="ar">معلومات الدفع</span>
-         </h2>
+        <h2>
+            <span class="en">Payment Information</span>
+            <span class="ar">معلومات الدفع</span>
+        </h2>
 
-         <div class="product-summary">
-             <img src="images/rifad.png" alt="Rafad Ihram's">
-             <div class="product-details">
-                 <h3 data-product-name></h3>
-                 <p data-product-description>
-                     <span class="en">A cooling Ihram designed for maximum comfort during your spiritual journey.</span>
-                     <span class="ar">إحرام مبرد مصمم لأقصى درجات الراحة خلال رحلتك الروحية.</span>
-                 </p>
-             </div>
-         </div>
+        <div class="product-summary">
+            <img src="images/rifad.png" alt="Rafad Ihram's">
+            <div class="product-details">
+                <h3 data-product-name></h3>
+                <p data-product-description>
+                    <span class="en">A cooling Ihram designed for maximum comfort during your spiritual journey.</span>
+                    <span class="ar">إحرام مبرد مصمم لأقصى درجات الراحة خلال رحلتك الروحية.</span>
+                </p>
+            </div>
+        </div>
 
         <form id="paymentForm" novalidate>
-             <div class="form-group">
-                <label for="name"><i class="fas fa-user"></i> <span class="en">Full Name</span><span class="ar">الاسم الكامل</span>:</label>
+            <div class="form-group">
+                <label for="name"><i class="fas fa-user"></i> <span class="en">Full Name</span><span class="ar">الاسم
+                        الكامل</span>:</label>
                 <input type="text" id="name" required>
             </div>
             <div class="form-group">
-                <label for="phone"><i class="fas fa-phone"></i> <span class="en">Phone Number</span><span class="ar">رقم الهاتف</span>:</label>
+                <label for="phone"><i class="fas fa-phone"></i> <span class="en">Phone Number</span><span class="ar">رقم
+                        الهاتف</span>:</label>
                 <input type="tel" id="phone" required pattern="[0-9]{10,}">
             </div>
             <div class="form-group">
-                <label for="email"><i class="fas fa-envelope"></i> <span class="en">Email Address</span><span class="ar">عنوان البريد الإلكتروني</span>:</label>
+                <label for="email"><i class="fas fa-envelope"></i> <span class="en">Email Address</span><span
+                        class="ar">عنوان البريد الإلكتروني</span>:</label>
                 <input type="email" id="email" required>
             </div>
-             <div class="form-group">
-                <label for="address"><i class="fas fa-map-marker-alt"></i> <span class="en">Address</span><span class="ar">العنوان</span>:</label>
+            <div class="form-group">
+                <label for="address"><i class="fas fa-map-marker-alt"></i> <span class="en">Address</span><span
+                        class="ar">العنوان</span>:</label>
                 <textarea id="address" required></textarea>
             </div>
 
-             <div class="shipping-companies">
-                 <h3><span class="en">Select Shipping Company</span><span class="ar">اختر شركة الشحن</span></h3>
-                 <div class="shipping-company" data-company="smsa">
-                     <img src="images/smsa.jpg" alt="SMSA" class="shipping-icon">
-                     <span class="en">SMSA</span><span class="ar">سمسا</span>
-                 </div>
-                 <div class="shipping-company" data-company="aramex">
-                     <img src="images/aramex.png" alt="Aramex" class="shipping-icon">
-                     <span class="en">Aramex</span><span class="ar">أرامكس</span>
-                 </div>
-             </div>
+            <div class="shipping-companies">
+                <h3><span class="en">Select Shipping Company</span><span class="ar">اختر شركة الشحن</span></h3>
+                <div class="shipping-company" data-company="smsa">
+                    <img src="images/smsa.jpg" alt="SMSA" class="shipping-icon">
+                    <span class="en">SMSA</span><span class="ar">سمسا</span>
+                </div>
+                <div class="shipping-company" data-company="aramex">
+                    <img src="images/aramex.png" alt="Aramex" class="shipping-icon">
+                    <span class="en">Aramex</span><span class="ar">أرامكس</span>
+                </div>
+            </div>
 
-             <div class="payment-methods">
-                 <h3><span class="en">Select Payment Method</span><span class="ar">اختر طريقة الدفع</span></h3>
-                 <div class="payment-method" data-method="visa">
-                     <img src="images/visa.png" alt="Visa" class="payment-icon">
-                     <span class="en">Visa</span><span class="ar">فيزا</span>
-                 </div>
-                  <div class="payment-method" data-method="mastercard">
-                     <img src="images/mastercard.png" alt="MasterCard" class="payment-icon">
-                     <span class="en">MasterCard</span><span class="ar">ماستركارد</span>
-                 </div>
-                  <div class="payment-method" data-method="mada">
-                     <img src="images/mada.png" alt="Mada" class="payment-icon">
-                     <span class="en">Mada</span><span class="ar">مدى</span>
-                 </div>
-                  <!-- Add more payment methods as needed -->
-             </div>
+            <div class="payment-methods">
+                <h3><span class="en">Select Payment Method</span><span class="ar">اختر طريقة الدفع</span></h3>
+                <div class="payment-method" data-method="visa">
+                    <img src="images/visa.png" alt="Visa" class="payment-icon">
+                    <span class="en">Visa</span><span class="ar">فيزا</span>
+                </div>
+                <div class="payment-method" data-method="mastercard">
+                    <img src="images/mastercard.png" alt="MasterCard" class="payment-icon">
+                    <span class="en">MasterCard</span><span class="ar">ماستركارد</span>
+                </div>
+                <div class="payment-method" data-method="mada">
+                    <img src="images/mada.png" alt="Mada" class="payment-icon">
+                    <span class="en">Mada</span><span class="ar">مدى</span>
+                </div>
+                <!-- Add more payment methods as needed -->
+            </div>
 
-             <div class="quantity-selector">
-                 <div class="quantity-header">
-                     <h3><span class="en">Quantity</span><span class="ar">الكمية</span></h3>
-                     <div class="quantity-controls">
-                         <button type="button" class="quantity-btn minus" onclick="changeQuantity(-1)">
-                             <i class="fas fa-minus"></i>
-                         </button>
-                         <input type="number" id="quantity" value="1" min="1" max="10" readonly>
-                         <button type="button" class="quantity-btn plus" onclick="changeQuantity(1)">
-                             <i class="fas fa-plus"></i>
-                         </button>
-                     </div>
-                 </div>
-                 <div id="business-min-note" style="display:none; color:#e67e22; font-size:0.95em; margin-top:8px;">
-                     <span class="en">Minimum quantity for business orders is 100.</span>
-                     <span class="ar">الحد الأدنى للكمية لطلبات الأعمال هو 100.</span>
-                 </div>
-             </div>
+            <div class="quantity-selector">
+                <div class="quantity-header">
+                    <h3><span class="en">Quantity</span><span class="ar">الكمية</span></h3>
+                    <div class="quantity-controls">
+                        <button type="button" class="quantity-btn minus" onclick="changeQuantity(-1)">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="number" id="quantity" value="1" min="1" max="10" readonly>
+                        <button type="button" class="quantity-btn plus" onclick="changeQuantity(1)">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="business-min-note" style="display:none; color:#e67e22; font-size:0.95em; margin-top:8px;">
+                    <span class="en">Minimum quantity for business orders is 100.</span>
+                    <span class="ar">الحد الأدنى للكمية لطلبات الأعمال هو 100.</span>
+                </div>
+            </div>
 
             <div class="total-cost">
-                <span class="total-label"><span class="en">Total Cost</span><span class="ar">التكلفة الإجمالية</span></span>: <span id="totalAmount"></span>
+                <span class="total-label"><span class="en">Total Cost</span><span class="ar">التكلفة
+                        الإجمالية</span></span>: <span id="totalAmount"></span>
             </div>
 
             <button type="submit" class="pay-button" aria-label="Proceed to Payment">
@@ -891,10 +947,12 @@
             <span class="ar">&#8592; رجوع</span>
         </button>
 
-         <div id="successMessage" class="success-message">
-             <h2 class="success-title"><span class="en">Payment Successful!</span><span class="ar">تم الدفع بنجاح!</span></h2>
-             <p><span class="en">Thank you for your purchase. Your order has been placed.</span><span class="ar">شكراً لك على مشترياتك. تم تقديم طلبك بنجاح.</span></p>
-         </div>
+        <div id="successMessage" class="success-message">
+            <h2 class="success-title"><span class="en">Payment Successful!</span><span class="ar">تم الدفع بنجاح!</span>
+            </h2>
+            <p><span class="en">Thank you for your purchase. Your order has been placed.</span><span class="ar">شكراً لك
+                    على مشترياتك. تم تقديم طلبك بنجاح.</span></p>
+        </div>
 
     </div>
 
@@ -903,10 +961,10 @@
         <span class="ar">English</span>
     </button>
 
-     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-         <span class="light-icon">☀️</span>
-         <span class="dark-icon">🌙</span>
-     </button>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <span class="light-icon">☀️</span>
+        <span class="dark-icon">🌙</span>
+    </button>
 
     <script>
         // Embedded JavaScript
@@ -932,12 +990,12 @@
                 }
             },
             vest: {
-                name: { en: "Rafad Cooling Vest", ar: "صدرية رفاد المبردة" },
+                name: { en: "Rafad Cooling Vest", ar: "سترة رفاد المبردة" },
                 price: 60,
                 image: "images/vest.png",
                 description: {
-                    en: "Advanced cooling vest technology for enhanced comfort during your spiritual journey.",
-                    ar: "تقنية صدرية التبريد المتقدمة لراحة محسنة خلال رحلتك الروحية."
+                    en: "Smart cooling solution for operational teams and workers in hot environments.",
+                    ar: "حل تبريد ذكي للكوادر التشغيلية والعاملين في البيئات الحارة."
                 }
             }
         };
@@ -983,69 +1041,69 @@
                 }
             });
 
-             // Update placeholder texts for inputs and textarea
-             document.querySelectorAll('#paymentForm input, #paymentForm textarea').forEach(input => {
-                 const enPlaceholder = {
-                     'name': 'Enter your name',
-                     'phone': 'Enter your phone number',
-                     'email': 'Enter your email',
-                     'address': 'Enter your address'
-                 };
-                 const arPlaceholder = {
-                     'name': 'أدخل اسمك',
-                     'phone': 'أدخل رقم هاتفك',
-                     'email': 'أدخل بريدك الإلكتروني',
-                     'address': 'أدخل عنوانك'
-                 };
-                 const placeholderText = lang === 'en' ? enPlaceholder[input.id] : arPlaceholder[input.id];
-                 if (placeholderText) {
-                      input.placeholder = placeholderText;
-                 }
-             });
+            // Update placeholder texts for inputs and textarea
+            document.querySelectorAll('#paymentForm input, #paymentForm textarea').forEach(input => {
+                const enPlaceholder = {
+                    'name': 'Enter your name',
+                    'phone': 'Enter your phone number',
+                    'email': 'Enter your email',
+                    'address': 'Enter your address'
+                };
+                const arPlaceholder = {
+                    'name': 'أدخل اسمك',
+                    'phone': 'أدخل رقم هاتفك',
+                    'email': 'أدخل بريدك الإلكتروني',
+                    'address': 'أدخل عنوانك'
+                };
+                const placeholderText = lang === 'en' ? enPlaceholder[input.id] : arPlaceholder[input.id];
+                if (placeholderText) {
+                    input.placeholder = placeholderText;
+                }
+            });
 
             updateProductDetails(); // Update product name and total cost
-             updatePaymentMethodText(); // Update payment method text
-             updateShippingCompanyText(); // Update shipping company text
+            updatePaymentMethodText(); // Update payment method text
+            updateShippingCompanyText(); // Update shipping company text
         }
 
-         // Function to update the displayed product details and total cost
-         function updateProductDetails() {
-             const productInfo = PRODUCT_INFO[selectedProductType];
-             const productNameElement = document.querySelector('.product-details h3[data-product-name]');
-             const productImageElement = document.querySelector('.product-summary img');
-             const productDescriptionElement = document.querySelector('[data-product-description]');
-             const totalCostDiv = document.querySelector('.total-cost');
-             const lang = document.documentElement.lang;
+        // Function to update the displayed product details and total cost
+        function updateProductDetails() {
+            const productInfo = PRODUCT_INFO[selectedProductType];
+            const productNameElement = document.querySelector('.product-details h3[data-product-name]');
+            const productImageElement = document.querySelector('.product-summary img');
+            const productDescriptionElement = document.querySelector('[data-product-description]');
+            const totalCostDiv = document.querySelector('.total-cost');
+            const lang = document.documentElement.lang;
 
-             if (productInfo) {
-                 // Update product name
-                 productNameElement.textContent = productInfo.name[lang] || productInfo.name.en; // Fallback to English
+            if (productInfo) {
+                // Update product name
+                productNameElement.textContent = productInfo.name[lang] || productInfo.name.en; // Fallback to English
 
-                 // Update product image
-                 if (productImageElement && productInfo.image) {
-                     productImageElement.src = productInfo.image;
-                     productImageElement.alt = productInfo.name[lang] || productInfo.name.en;
-                 }
+                // Update product image
+                if (productImageElement && productInfo.image) {
+                    productImageElement.src = productInfo.image;
+                    productImageElement.alt = productInfo.name[lang] || productInfo.name.en;
+                }
 
-                 // Update product description
-                 if (productDescriptionElement && productInfo.description) {
-                     const enSpan = productDescriptionElement.querySelector('.en');
-                     const arSpan = productDescriptionElement.querySelector('.ar');
-                     if (enSpan) enSpan.textContent = productInfo.description.en;
-                     if (arSpan) arSpan.textContent = productInfo.description.ar;
-                 }
+                // Update product description
+                if (productDescriptionElement && productInfo.description) {
+                    const enSpan = productDescriptionElement.querySelector('.en');
+                    const arSpan = productDescriptionElement.querySelector('.ar');
+                    if (enSpan) enSpan.textContent = productInfo.description.en;
+                    if (arSpan) arSpan.textContent = productInfo.description.ar;
+                }
 
-                 // Update total cost
-                 const price = getProductPrice(selectedProductType);
-                 const quantity = parseInt(document.getElementById('quantity').value) || 1;
-                 const subtotal = price * quantity;
-                 const shippingCost = 20; // Fixed shipping cost in SAR
-                 const vatRate = 0.15; // 15% VAT rate
-                 const vatAmount = subtotal * vatRate;
-                 const total = subtotal + shippingCost + vatAmount;
+                // Update total cost
+                const price = getProductPrice(selectedProductType);
+                const quantity = parseInt(document.getElementById('quantity').value) || 1;
+                const subtotal = price * quantity;
+                const shippingCost = 20; // Fixed shipping cost in SAR
+                const vatRate = 0.15; // 15% VAT rate
+                const vatAmount = subtotal * vatRate;
+                const total = subtotal + shippingCost + vatAmount;
 
-                 // Construct the HTML for the cost breakdown
-                 let costBreakdownHTML = `
+                // Construct the HTML for the cost breakdown
+                let costBreakdownHTML = `
                      <div class="cost-item">
                          <span class="cost-label">${COST_LABELS.price[lang] || COST_LABELS.price.en}:</span>
                          <span class="cost-value">${lang === 'en' ? `SAR ${price.toFixed(2)}` : `${price.toFixed(2)} ريال`} × ${quantity}</span>
@@ -1064,14 +1122,14 @@
                      </div>
                  `;
 
-                 totalCostDiv.innerHTML = costBreakdownHTML;
+                totalCostDiv.innerHTML = costBreakdownHTML;
 
-             } else {
-                 // Handle case where product type is not found
-                 productNameElement.textContent = lang === 'en' ? 'Product Not Found' : 'المنتج غير موجود';
-                 totalCostDiv.innerHTML = ''; // Clear the total cost section
-             }
-         }
+            } else {
+                // Handle case where product type is not found
+                productNameElement.textContent = lang === 'en' ? 'Product Not Found' : 'المنتج غير موجود';
+                totalCostDiv.innerHTML = ''; // Clear the total cost section
+            }
+        }
 
         // Function to update payment method text
         function updatePaymentMethodText() {
@@ -1102,7 +1160,7 @@
         }
 
         // Language toggle functionality
-        document.getElementById('language-toggle').addEventListener('click', function() {
+        document.getElementById('language-toggle').addEventListener('click', function () {
             const html = document.documentElement;
             const currentLang = html.lang;
             const newLang = currentLang === 'en' ? 'ar' : 'en';
@@ -1114,18 +1172,18 @@
             updateTextContent(); // Update all text after changing language
         });
 
-         // Theme toggle functionality
-         document.getElementById('theme-toggle').addEventListener('click', function() {
-             const body = document.body;
-             body.classList.toggle('dark-mode');
-             // Optionally save theme preference to localStorage
-             const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-             localStorage.setItem('theme', currentTheme);
-         });
+        // Theme toggle functionality
+        document.getElementById('theme-toggle').addEventListener('click', function () {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            // Optionally save theme preference to localStorage
+            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+        });
 
         // Payment method selection
         document.querySelectorAll('.payment-method').forEach(methodEl => {
-            methodEl.addEventListener('click', function() {
+            methodEl.addEventListener('click', function () {
                 // Remove 'selected' class from all payment methods
                 document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
                 // Add 'selected' class to the clicked payment method
@@ -1135,7 +1193,7 @@
 
         // Shipping company selection
         document.querySelectorAll('.shipping-company').forEach(companyEl => {
-            companyEl.addEventListener('click', function() {
+            companyEl.addEventListener('click', function () {
                 // Remove 'selected' class from all shipping companies
                 document.querySelectorAll('.shipping-company').forEach(el => el.classList.remove('selected'));
                 // Add 'selected' class to the clicked shipping company
@@ -1144,7 +1202,7 @@
         });
 
         // Form submission and success message
-        document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        document.getElementById('paymentForm').addEventListener('submit', function (event) {
             event.preventDefault(); // Prevent actual form submission
 
             const form = event.target;
@@ -1178,19 +1236,19 @@
             form.style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
 
-             // Hide product summary and payment methods after success
-             document.querySelector('.product-summary').style.display = 'none';
-             document.querySelector('.payment-methods').style.display = 'none';
-             document.querySelector('.shipping-companies').style.display = 'none';
-             document.querySelector('.quantity-selector').style.display = 'none';
-             document.querySelector('.total-cost').style.display = 'none';
+            // Hide product summary and payment methods after success
+            document.querySelector('.product-summary').style.display = 'none';
+            document.querySelector('.payment-methods').style.display = 'none';
+            document.querySelector('.shipping-companies').style.display = 'none';
+            document.querySelector('.quantity-selector').style.display = 'none';
+            document.querySelector('.total-cost').style.display = 'none';
 
-             // Optionally, redirect or provide further actions after a delay
-             // setTimeout(() => { /* redirect or clear form */ }, 5000);
+            // Optionally, redirect or provide further actions after a delay
+            // setTimeout(() => { /* redirect or clear form */ }, 5000);
         });
 
         // Initial setup on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Set initial language and direction
             const initialLang = document.documentElement.lang || 'en'; // Default to English
             document.documentElement.dir = initialLang === 'ar' ? 'rtl' : 'ltr';
@@ -1201,62 +1259,62 @@
             if (type && PRODUCT_INFO[type]) {
                 selectedProductType = type;
             } else {
-                 // Default or handle error if type is not valid
-                 selectedProductType = 'ihram'; // Fallback
-                 console.warn('Invalid or missing product type in URL, defaulting to ihram.');
+                // Default or handle error if type is not valid
+                selectedProductType = 'ihram'; // Fallback
+                console.warn('Invalid or missing product type in URL, defaulting to ihram.');
             }
 
             // Apply initial language texts and placeholders, which also updates product details
             updateTextContent();
 
             // Set initial dark mode based on localStorage or system preference
-             const savedTheme = localStorage.getItem('theme');
-             if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                 document.body.classList.add('dark-mode');
-             } else {
-                 document.body.classList.remove('dark-mode');
-             }
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
 
-             // Update placeholders initially
-             document.querySelectorAll('#paymentForm input, #paymentForm textarea').forEach(input => {
-                 const enPlaceholder = {
-                     'name': 'Enter your name',
-                     'phone': 'Enter your phone number',
-                     'email': 'Enter your email',
-                     'address': 'Enter your address'
-                 };
-                 const arPlaceholder = {
-                     'name': 'أدخل اسمك',
-                     'phone': 'أدخل رقم هاتفك',
-                     'email': 'أدخل بريدك الإلكتروني',
-                     'address': 'أدخل عنوانك'
-                 };
-                 const placeholderText = initialLang === 'en' ? enPlaceholder[input.id] : arPlaceholder[input.id];
-                  if (placeholderText) {
-                       input.placeholder = placeholderText;
-                  }
-             });
+            // Update placeholders initially
+            document.querySelectorAll('#paymentForm input, #paymentForm textarea').forEach(input => {
+                const enPlaceholder = {
+                    'name': 'Enter your name',
+                    'phone': 'Enter your phone number',
+                    'email': 'Enter your email',
+                    'address': 'Enter your address'
+                };
+                const arPlaceholder = {
+                    'name': 'أدخل اسمك',
+                    'phone': 'أدخل رقم هاتفك',
+                    'email': 'أدخل بريدك الإلكتروني',
+                    'address': 'أدخل عنوانك'
+                };
+                const placeholderText = initialLang === 'en' ? enPlaceholder[input.id] : arPlaceholder[input.id];
+                if (placeholderText) {
+                    input.placeholder = placeholderText;
+                }
+            });
 
-             // Select the first payment method by default (optional)
-             const firstPaymentMethod = document.querySelector('.payment-method');
-             if(firstPaymentMethod) {
-                 firstPaymentMethod.classList.add('selected');
-             }
+            // Select the first payment method by default (optional)
+            const firstPaymentMethod = document.querySelector('.payment-method');
+            if (firstPaymentMethod) {
+                firstPaymentMethod.classList.add('selected');
+            }
 
-             // Select the first shipping company by default (optional)
-             const firstShippingCompany = document.querySelector('.shipping-company');
-             if(firstShippingCompany) {
-                 firstShippingCompany.classList.add('selected');
-             }
+            // Select the first shipping company by default (optional)
+            const firstShippingCompany = document.querySelector('.shipping-company');
+            if (firstShippingCompany) {
+                firstShippingCompany.classList.add('selected');
+            }
 
-             // Initialize quantity buttons
-             updateQuantityButtons();
+            // Initialize quantity buttons
+            updateQuantityButtons();
 
-             // Update quantity input attributes based on user type
-             updateQuantityInput();
-             
-             // Update product details after setting quantity
-             updateProductDetails();
+            // Update quantity input attributes based on user type
+            updateQuantityInput();
+
+            // Update product details after setting quantity
+            updateProductDetails();
         });
 
         // Function to get quantity limits based on user type
@@ -1271,7 +1329,7 @@
             const currentQuantity = parseInt(quantityInput.value);
             const newQuantity = currentQuantity + change;
             const limits = getQuantityLimits();
-            
+
             // Ensure quantity stays within bounds based on user type
             if (newQuantity >= limits.min && newQuantity <= limits.max) {
                 quantityInput.value = newQuantity;
@@ -1286,10 +1344,10 @@
             const limits = getQuantityLimits();
             const minusBtn = document.querySelector('.quantity-btn.minus');
             const plusBtn = document.querySelector('.quantity-btn.plus');
-            
+
             // Disable minus button if quantity is at minimum
             minusBtn.disabled = quantity <= limits.min;
-            
+
             // Disable plus button if quantity is at maximum
             plusBtn.disabled = quantity >= limits.max;
         }
@@ -1298,11 +1356,11 @@
         function updateQuantityInput() {
             const quantityInput = document.getElementById('quantity');
             const limits = getQuantityLimits();
-            
+
             // Update min, max, and value attributes
             quantityInput.min = limits.min;
             quantityInput.max = limits.max;
-            
+
             // Set initial value to minimum for business users
             if (limits.min > 1) {
                 quantityInput.value = limits.min;
@@ -1322,4 +1380,5 @@
     </script>
 
 </body>
+
 </html>
