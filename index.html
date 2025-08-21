@@ -1,1365 +1,1328 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Clothing Store Payment Form">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title data-en="Payment - Rafad Store" data-ar="الدفع - متجر رفاد">Payment - Rafad Store</title>
+    <meta name="description"
+        content="Rafad Project offers smart cooling Ihram technology for Hajj and Umrah pilgrims to enhance comfort in hot climates.">
+    <meta name="theme-color" content="#001F3F">
+    <title>Rafad Project - Smart Cooling Ihram</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="rifad-logo.png" type="image/png">
     <style>
-        /* Embedded CSS */
-        :root {
-            --background-color-light: #f4f4f4;
-            --text-color-light: #333;
-            --container-background-light: #ffffff;
-            --border-color-light: #ccc;
-            --input-background-light: #eee;
-            --input-text-light: #333;
-            --accent-color-light: #007bff;
-            --shadow-color-light: rgba(0, 0, 0, 0.1);
-            --button-background-light: #007bff;
-            --button-text-light: #fff;
-
-            --background-color-dark: #1a2b3c;
-            --text-color-dark: #ffffff;
-            --container-background-dark: #2a3b4c;
-            --border-color-dark: #0a192f;
-            --input-background-dark: #0a192f;
-            --input-text-dark: #e6f1ff;
-            --accent-color-dark: #64ffda;
-            --shadow-color-dark: rgba(0, 0, 0, 0.5);
-            --button-background-dark: #64ffda;
-            --button-text-dark: #0a192f;
-
-            /* Typography */
-            --font-en: 'Poppins', sans-serif;
-            --font-ar: 'Tajawal', sans-serif;
-        }
-
-        body {
-            font-family: var(--font-en);
-            background-color: var(--background-color-light);
-            color: var(--text-color-light);
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
+        .choice-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 31, 63, 0.95);
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
         }
 
-        body.dark-mode {
-            background-color: var(--background-color-dark);
-            color: var(--text-color-dark);
+        .choice-container {
+            text-align: center;
+            padding: 2rem;
         }
 
-        body[dir="rtl"] {
+        .choice-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .choice-title {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
             font-family: var(--font-ar);
         }
 
-        .payment-container {
-            background-color: var(--container-background-light);
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 0 20px var(--shadow-color-light);
+        .choice-buttons {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        body.dark-mode .payment-container {
-            background-color: var(--container-background-dark);
-            box-shadow: 0 0 20px var(--shadow-color-dark);
-        }
-
-        .logo {
-            display: flex;
+            gap: 2rem;
             justify-content: center;
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
         }
 
-        .logo img {
-            max-width: 80px;
-            height: auto;
-        }
-
-        h2 {
-            text-align: center;
-            color: var(--accent-color-light);
-            margin-bottom: 20px;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode h2 {
-            color: var(--accent-color-dark);
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: var(--text-color-light);
-            position: relative;
-            padding-left: 30px;
-            line-height: 1.5;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .form-group label {
-            color: var(--text-color-dark);
-        }
-
-        .form-group label i {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--accent-color-light);
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .form-group label i {
-            color: var(--accent-color-dark);
-        }
-
-        [dir="rtl"] .form-group label {
-            padding-left: 0;
-            padding-right: 30px;
-        }
-
-        [dir="rtl"] .form-group label i {
-            left: auto;
-            right: 0;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="tel"],
-        .form-group input[type="email"],
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            padding-left: 10px;
-            /* Reset LTR padding */
-            padding-right: 10px;
-            /* Reset RTL padding */
-            border: 1px solid var(--border-color-light);
-            border-radius: 5px;
-            background-color: var(--input-background-light);
-            color: var(--input-text-light);
-            font-size: 1em;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-        }
-
-        body.dark-mode .form-group input[type="text"],
-        body.dark-mode .form-group input[type="tel"],
-        body.dark-mode .form-group input[type="email"],
-        body.dark-mode .form-group textarea,
-        body.dark-mode .form-group select {
-            border: 1px solid var(--border-color-dark);
-            background-color: var(--input-background-dark);
-            color: var(--input-text-dark);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .product-summary {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color-light);
-            transition: border-color 0.3s ease;
-        }
-
-        body.dark-mode .product-summary {
-            border-bottom: 1px solid var(--border-color-dark);
-        }
-
-        .product-summary img {
-            max-width: 80px;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .product-details {
-            flex-grow: 1;
-        }
-
-        .product-details h3 {
-            margin: 0 0 5px 0;
-            color: var(--text-color-light);
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .product-details h3 {
-            color: var(--text-color-dark);
-        }
-
-        .product-details p {
-            margin: 0;
-            font-size: 0.9em;
-            color: #666;
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .product-details p {
-            color: #aaa;
-        }
-
-        [dir="rtl"] .product-summary {
-            flex-direction: row-reverse;
-        }
-
-        [dir="rtl"] .product-details h3,
-        [dir="rtl"] .product-details p {
-            text-align: right;
-        }
-
-        .payment-methods {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color-light);
-            transition: border-color 0.3s ease;
-        }
-
-        body.dark-mode .payment-methods {
-            border-top: 1px solid var(--border-color-dark);
-        }
-
-        .payment-methods h3 {
-            margin-bottom: 15px;
-            color: var(--text-color-light);
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .payment-methods h3 {
-            color: var(--text-color-dark);
-        }
-
-        .payment-method {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            margin-bottom: 10px;
-            border: 2px solid var(--border-color-light);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-color: var(--input-background-light);
-        }
-
-        body.dark-mode .payment-method {
-            border-color: var(--border-color-dark);
-            background-color: var(--input-background-dark);
-        }
-
-        .payment-method:hover {
-            border-color: var(--accent-color-light);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        body.dark-mode .payment-method:hover {
-            border-color: var(--accent-color-dark);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .payment-method.selected {
-            border-color: var(--accent-color-light);
-            background-color: rgba(0, 123, 255, 0.1);
-        }
-
-        body.dark-mode .payment-method.selected {
-            border-color: var(--accent-color-dark);
-            background-color: rgba(100, 255, 218, 0.1);
-        }
-
-        .payment-method .payment-icon {
-            width: 60px;
-            height: 40px;
-            object-fit: contain;
-            margin-right: 15px;
-            border-radius: 4px;
-        }
-
-        [dir="rtl"] .payment-method .payment-icon {
-            margin-right: 0;
-            margin-left: 15px;
-        }
-
-        .payment-method span {
-            font-weight: 500;
-            color: var(--text-color-light);
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .payment-method span {
-            color: var(--text-color-dark);
-        }
-
-        .payment-method .en,
-        .payment-method .ar {
-            display: none;
-        }
-
-        [lang="en"] .payment-method .en,
-        [lang="ar"] .payment-method .ar {
-            display: inline;
-        }
-
-        .total-cost {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color-light);
-            padding: 15px;
-            border-radius: 8px;
-            background-color: rgba(0, 123, 255, 0.05);
-            /* Subtle background */
-            font-size: 1.2em;
-            font-weight: bold;
-            color: var(--accent-color-light);
-            text-align: right;
-            transition: border-color 0.3s ease, color 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            /* Space between cost items */
-        }
-
-        body.dark-mode .total-cost {
-            border-top: 1px solid var(--border-color-dark);
-            color: var(--accent-color-dark);
-            background-color: rgba(100, 255, 218, 0.05);
-            /* Subtle background in dark mode */
-        }
-
-        [dir="rtl"] .total-cost {
-            text-align: left;
-        }
-
-        .total-cost .cost-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.9em;
-            /* Smaller font for individual items */
-            font-weight: normal;
-            /* Reset font-weight from parent */
-            padding-bottom: 5px;
-            /* Space below each item */
-            border-bottom: 1px dashed rgba(0, 123, 255, 0.1);
-            /* Subtle separator */
-        }
-
-        body.dark-mode .total-cost .cost-item {
-            border-bottom: 1px dashed rgba(100, 255, 218, 0.1);
-            /* Subtle separator in dark mode */
-        }
-
-        .total-cost .cost-item:last-child {
-            border-bottom: none;
-            /* No border on the last item before total */
-            padding-bottom: 0;
-        }
-
-        .total-cost .cost-label {
-            color: var(--text-color-light);
-            /* Label color */
-        }
-
-        body.dark-mode .total-cost .cost-label {
-            color: var(--text-color-dark);
-            /* Label color in dark mode */
-        }
-
-        .total-cost .cost-value {
-            color: var(--text-color-light);
-            /* Value color */
-            font-weight: bold;
-        }
-
-        body.dark-mode .total-cost .cost-value {
-            color: var(--text-color-dark);
-            /* Value color in dark mode */
-        }
-
-        .total-cost .cost-total {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.3em;
-            /* Larger font for total */
-            font-weight: bold;
-            margin-top: 10px;
-            /* Space above total */
-            padding-top: 10px;
-            /* Padding above total */
-            border-top: 2px solid var(--accent-color-light);
-            /* Thicker border above total */
-        }
-
-        body.dark-mode .total-cost .cost-total {
-            border-top: 2px solid var(--accent-color-dark);
-            /* Thicker border above total in dark mode */
-        }
-
-        .total-cost .total-label {
-            color: var(--accent-color-light);
-            /* Accent color for total label */
-        }
-
-        body.dark-mode .total-cost .total-label {
-            color: var(--accent-color-dark);
-            /* Accent color for total label in dark mode */
-        }
-
-        .total-cost .total-amount {
-            color: var(--accent-color-light);
-            /* Accent color for total amount */
-        }
-
-        body.dark-mode .total-cost .total-amount {
-            color: var(--accent-color-dark);
-            /* Accent color for total amount in dark mode */
-        }
-
-        [dir="rtl"] .total-cost .cost-item,
-        [dir="rtl"] .total-cost .cost-total {
-            flex-direction: row-reverse;
-            /* Reverse order for RTL */
-        }
-
-        [dir="rtl"] .total-cost .cost-label,
-        [dir="rtl"] .total-cost .cost-value,
-        [dir="rtl"] .total-cost .total-label,
-        [dir="rtl"] .total-cost .total-amount {
-            text-align: unset;
-            /* Prevent text-align from interfering with flex layout */
-        }
-
-        .pay-button {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 5px;
-            background-color: var(--button-background-light);
-            color: var(--button-text-light);
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            margin-top: 20px;
-        }
-
-        body.dark-mode .pay-button {
-            background-color: var(--button-background-dark);
-            color: var(--button-text-dark);
-        }
-
-        .pay-button:hover {
-            opacity: 0.9;
-        }
-
-        .language-toggle,
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            background-color: var(--container-background-light);
-            color: var(--text-color-light);
-            border: 1px solid var(--border-color-light);
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-            z-index: 10;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-
-        body.dark-mode .language-toggle,
-        body.dark-mode .theme-toggle {
-            background-color: var(--container-background-dark);
-            color: var(--text-color-dark);
-            border: 1px solid var(--border-color-dark);
-        }
-
-        .language-toggle {
-            right: 20px;
-        }
-
-        .theme-toggle {
-            right: 100px;
-            /* Adjust position relative to language toggle */
-        }
-
-        [dir="rtl"] .language-toggle {
-            right: auto;
-            left: 20px;
-        }
-
-        [dir="rtl"] .theme-toggle {
-            right: auto;
-            left: 100px;
-            /* Adjust position for RTL */
-        }
-
-        /* Language specific classes */
-        .en,
-        .ar {
-            display: none;
-        }
-
-        html[lang="en"] .en {
-            display: inline;
-        }
-
-        html[lang="ar"] .ar {
-            display: inline;
-        }
-
-        /* Success Message */
-        .success-message {
-            display: none;
-            /* Hidden by default */
-            text-align: center;
-            padding: 30px;
-            border-radius: 10px;
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            margin-top: 20px;
-        }
-
-        body.dark-mode .success-message {
-            background-color: #1a3632;
-            color: #64ffda;
-            border-color: #3a5a52;
-        }
-
-        .success-message h2 {
-            color: #155724;
-            margin-top: 0;
-        }
-
-        body.dark-mode .success-message h2 {
-            color: #64ffda;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .payment-container {
-                padding: 20px;
-            }
-
-            body {
-                padding: 10px;
-            }
-
-            .language-toggle,
-            .theme-toggle {
-                top: 10px;
-                padding: 6px 10px;
-            }
-
-            .language-toggle {
-                right: 10px;
-            }
-
-            .theme-toggle {
-                right: 80px;
-            }
-
-            [dir="rtl"] .language-toggle {
-                left: 10px;
-                right: auto;
-            }
-
-            [dir="rtl"] .theme-toggle {
-                left: 80px;
-                right: auto;
-            }
-        }
-
-        .payment-page .payment-method .payment-icon {
-            width: 40px;
-            height: 25px;
-            object-fit: contain;
-            margin-right: 10px;
-        }
-
-        .shipping-companies {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color-light);
-            transition: border-color 0.3s ease;
-        }
-
-        body.dark-mode .shipping-companies {
-            border-top: 1px solid var(--border-color-dark);
-        }
-
-        .shipping-companies h3 {
-            margin-bottom: 15px;
-            color: var(--text-color-light);
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .shipping-companies h3 {
-            color: var(--text-color-dark);
-        }
-
-        .shipping-company {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            margin-bottom: 10px;
-            border: 2px solid var(--border-color-light);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-color: var(--input-background-light);
-        }
-
-        body.dark-mode .shipping-company {
-            border-color: var(--border-color-dark);
-            background-color: var(--input-background-dark);
-        }
-
-        .shipping-company:hover {
-            border-color: var(--accent-color-light);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        body.dark-mode .shipping-company:hover {
-            border-color: var(--accent-color-dark);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .shipping-company.selected {
-            border-color: var(--accent-color-light);
-            background-color: rgba(0, 123, 255, 0.1);
-        }
-
-        body.dark-mode .shipping-company.selected {
-            border-color: var(--accent-color-dark);
-            background-color: rgba(100, 255, 218, 0.1);
-        }
-
-        .shipping-company .shipping-icon {
-            width: 60px;
-            height: 40px;
-            object-fit: contain;
-            margin-right: 15px;
-            border-radius: 4px;
-        }
-
-        .shipping-company span {
-            font-weight: 500;
-            color: var(--text-color-light);
-            transition: color 0.3s ease;
-        }
-
-        body.dark-mode .shipping-company span {
-            color: var(--text-color-dark);
-        }
-
-        .shipping-company .en,
-        .shipping-company .ar {
-            display: none;
-        }
-
-        [lang="en"] .shipping-company .en,
-        [lang="ar"] .shipping-company .ar {
-            display: inline;
-        }
-
-        .quantity-selector {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color-light);
-            transition: border-color 0.3s ease;
-        }
-
-        body.dark-mode .quantity-selector {
-            border-top: 1px solid var(--border-color-dark);
-        }
-
-        .quantity-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .quantity-selector h3 {
-            margin-bottom: 0;
-            color: var(--text-color-light);
-            transition: color 0.3s ease;
-            white-space: nowrap;
-        }
-
-        body.dark-mode .quantity-selector h3 {
-            color: var(--text-color-dark);
-        }
-
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .quantity-btn {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--border-color-light);
-            border-radius: 8px;
-            background-color: var(--input-background-light);
-            color: var(--text-color-light);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-        }
-
-        body.dark-mode .quantity-btn {
-            border-color: var(--border-color-dark);
-            background-color: var(--input-background-dark);
-            color: var(--text-color-dark);
-        }
-
-        .quantity-btn:hover {
-            border-color: var(--accent-color-light);
-            background-color: var(--accent-color-light);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        body.dark-mode .quantity-btn:hover {
-            border-color: var(--accent-color-dark);
-            background-color: var(--accent-color-dark);
-            color: var(--dark-background);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .quantity-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .quantity-btn:disabled:hover {
-            border-color: var(--border-color-light);
-            background-color: var(--input-background-light);
-            color: var(--text-color-light);
-        }
-
-        body.dark-mode .quantity-btn:disabled {
-            border-color: var(--border-color-dark);
-            background-color: var(--input-background-dark);
-            color: var(--text-color-dark);
-        }
-
-        #quantity {
-            width: 80px;
-            height: 40px;
-            text-align: center;
-            border: 2px solid var(--border-color-light);
-            border-radius: 8px;
-            background-color: var(--input-background-light);
-            color: var(--text-color-light);
-            font-size: 18px;
-            font-weight: 600;
-            cursor: default;
-        }
-
-        body.dark-mode #quantity {
-            border-color: var(--border-color-dark);
-            background-color: var(--input-background-dark);
-            color: var(--text-color-dark);
-        }
-
-        #quantity:focus {
-            outline: none;
-            border-color: var(--accent-color-light);
-        }
-
-        body.dark-mode #quantity:focus {
-            border-color: var(--accent-color-dark);
-        }
-
-        .back-button {
-            margin-top: 10px;
+        .choice-button {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: 2px solid white;
             background: transparent;
-            color: var(--accent-color-light);
-            border: 2px solid var(--accent-color-light);
-            padding: 10px 24px;
-            border-radius: 5px;
-            font-size: 1em;
-            font-weight: bold;
+            color: white;
             cursor: pointer;
-            transition: background 0.3s, color 0.3s;
-            display: block;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            min-width: 200px;
         }
 
-        body.dark-mode .back-button {
-            color: var(--accent-color-dark);
-            border-color: var(--accent-color-dark);
+        .choice-button:hover {
+            background: white;
+            color: #001F3F;
+        }
+
+        .choice-button i {
+            margin-right: 0.5rem;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .language-button {
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        .language-button:hover {
+            background: white;
+            color: #001F3F;
+        }
+
+        .language-button.active {
+            background: white;
+            color: #001F3F;
+        }
+
+        .hidden {
+            display: none !important;
         }
     </style>
 </head>
 
-<body class="light-mode">
-
-    <div class="payment-container">
-        <div class="logo">
-            <img src="images/logo.png" alt="Rafad Project Logo">
-        </div>
-        <h2>
-            <span class="en">Payment Information</span>
-            <span class="ar">معلومات الدفع</span>
-        </h2>
-
-        <div class="product-summary">
-            <img src="images/rifad with belt.png" alt="Rafad Package's">
-            <div class="product-details">
-                <h3 data-product-name></h3>
-                <p data-product-description>
-                    <span class="en">Complete package including cooling Ihram with a convenient belt for secure wearing.</span>
-                    <span class="ar">حزمة كاملة تشمل إحرام مبرد مع حزام مريح للارتداء الآمن.</span>
-                </p>
+<body class="light-mode"> <!-- Choice Selection Screen -->
+    <div class="choice-overlay" id="choiceOverlay">
+        <div class="choice-container">
+            <img src="images/logo.png" alt="Rafad Project Logo" class="choice-logo">
+            <h1 class="choice-title">
+                <span class="en">Welcome to Rafad Project</span>
+                <span class="ar">مرحباً بك في مشروع رفاد</span>
+            </h1>
+            <div class="choice-buttons">
+                <button class="choice-button" onclick="selectChoice('individual')">
+                    <i class="fas fa-user"></i>
+                    <span class="en">Individual</span>
+                    <span class="ar">أفراد</span>
+                </button>
+                <button class="choice-button" onclick="selectChoice('business')">
+                    <i class="fas fa-building"></i>
+                    <span class="en">Business</span>
+                    <span class="ar">أعمال</span>
+                </button>
+            </div>
+            <div class="language-buttons">
+                <button class="language-button active" onclick="changeLanguage('en')">
+                    <i class="fas fa-globe"></i> English
+                </button>
+                <button class="language-button" onclick="changeLanguage('ar')">
+                    <i class="fas fa-globe"></i> العربية
+                </button>
             </div>
         </div>
-
-        <form id="paymentForm" novalidate>
-            <div class="form-group">
-                <label for="name"><i class="fas fa-user"></i> <span class="en">Full Name</span><span class="ar">الاسم
-                        الكامل</span>:</label>
-                <input type="text" id="name" required>
-            </div>
-            <div class="form-group">
-                <label for="phone"><i class="fas fa-phone"></i> <span class="en">Phone Number</span><span class="ar">رقم
-                        الهاتف</span>:</label>
-                <input type="tel" id="phone" required pattern="[0-9]{10,}">
-            </div>
-            <div class="form-group">
-                <label for="email"><i class="fas fa-envelope"></i> <span class="en">Email Address</span><span
-                        class="ar">عنوان البريد الإلكتروني</span>:</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="address"><i class="fas fa-map-marker-alt"></i> <span class="en">Address</span><span
-                        class="ar">العنوان</span>:</label>
-                <textarea id="address" required></textarea>
-            </div>
-
-            <div class="shipping-companies">
-                <h3><span class="en">Select Shipping Company</span><span class="ar">اختر شركة الشحن</span></h3>
-                <div class="shipping-company" data-company="smsa">
-                    <img src="images/smsa.jpg" alt="SMSA" class="shipping-icon">
-                    <span class="en">SMSA</span><span class="ar">سمسا</span>
-                </div>
-                <div class="shipping-company" data-company="aramex">
-                    <img src="images/aramex.png" alt="Aramex" class="shipping-icon">
-                    <span class="en">Aramex</span><span class="ar">أرامكس</span>
-                </div>
-            </div>
-
-            <div class="payment-methods">
-                <h3><span class="en">Select Payment Method</span><span class="ar">اختر طريقة الدفع</span></h3>
-                <div class="payment-method" data-method="visa">
-                    <img src="images/visa.png" alt="Visa" class="payment-icon">
-                    <span class="en">Visa</span><span class="ar">فيزا</span>
-                </div>
-                <div class="payment-method" data-method="mastercard">
-                    <img src="images/mastercard.png" alt="MasterCard" class="payment-icon">
-                    <span class="en">MasterCard</span><span class="ar">ماستركارد</span>
-                </div>
-                <div class="payment-method" data-method="mada">
-                    <img src="images/mada.png" alt="Mada" class="payment-icon">
-                    <span class="en">Mada</span><span class="ar">مدى</span>
-                </div>
-                <!-- Add more payment methods as needed -->
-            </div>
-
-            <div class="quantity-selector">
-                <div class="quantity-header">
-                    <h3><span class="en">Quantity</span><span class="ar">الكمية</span></h3>
-                    <div class="quantity-controls">
-                        <button type="button" class="quantity-btn minus" onclick="changeQuantity(-1)">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="number" id="quantity" value="1" min="1" max="10" readonly>
-                        <button type="button" class="quantity-btn plus" onclick="changeQuantity(1)">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                    </div>
-                </div>
-                <div id="business-min-note" style="display:none; color:#e67e22; font-size:0.95em; margin-top:8px;">
-                    <span class="en">Minimum quantity for business orders is 100.</span>
-                    <span class="ar">الحد الأدنى للكمية لطلبات الأعمال هو 100.</span>
-                </div>
-            </div>
-
-            <div class="total-cost">
-                <span class="total-label"><span class="en">Total Cost</span><span class="ar">التكلفة
-                        الإجمالية</span></span>: <span id="totalAmount"></span>
-            </div>
-
-            <button type="submit" class="pay-button" aria-label="Proceed to Payment">
-                <span class="en">Proceed to Payment</span>
-                <span class="ar">المتابعة للدفع</span>
-            </button>
-        </form>
-
-        <button type="button" class="back-button" onclick="history.back()">
-            <span class="en">&#8592; Back</span>
-            <span class="ar">&#8592; رجوع</span>
-        </button>
-
-        <div id="successMessage" class="success-message">
-            <h2 class="success-title"><span class="en">Payment Successful!</span><span class="ar">تم الدفع بنجاح!</span>
-            </h2>
-            <p><span class="en">Thank you for your purchase. Your order has been placed.</span><span class="ar">شكراً لك
-                    على مشترياتك. تم تقديم طلبك بنجاح.</span></p>
-        </div>
-
     </div>
 
-    <button class="language-toggle" id="language-toggle" aria-label="Toggle language">
-        <span class="en">العربية</span>
-        <span class="ar">English</span>
-    </button>
+    <!-- Loading Screen -->
+    <div class="loading">
+        <div class="loading-spinner"></div>
+        <div class="loading-text en">Loading Rafad Project</div>
+        <div class="loading-text ar">جاري تحميل مشروع رفاد</div>
+    </div>
 
-    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <span class="light-icon">☀️</span>
-        <span class="dark-icon">🌙</span>
-    </button>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
 
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png" alt="Rafad Project Logo" loading="lazy">
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="active en">Home</a>
+                <a href="#home" class="active ar">الرئيسية</a>
+                <a href="#product" class="en">Product</a>
+                <a href="#product" class="ar">المنتج</a>
+                <a href="#vision" class="en">Vision</a>
+                <a href="#vision" class="ar">الرؤية</a>
+                <a href="#mission" class="en">Mission</a>
+                <a href="#mission" class="ar">المهمة</a>
+                <a href="#goals" class="en">Goals</a>
+                <a href="#goals" class="ar">الأهداف</a>
+                <a href="#values" class="en">Values</a>
+                <a href="#values" class="ar">القيم</a>
+                <a href="#audience" class="en">Audience</a>
+                <a href="#audience" class="ar">الجمهور</a>
+                <a href="#contact" class="en">Contact</a>
+                <a href="#contact" class="ar">اتصل بنا</a>
+            </div>
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+                    <span class="svg-toggle">
+                        <svg class="theme-icon" width="32" height="32" viewBox="0 0 32 32" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle class="sun" cx="16" cy="16" r="10" fill="#FDB813" />
+                            <circle class="moon" cx="20" cy="16" r="10" fill="#f4f4f4" />
+                            <circle class="moon-cut" cx="23" cy="13" r="8" fill="#f8fafc" />
+                            <g class="moon-craters">
+                                <circle class="crater" cx="18" cy="13" r="1.2" fill="#888" fill-opacity="0.18" />
+                                <circle class="crater" cx="21" cy="18" r="0.8" fill="#888" fill-opacity="0.13" />
+                                <circle class="crater" cx="15" cy="19" r="0.7" fill="#888" fill-opacity="0.10" />
+                                <circle class="crater" cx="23" cy="15" r="0.5" fill="#888" fill-opacity="0.15" />
+                            </g>
+                            <g class="sun-rays">
+                                <line x1="16" y1="2" x2="16" y2="7" stroke="#FDB813" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="16" y1="25" x2="16" y2="30" stroke="#FDB813" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="2" y1="16" x2="7" y2="16" stroke="#FDB813" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="25" y1="16" x2="30" y2="16" stroke="#FDB813" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="7.8" y1="7.8" x2="11.2" y2="11.2" stroke="#FDB813" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="20.8" y1="20.8" x2="24.2" y2="24.2" stroke="#FDB813" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="7.8" y1="24.2" x2="11.2" y2="20.8" stroke="#FDB813" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <line x1="20.8" y1="11.2" x2="24.2" y2="7.8" stroke="#FDB813" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </g>
+                        </svg>
+                    </span>
+                </button>
+                <button id="language-toggle" class="language-toggle" aria-label="Toggle language">
+                    <span class="en">عربي</span>
+                    <span class="ar">English</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- English Content -->
+        <div class="content-container en">
+            <section id="hero" class="hero">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Rafad Project</h1>
+                        <p>Pioneering innovation in Hajj and Umrah experience through smart cooling Ihram technology</p>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-temperature-low"></i>
+                            <h3>Up to 10°C Cooler</h3>
+                            <p>Temperature reduction</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>24/7 Comfort</h3>
+                            <p>Continuous cooling</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-leaf"></i>
+                            <h3>Eco-Friendly</h3>
+                            <p>Sustainable materials</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-scroll-indicator">
+                    <span class="scroll-text">Scroll to explore</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </section>
+
+            <section id="product" class="product">
+                <div class="section-header">
+                    <h2 class="gradient-text">Smart Cooling Ihram</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-showcase">
+                    <div class="product-image-container glass-card">
+                        <div class="product-image">
+                            <img src="images/ihram-product.webp" alt="Smart Cooling Ihram" loading="lazy">
+                            <div class="product-overlay">
+                                <button class="zoom-button" aria-label="Zoom Image">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-features">
+                        <div class="feature-card glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-snowflake"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Advanced Cooling Technology</h3>
+                                <div class="card-divider"></div>
+                                <p>Patented cooling material that maintains optimal temperature</p>
+                            </div>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Safety & Comfort</h3>
+                                <div class="card-divider"></div>
+                                <p>Hypoallergenic and skin-friendly materials</p>
+                            </div>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Sustainable Design</h3>
+                                <div class="card-divider"></div>
+                                <p>Eco-friendly materials and manufacturing process</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="vision-mission" class="vision-mission">
+                <div class="section-header">
+                    <h2 class="gradient-text">
+                        <span class="en">Our Vision & Mission</span>
+                        <span class="ar">رؤيتنا ومهمتنا</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="vision-mission-grid">
+                    <!-- Vision Content -->
+                    <div class="vision-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye vision-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Our Vision</span>
+                                <span class="ar">رؤيتنا</span>
+                            </h3>
+                            <div class="card-divider"></div>
+                            <p>
+                                <span class="en">To be the first choice in providing cooling Ihram clothing for Hajj and
+                                    Umrah pilgrims with quality that elevates our customers.</span>
+                                <span class="ar">أن نكون الخيار الأول في توفير لباس إحرام مبرد للحجاج والمعتمرين بجودة
+                                    نرتقي بعملائنا.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Mission Content -->
+                    <div class="mission-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye mission-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Our Mission</span>
+                                <span class="ar">مهمتنا</span>
+                            </h3>
+                            <div class="card-divider"></div>
+                            <p>
+                                <span class="en">Empowering the Guests of Allah to perform their rituals by providing a
+                                    cooling Ihram that meets their needs within high and innovative religious and
+                                    technical standards that ensure their comfort and health.</span>
+                                <span class="ar">تمكين ضيوف الرحمن من أداء مناسكهم بتوفير إحرام مبرد يواكب احتياجاتهم
+                                    ضمن معايير شرعية وتقنية عالية ومبتكرة تضمن لهم الراحة والصحة.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="goals" class="goals">
+                <div class="section-header">
+                    <h2 class="gradient-text">
+                        <span class="en">Our Goals</span>
+                        <span class="ar">الأهداف</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="goals-grid">
+                    <div class="goal-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Pilgrim Experience</span>
+                                <span class="ar">تجربة الحجاج</span>
+                            </h3>
+                            <div class="card-divider"></div>
+                            <p>
+                                <span class="en">Improve the experience of the Guests of Allah when performing Hajj and
+                                    Umrah rituals.</span>
+                                <span class="ar">تحسين تجربة ضيوف الرحمن عند أداء مناسك الحج والعمرة.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="goal-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Excellence & Quality</span>
+                                <span class="ar">التميز والجودة</span>
+                            </h3>
+                            <div class="card-divider"></div>
+                            <p>
+                                <span class="en">Achieve excellence in manufacturing and distribution while adhering to
+                                    the highest standards of quality and sustainability.</span>
+                                <span class="ar">تحقيق التميز في التصنيع والتوزيع مع الإلتزام بأعلى معايير الجودة
+                                    والاستدامة.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="values" class="values">
+                <div class="section-header">
+                    <h2 class="gradient-text">
+                        <span class="en">Our Values</span>
+                        <span class="ar">قيمنا</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Excellence</span>
+                                <span class="ar">التميز</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Credibility</span>
+                                <span class="ar">المصداقية</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Safety</span>
+                                <span class="ar">السلامة</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Sustainability</span>
+                                <span class="ar">الاستدامة</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Social Responsibility</span>
+                                <span class="ar">المسؤولية الاجتماعية</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Comfort</span>
+                                <span class="ar">الراحة</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Religious Compliance</span>
+                                <span class="ar">الامتثال الشرعي</span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="audience" class="audience">
+                <div class="section-header">
+                    <h2 class="gradient-text">Target Audience</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="audience-grid">
+                    <div class="audience-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Pilgrims & Umrah Performers</h3>
+                            <div class="card-divider"></div>
+                            <p>Primary group in need of comfort during rituals in hot weather.</p>
+                        </div>
+                    </div>
+                    <div class="audience-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Hajj & Umrah Companies</h3>
+                            <div class="card-divider"></div>
+                            <p>Campaign operators that may collaborate to provide these products to their pilgrims.</p>
+                        </div>
+                    </div>
+                    <div class="audience-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Government & Organizations</h3>
+                            <div class="card-divider"></div>
+                            <p>Entities that may adopt the project for large-scale distribution.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="buy" class="buy">
+                <div class="section-header">
+                    <h2 class="gradient-text">Choose Your Product</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card glass-card" onclick="window.location.href='payment.html?type=package'">
+                        <div class="product-image">
+                            <img src="images/rifad with belt.png" alt="Rafad Package's" loading="lazy">
+                        </div>
+                        <div class="product-details">
+                            <h3>Rafad Package's</h3>
+                            <div class="card-divider"></div>
+                            <p>Complete package including cooling Ihram with a convenient belt for secure wearing.</p>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> Cooling Ihram</li>
+                                <li><i class="fas fa-check"></i> Included belt</li>
+                                <li><i class="fas fa-check"></i> Secure fit</li>
+                            </ul>
+                            <div class="price">100 SAR</div>
+                            <button class="buy-button">Buy Now</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card glass-card" onclick="window.location.href='payment.html?type=vest'">
+                        <div class="product-image">
+                            <img src="images/vest.png" alt="Rafad Cooling Vest" loading="lazy">
+                        </div>
+                        <div class="product-details">
+                            <h3>Rafad Cooling Vest</h3>
+                            <div class="card-divider"></div>
+                            <p>Smart cooling solution for operational teams and workers in hot environments.</p>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> PCM cooling technology for hours of comfort</li>
+                                <li><i class="fas fa-check"></i> Ideal for security, medical & operational teams</li>
+                                <li><i class="fas fa-check"></i> Reusable, skin-safe & antibacterial</li>
+                            </ul>
+                            <div class="price">
+                                <span class="individual-price">60 SAR</span>
+                                <span class="business-price" style="display: none;">70 SAR</span>
+                            </div>
+                            <button class="buy-button">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="team" class="team">
+                <div class="section-header">
+                    <h2 class="gradient-text">
+                        <span class="en">Our Team</span>
+                        <span class="ar">فريقنا</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="team-grid">
+                    <!-- Team Member 1: Manar Saad Alshehri -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/girl.webp" alt="Manar Saad Alshehri" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Executive Director</span>
+                                <span class="ar">المدير التنفيذي</span>
+                            </h3>
+                            <p>
+                                <span class="en">Manar Saad Alshehri</span>
+                                <span class="ar">منار سعد الشهري</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2: Abdulaziz Mohammed Altanq -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/boy.png" alt="Abdulaziz Mohammed Altanq" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Financial Manager</span>
+                                <span class="ar">المدير المالي</span>
+                            </h3>
+                            <p>
+                                <span class="en">Abdulaziz Mohammed Altanq</span>
+                                <span class="ar">عبدالعزيز محمد التنق</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3: Abdulrahman Fahad Alghamdi -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/boy.png" alt="Abdulrahman Fahad Alghamdi" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Operations Manager</span>
+                                <span class="ar">مدير العمليات</span>
+                            </h3>
+                            <p>
+                                <span class="en">Abdulrahman Fahad Alghamdi</span>
+                                <span class="ar">عبدالرحمن فهد الغامدي</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 4: Abdullah Mohammed Alshabaan -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/boy.png" alt="Abdullah Mohammed Alshabaan" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Product Development Manager</span>
+                                <span class="ar">مدير تطوير المنتج</span>
+                            </h3>
+                            <p>
+                                <span class="en">Abdullah Mohammed Alshabaan</span>
+                                <span class="ar">عبدالله محمد الشبعان</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 5: Batool Mohammed Almannian -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/girl.webp" alt="Batool Mohammed Almannian" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Design Manager</span>
+                                <span class="ar">مدير التصميم</span>
+                            </h3>
+                            <p>
+                                <span class="en">Batool Mohammed Almannian</span>
+                                <span class="ar">بتول محمد المنيان</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 6: Abdulrahman Mohammed Alshehri -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/boy.png" alt="Abdulrahman Mohammed Alshehri" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Technology Manager</span>
+                                <span class="ar">مدير التقنية</span>
+                            </h3>
+                            <p>
+                                <span class="en">Abdulrahman Mohammed Alshehri</span>
+                                <span class="ar">عبدالرحمن محمد الشهري</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact section removed as per user request -->
+
+        </div>
+
+        <!-- Arabic Content -->
+        <div class="content-container ar" dir="rtl">
+            <section id="hero" class="hero">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>مشروع رفاد</h1>
+                        <p>ريادة الابتكار في تجربة الحج والعمرة من خلال تقنية الإحرام الذكي المبرد</p>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <i class="fas fa-temperature-low"></i>
+                            <h3>أبرد حتى 10 درجات</h3>
+                            <p>خفض درجة الحرارة</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-clock"></i>
+                            <h3>راحة على مدار الساعة</h3>
+                            <p>تبريد مستمر</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-leaf"></i>
+                            <h3>صديق للبيئة</h3>
+                            <p>مواد مستدامة</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-scroll-indicator">
+                    <span class="scroll-text">مرر لاكتشاف المزيد</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </section>
+
+            <section id="product" class="product">
+                <div class="section-header">
+                    <h2 class="gradient-text">الإحرام الذكي المبرد</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-showcase">
+                    <div class="product-image-container glass-card">
+                        <div class="product-image">
+                            <img src="images/ihram-product.webp" alt="الإحرام الذكي المبرد" loading="lazy">
+                            <div class="product-overlay">
+                                <button class="zoom-button" aria-label="تكبير الصورة">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-features">
+                        <div class="feature-card glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-snowflake"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>تقنية تبريد متقدمة</h3>
+                                <div class="card-divider"></div>
+                                <p>مادة تبريد حاصلة على براءة اختراع تحافظ على درجة الحرارة المثالية</p>
+                            </div>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>السلامة والراحة</h3>
+                                <div class="card-divider"></div>
+                                <p>مواد آمنة للبشرة وغير مسببة للحساسية</p>
+                            </div>
+                        </div>
+                        <div class="feature-card glass-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-recycle"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>تصميم مستدام</h3>
+                                <div class="card-divider"></div>
+                                <p>مواد وعمليات تصنيع صديقة للبيئة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="vision-mission" class="vision-mission">
+                <div class="section-header">
+                    <h2 class="gradient-text">
+                        <span class="en">Our Vision & Mission</span>
+                        <span class="ar">رؤيتنا ومهمتنا</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="vision-mission-grid">
+                    <!-- Vision Content -->
+                    <div class="vision-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye vision-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Our Vision</span>
+                                <span class="ar">رؤيتنا</span>
+                            </h3>
+                            <div class="card-divider"></div>
+                            <p>
+                                <span class="en">To be the first choice in providing cooling Ihram clothing for Hajj and
+                                    Umrah pilgrims with quality that elevates our customers.</span>
+                                <span class="ar">أن نكون الخيار الأول في توفير لباس إحرام مبرد للحجاج والمعتمرين بجودة
+                                    نرتقي بعملائنا.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Mission Content -->
+                    <div class="mission-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye mission-icon"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Our Mission</span>
+                                <span class="ar">مهمتنا</span>
+                            </h3>
+                            <div class="card-divider"></div>
+                            <p>
+                                <span class="en">Empowering the Guests of Allah to perform their rituals by providing a
+                                    cooling Ihram that meets their needs within high and innovative religious and
+                                    technical standards that ensure their comfort and health.</span>
+                                <span class="ar">تمكين ضيوف الرحمن من أداء مناسكهم بتوفير إحرام مبرد يواكب احتياجاتهم
+                                    ضمن معايير شرعية وتقنية عالية ومبتكرة تضمن لهم الراحة والصحة.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="goals" class="goals">
+                <div class="section-header">
+                    <h2 class="gradient-text">
+                        <span class="en">Our Goals</span>
+                        <span class="ar">الأهداف</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="goals-grid">
+                    <div class="goal-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Pilgrim Experience</span>
+                                <span class="ar">تجربة الحجاج</span>
+                            </h3>
+                            <div class="card-divider"></div>
+                            <p>
+                                <span class="en">Improve the experience of the Guests of Allah when performing Hajj and
+                                    Umrah rituals.</span>
+                                <span class="ar">تحسين تجربة ضيوف الرحمن عند أداء مناسك الحج والعمرة.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="goal-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Excellence & Quality</span>
+                                <span class="ar">التميز والجودة</span>
+                            </h3>
+                            <div class="card-divider"></div>
+                            <p>
+                                <span class="en">Achieve excellence in manufacturing and distribution while adhering to
+                                    the highest standards of quality and sustainability.</span>
+                                <span class="ar">تحقيق التميز في التصنيع والتوزيع مع الإلتزام بأعلى معايير الجودة
+                                    والاستدامة.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="values" class="values">
+                <div class="section-header">
+                    <h2 class="gradient-text">
+                        <span class="en">Our Values</span>
+                        <span class="ar">قيمنا</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Excellence</span>
+                                <span class="ar">التميز</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Credibility</span>
+                                <span class="ar">المصداقية</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Safety</span>
+                                <span class="ar">السلامة</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Sustainability</span>
+                                <span class="ar">الاستدامة</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Social Responsibility</span>
+                                <span class="ar">المسؤولية الاجتماعية</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Comfort</span>
+                                <span class="ar">الراحة</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="value-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>
+                                <span class="en">Religious Compliance</span>
+                                <span class="ar">الامتثال الشرعي</span>
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="audience" class="audience">
+                <div class="section-header">
+                    <h2 class="gradient-text">الجمهور المستهدف</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="audience-grid">
+                    <div class="audience-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>الحجاج والمعتمرين</h3>
+                            <div class="card-divider"></div>
+                            <p>المجموعة الرئيسية التي تحتاج إلى الراحة أثناء المناسك في الطقس الحار.</p>
+                        </div>
+                    </div>
+                    <div class="audience-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>شركات الحج والعمرة</h3>
+                            <div class="card-divider"></div>
+                            <p>مشغلي الحملات الذين قد يتعاونون لتوفير هذه المنتجات لحجاجهم.</p>
+                        </div>
+                    </div>
+                    <div class="audience-card glass-card">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>الحكومة والمنظمات</h3>
+                            <div class="card-divider"></div>
+                            <p>الجهات التي قد تتبنى المشروع للتوزيع على نطاق واسع.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="buy" class="buy">
+                <div class="section-header">
+                    <h2 class="gradient-text">اختر منتجك</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card glass-card" onclick="window.location.href='payment.html?type=package'">
+                        <div class="product-image">
+                            <img src="images/rifad with belt.png" alt="حزمة رفاد" loading="lazy">
+                        </div>
+                        <div class="product-details">
+                            <h3>حزمة رفاد</h3>
+                            <div class="card-divider"></div>
+                            <p>حزمة كاملة تشمل إحرام مبرد مع حزام مريح للارتداء الآمن.</p>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> إحرام مبرد</li>
+                                <li><i class="fas fa-check"></i> حزام مرفق</li>
+                                <li><i class="fas fa-check"></i> ملاءمة آمنة</li>
+                            </ul>
+                            <div class="price">100 ريال</div>
+                            <button class="buy-button">اشترِ الآن</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card glass-card" onclick="window.location.href='payment.html?type=vest'">
+                        <div class="product-image">
+                            <img src="images/vest.png" alt="سترة رفاد المبردة" loading="lazy">
+                        </div>
+                        <div class="product-details">
+                            <h3>سترة رفاد المبردة</h3>
+                            <div class="card-divider"></div>
+                            <p>حل تبريد ذكي للكوادر التشغيلية والعاملين في البيئات الحارة.</p>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> تقنية تبريد PCM لساعات من الراحة</li>
+                                <li><i class="fas fa-check"></i> مثالية لفرق الأمن والطواقم الصحية والتشغيلية</li>
+                                <li><i class="fas fa-check"></i> قابلة لإعادة الاستخدام وآمنة ومقاومة للبكتيريا</li>
+                            </ul>
+                            <div class="price">
+                                <span class="individual-price">60 ريال</span>
+                                <span class="business-price" style="display: none;">70 ريال</span>
+                            </div>
+                            <button class="buy-button">اشترِ الآن</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="team" class="team">
+                <div class="section-header">
+                    <h2 class="gradient-text">
+                        <span class="en">Our Team</span>
+                        <span class="ar">فريقنا</span>
+                    </h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="team-grid">
+                    <!-- Team Member 1: Manar Saad Alshehri -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/girl.webp" alt="Manar Saad Alshehri" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Executive Director</span>
+                                <span class="ar">المدير التنفيذي</span>
+                            </h3>
+                            <p>
+                                <span class="en">Manar Saad Alshehri</span>
+                                <span class="ar">منار سعد الشهري</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 2: Abdulaziz Mohammed Altanq -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/boy.png" alt="Abdulaziz Mohammed Altanq" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Financial Manager</span>
+                                <span class="ar">المدير المالي</span>
+                            </h3>
+                            <p>
+                                <span class="en">Abdulaziz Mohammed Altanq</span>
+                                <span class="ar">عبدالعزيز محمد التنق</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 3: Abdulrahman Fahad Alghamdi -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/boy.png" alt="Abdulrahman Fahad Alghamdi" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Operations Manager</span>
+                                <span class="ar">مدير العمليات</span>
+                            </h3>
+                            <p>
+                                <span class="en">Abdulrahman Fahad Alghamdi</span>
+                                <span class="ar">عبدالرحمن فهد الغامدي</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 4: Abdullah Mohammed Alshabaan -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/boy.png" alt="Abdullah Mohammed Alshabaan" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Product Development Manager</span>
+                                <span class="ar">مدير تطوير المنتج</span>
+                            </h3>
+                            <p>
+                                <span class="en">Abdullah Mohammed Alshabaan</span>
+                                <span class="ar">عبدالله محمد الشبعان</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 5: Batool Mohammed Almannian -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/girl.webp" alt="Batool Mohammed Almannian" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Design Manager</span>
+                                <span class="ar">مدير التصميم</span>
+                            </h3>
+                            <p>
+                                <span class="en">Batool Mohammed Almannian</span>
+                                <span class="ar">بتول محمد المنيان</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team Member 6: Abdulrahman Mohammed Alshehri -->
+                    <div class="team-member glass-card">
+                        <div class="team-image">
+                            <img src="images/boy.png" alt="Abdulrahman Mohammed Alshehri" loading="lazy">
+                        </div>
+                        <div class="team-details">
+                            <h3>
+                                <span class="en">Technology Manager</span>
+                                <span class="ar">مدير التقنية</span>
+                            </h3>
+                            <p>
+                                <span class="en">Abdulrahman Mohammed Alshehri</span>
+                                <span class="ar">عبدالرحمن محمد الشهري</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact section removed as per user request -->
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Rafad Project Logo" loading="lazy">
+            </div>
+            <a href="links.html" class="footer-links-button">
+                <span class="en">All Accounts</span>
+                <span class="ar">جميع الحسابات</span>
+            </a>
+        </div>
+        <blockquote class="footer-quote">
+            <span class="en">The comfort of the Guests of Allah is our honor, and innovation is our means.</span>
+            <span class="ar">راحة ضيوف الرحمن هي شرفنا، والابتكار هو وسيلتنا.</span>
+        </blockquote>
+        <div class="copyright">
+            <p>
+                <span class="en">&copy; Rafad Project</span>
+                <span class="ar">© مشروع رفاد</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="modal" id="video-modal">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close Modal">&times;</button>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/your-video-id" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
     <script>
-        // Embedded JavaScript
+        // Choice Selection
+        function selectChoice(type) {
+            // Store the choice in localStorage
+            localStorage.setItem('userType', type);
 
-        // Product prices and names based on type
-        const PRODUCT_INFO = {
-            package: {
-                name: { en: "Rafad Package's", ar: "حزمة رفاد" },
-                price: 100,
-                image: "images/rifad with belt.png",
-                description: {
-                    en: "Complete package including cooling Ihram with a convenient belt for secure wearing.",
-                    ar: "حزمة كاملة تشمل إحرام مبرد مع حزام مريح للارتداء الآمن."
-                }
-            },
-            vest: {
-                name: { en: "Rafad Cooling Vest", ar: "سترة رفاد المبردة" },
-                price: 60,
-                image: "images/vest.png",
-                description: {
-                    en: "Smart cooling solution for operational teams and workers in hot environments.",
-                    ar: "حل تبريد ذكي للكوادر التشغيلية والعاملين في البيئات الحارة."
-                }
-            }
-        };
+            // Update prices based on user type
+            updatePrices(type);
 
-        let selectedProductType = 'package'; // Default or determined from URL
+            // Hide the choice overlay
+            document.getElementById('choiceOverlay').classList.add('hidden');
 
-        // Function to get price based on user type
-        function getProductPrice(productType) {
-            const userType = localStorage.getItem('userType') || 'individual';
+            // Show the loading screen
+            document.querySelector('.loading').classList.remove('hidden');
+
+            // After a short delay, hide the loading screen
+            setTimeout(() => {
+                document.querySelector('.loading').classList.add('hidden');
+            }, 1000);
+        }
+
+        // Update prices based on user type
+        function updatePrices(userType) {
             const prices = {
                 individual: { package: 100, vest: 60 },
                 business: { package: 100, vest: 70 }
             };
-            return prices[userType][productType] || PRODUCT_INFO[productType].price;
+
+            const currentPrices = prices[userType] || prices.individual;
+
+            // English: update Package price
+            const enPackagePriceEl = document.querySelector('.content-container.en .product-card[onclick*="type=package"] .price');
+            if (enPackagePriceEl) {
+                enPackagePriceEl.textContent = `${currentPrices.package} SAR`;
+            }
+            // English: update Vest prices and toggle visibility
+            const enVestPriceContainer = document.querySelector('.content-container.en .product-card[onclick*="type=vest"] .price');
+            if (enVestPriceContainer) {
+                const enVestIndividual = enVestPriceContainer.querySelector('.individual-price');
+                const enVestBusiness = enVestPriceContainer.querySelector('.business-price');
+                if (enVestIndividual) enVestIndividual.textContent = `${prices.individual.vest} SAR`;
+                if (enVestBusiness) enVestBusiness.textContent = `${prices.business.vest} SAR`;
+                if (enVestIndividual && enVestBusiness) {
+                    if (userType === 'business') {
+                        enVestIndividual.style.display = 'none';
+                        enVestBusiness.style.display = '';
+                    } else {
+                        enVestIndividual.style.display = '';
+                        enVestBusiness.style.display = 'none';
+                    }
+                }
+            }
+
+            // Arabic: update Package price
+            const arPackagePriceEl = document.querySelector('.content-container.ar .product-card[onclick*="type=package"] .price');
+            if (arPackagePriceEl) {
+                arPackagePriceEl.textContent = `${currentPrices.package} ريال`;
+            }
+            // Arabic: update Vest prices and toggle visibility
+            const arVestPriceContainer = document.querySelector('.content-container.ar .product-card[onclick*="type=vest"] .price');
+            if (arVestPriceContainer) {
+                const arVestIndividual = arVestPriceContainer.querySelector('.individual-price');
+                const arVestBusiness = arVestPriceContainer.querySelector('.business-price');
+                if (arVestIndividual) arVestIndividual.textContent = `${prices.individual.vest} ريال`;
+                if (arVestBusiness) arVestBusiness.textContent = `${prices.business.vest} ريال`;
+                if (arVestIndividual && arVestBusiness) {
+                    if (userType === 'business') {
+                        arVestIndividual.style.display = 'none';
+                        arVestBusiness.style.display = '';
+                    } else {
+                        arVestIndividual.style.display = '';
+                        arVestBusiness.style.display = 'none';
+                    }
+                }
+            }
         }
 
-        // Localized cost labels
-        const COST_LABELS = {
-            price: { en: "Price", ar: "السعر" },
-            shipping: { en: "Shipping", ar: "الشحن" },
-            vat: { en: "VAT", ar: "ضريبة القيمة المضافة" },
-            total: { en: "Total", ar: "الإجمالي" }
-        };
+        // Language Change in Choice Screen
+        function changeLanguage(lang) {
+            const htmlElement = document.documentElement;
+            const languageButtons = document.querySelectorAll('.language-button');
 
-        // Function to update text content based on current language
-        function updateTextContent() {
-            const lang = document.documentElement.lang;
+            // Update HTML lang and dir attributes
+            htmlElement.setAttribute('lang', lang);
+            htmlElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
 
-            // Toggle visibility of language-specific spans
-            document.querySelectorAll('.en, .ar').forEach(el => {
-                if (el.classList.contains(lang)) {
-                    el.style.display = ''; // Or 'inline', 'block', etc.
+            // Update active state of language buttons
+            languageButtons.forEach(button => {
+                button.classList.remove('active');
+                if (button.textContent.includes(lang === 'en' ? 'English' : 'العربية')) {
+                    button.classList.add('active');
+                }
+            });
+        }
+
+        // Language Toggle in Main Navigation
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleButton = document.getElementById('language-toggle');
+            const htmlElement = document.documentElement;
+
+            toggleButton.addEventListener('click', () => {
+                const currentLang = htmlElement.getAttribute('lang');
+                if (currentLang === 'ar') {
+                    htmlElement.setAttribute('lang', 'en');
+                    htmlElement.setAttribute('dir', 'ltr');
                 } else {
-                    el.style.display = 'none';
+                    htmlElement.setAttribute('lang', 'ar');
+                    htmlElement.setAttribute('dir', 'rtl');
                 }
+                // The display of .en and .ar elements is handled by CSS based on html[lang]
             });
 
-            // Update placeholder texts for inputs and textarea
-            document.querySelectorAll('#paymentForm input, #paymentForm textarea').forEach(input => {
-                const enPlaceholder = {
-                    'name': 'Enter your name',
-                    'phone': 'Enter your phone number',
-                    'email': 'Enter your email',
-                    'address': 'Enter your address'
-                };
-                const arPlaceholder = {
-                    'name': 'أدخل اسمك',
-                    'phone': 'أدخل رقم هاتفك',
-                    'email': 'أدخل بريدك الإلكتروني',
-                    'address': 'أدخل عنوانك'
-                };
-                const placeholderText = lang === 'en' ? enPlaceholder[input.id] : arPlaceholder[input.id];
-                if (placeholderText) {
-                    input.placeholder = placeholderText;
-                }
-            });
-
-            updateProductDetails(); // Update product name and total cost
-            updatePaymentMethodText(); // Update payment method text
-            updateShippingCompanyText(); // Update shipping company text
-        }
-
-        // Function to update the displayed product details and total cost
-        function updateProductDetails() {
-            const productInfo = PRODUCT_INFO[selectedProductType];
-            const productNameElement = document.querySelector('.product-details h3[data-product-name]');
-            const productImageElement = document.querySelector('.product-summary img');
-            const productDescriptionElement = document.querySelector('[data-product-description]');
-            const totalCostDiv = document.querySelector('.total-cost');
-            const lang = document.documentElement.lang;
-
-            if (productInfo) {
-                // Update product name
-                productNameElement.textContent = productInfo.name[lang] || productInfo.name.en; // Fallback to English
-
-                // Update product image
-                if (productImageElement && productInfo.image) {
-                    productImageElement.src = productInfo.image;
-                    productImageElement.alt = productInfo.name[lang] || productInfo.name.en;
-                }
-
-                // Update product description
-                if (productDescriptionElement && productInfo.description) {
-                    const enSpan = productDescriptionElement.querySelector('.en');
-                    const arSpan = productDescriptionElement.querySelector('.ar');
-                    if (enSpan) enSpan.textContent = productInfo.description.en;
-                    if (arSpan) arSpan.textContent = productInfo.description.ar;
-                }
-
-                // Update total cost
-                const price = getProductPrice(selectedProductType);
-                const quantity = parseInt(document.getElementById('quantity').value) || 1;
-                const subtotal = price * quantity;
-                const shippingCost = 20; // Fixed shipping cost in SAR
-                const vatRate = 0.15; // 15% VAT rate
-                const vatAmount = subtotal * vatRate;
-                const total = subtotal + shippingCost + vatAmount;
-
-                // Construct the HTML for the cost breakdown
-                let costBreakdownHTML = `
-                     <div class="cost-item">
-                         <span class="cost-label">${COST_LABELS.price[lang] || COST_LABELS.price.en}:</span>
-                         <span class="cost-value">${lang === 'en' ? `SAR ${price.toFixed(2)}` : `${price.toFixed(2)} ريال`} × ${quantity}</span>
-                     </div>
-                     <div class="cost-item">
-                         <span class="cost-label">${COST_LABELS.shipping[lang] || COST_LABELS.shipping.en}:</span>
-                         <span class="cost-value">${lang === 'en' ? `SAR ${shippingCost.toFixed(2)}` : `${shippingCost.toFixed(2)} ريال`}</span>
-                     </div>
-                     <div class="cost-item">
-                         <span class="cost-label">${COST_LABELS.vat[lang] || COST_LABELS.vat.en} (${(vatRate * 100).toFixed(0)}%):</span>
-                         <span class="cost-value">${lang === 'en' ? `SAR ${vatAmount.toFixed(2)}` : `${vatAmount.toFixed(2)} ريال`}</span>
-                     </div>
-                     <div class="cost-total">
-                         <span class="total-label">${COST_LABELS.total[lang] || COST_LABELS.total.en}:</span>
-                         <span class="total-amount">${lang === 'en' ? `SAR ${total.toFixed(2)}` : `${total.toFixed(2)} ريال`}</span>
-                     </div>
-                 `;
-
-                totalCostDiv.innerHTML = costBreakdownHTML;
-
-            } else {
-                // Handle case where product type is not found
-                productNameElement.textContent = lang === 'en' ? 'Product Not Found' : 'المنتج غير موجود';
-                totalCostDiv.innerHTML = ''; // Clear the total cost section
+            // Check if user has already made a choice and update prices accordingly
+            const userType = localStorage.getItem('userType');
+            if (userType) {
+                updatePrices(userType);
             }
-        }
-
-        // Function to update payment method text
-        function updatePaymentMethodText() {
-            const lang = document.documentElement.lang;
-            document.querySelectorAll('.payment-method').forEach(methodEl => {
-                methodEl.querySelectorAll('.en, .ar').forEach(span => {
-                    if (span.classList.contains(lang)) {
-                        span.style.display = '';
-                    } else {
-                        span.style.display = 'none';
-                    }
-                });
-            });
-        }
-
-        // Function to update shipping company text
-        function updateShippingCompanyText() {
-            const lang = document.documentElement.lang;
-            document.querySelectorAll('.shipping-company').forEach(companyEl => {
-                companyEl.querySelectorAll('.en, .ar').forEach(span => {
-                    if (span.classList.contains(lang)) {
-                        span.style.display = '';
-                    } else {
-                        span.style.display = 'none';
-                    }
-                });
-            });
-        }
-
-        // Language toggle functionality
-        document.getElementById('language-toggle').addEventListener('click', function () {
-            const html = document.documentElement;
-            const currentLang = html.lang;
-            const newLang = currentLang === 'en' ? 'ar' : 'en';
-            const newDir = newLang === 'ar' ? 'rtl' : 'ltr';
-
-            html.lang = newLang;
-            html.dir = newDir;
-
-            updateTextContent(); // Update all text after changing language
         });
 
-        // Theme toggle functionality
-        document.getElementById('theme-toggle').addEventListener('click', function () {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-            // Optionally save theme preference to localStorage
-            const currentTheme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', currentTheme);
+        // Loading Screen
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                document.querySelector('.loading').classList.add('hidden');
+            }, 1000);
         });
-
-        // Payment method selection
-        document.querySelectorAll('.payment-method').forEach(methodEl => {
-            methodEl.addEventListener('click', function () {
-                // Remove 'selected' class from all payment methods
-                document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
-                // Add 'selected' class to the clicked payment method
-                this.classList.add('selected');
-            });
-        });
-
-        // Shipping company selection
-        document.querySelectorAll('.shipping-company').forEach(companyEl => {
-            companyEl.addEventListener('click', function () {
-                // Remove 'selected' class from all shipping companies
-                document.querySelectorAll('.shipping-company').forEach(el => el.classList.remove('selected'));
-                // Add 'selected' class to the clicked shipping company
-                this.classList.add('selected');
-            });
-        });
-
-        // Form submission and success message
-        document.getElementById('paymentForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Prevent actual form submission
-
-            const form = event.target;
-
-            // Basic form validation
-            if (!form.checkValidity()) {
-                // If form is invalid, the browser will show default validation messages
-                return;
-            }
-
-            // Check if a payment method is selected
-            if (!document.querySelector('.payment-method.selected')) {
-                alert(document.documentElement.lang === 'en' ? 'Please select a payment method.' : 'الرجاء اختيار طريقة الدفع.');
-                return;
-            }
-
-            // Check if a shipping company is selected
-            if (!document.querySelector('.shipping-company.selected')) {
-                alert(document.documentElement.lang === 'en' ? 'Please select a shipping company.' : 'الرجاء اختيار شركة الشحن.');
-                return;
-            }
-
-            // Simulate payment processing (replace with actual payment gateway integration)
-            console.log('Processing payment...');
-            console.log('Product:', selectedProductType);
-            console.log('Quantity:', document.getElementById('quantity').value);
-            console.log('Shipping Company:', document.querySelector('.shipping-company.selected')?.dataset.company);
-            console.log('Payment Method:', document.querySelector('.payment-method.selected')?.dataset.method);
-
-            // Hide the form and show the success message
-            form.style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-
-            // Hide product summary and payment methods after success
-            document.querySelector('.product-summary').style.display = 'none';
-            document.querySelector('.payment-methods').style.display = 'none';
-            document.querySelector('.shipping-companies').style.display = 'none';
-            document.querySelector('.quantity-selector').style.display = 'none';
-            document.querySelector('.total-cost').style.display = 'none';
-
-            // Optionally, redirect or provide further actions after a delay
-            // setTimeout(() => { /* redirect or clear form */ }, 5000);
-        });
-
-        // Initial setup on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            // Set initial language and direction
-            const initialLang = document.documentElement.lang || 'en'; // Default to English
-            document.documentElement.dir = initialLang === 'ar' ? 'rtl' : 'ltr';
-
-            // Get product type from URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const type = urlParams.get('type');
-            if (type && PRODUCT_INFO[type]) {
-                selectedProductType = type;
-            } else {
-                // Default or handle error if type is not valid
-                selectedProductType = 'package'; // Fallback
-                console.warn('Invalid or missing product type in URL, defaulting to package.');
-            }
-
-            // Apply initial language texts and placeholders, which also updates product details
-            updateTextContent();
-
-            // Set initial dark mode based on localStorage or system preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.body.classList.add('dark-mode');
-            } else {
-                document.body.classList.remove('dark-mode');
-            }
-
-            // Update placeholders initially
-            document.querySelectorAll('#paymentForm input, #paymentForm textarea').forEach(input => {
-                const enPlaceholder = {
-                    'name': 'Enter your name',
-                    'phone': 'Enter your phone number',
-                    'email': 'Enter your email',
-                    'address': 'Enter your address'
-                };
-                const arPlaceholder = {
-                    'name': 'أدخل اسمك',
-                    'phone': 'أدخل رقم هاتفك',
-                    'email': 'أدخل بريدك الإلكتروني',
-                    'address': 'أدخل عنوانك'
-                };
-                const placeholderText = initialLang === 'en' ? enPlaceholder[input.id] : arPlaceholder[input.id];
-                if (placeholderText) {
-                    input.placeholder = placeholderText;
-                }
-            });
-
-            // Select the first payment method by default (optional)
-            const firstPaymentMethod = document.querySelector('.payment-method');
-            if (firstPaymentMethod) {
-                firstPaymentMethod.classList.add('selected');
-            }
-
-            // Select the first shipping company by default (optional)
-            const firstShippingCompany = document.querySelector('.shipping-company');
-            if (firstShippingCompany) {
-                firstShippingCompany.classList.add('selected');
-            }
-
-            // Initialize quantity buttons
-            updateQuantityButtons();
-
-            // Update quantity input attributes based on user type
-            updateQuantityInput();
-
-            // Update product details after setting quantity
-            updateProductDetails();
-        });
-
-        // Function to get quantity limits based on user type
-        function getQuantityLimits() {
-            const userType = localStorage.getItem('userType') || 'individual';
-            return userType === 'business' ? { min: 100, max: 500 } : { min: 1, max: 10 };
-        }
-
-        // Function to change quantity
-        function changeQuantity(change) {
-            const quantityInput = document.getElementById('quantity');
-            const currentQuantity = parseInt(quantityInput.value);
-            const newQuantity = currentQuantity + change;
-            const limits = getQuantityLimits();
-
-            // Ensure quantity stays within bounds based on user type
-            if (newQuantity >= limits.min && newQuantity <= limits.max) {
-                quantityInput.value = newQuantity;
-                updateProductDetails(); // Recalculate total with new quantity
-                updateQuantityButtons(); // Update button states
-            }
-        }
-
-        // Function to update quantity button states
-        function updateQuantityButtons() {
-            const quantity = parseInt(document.getElementById('quantity').value);
-            const limits = getQuantityLimits();
-            const minusBtn = document.querySelector('.quantity-btn.minus');
-            const plusBtn = document.querySelector('.quantity-btn.plus');
-
-            // Disable minus button if quantity is at minimum
-            minusBtn.disabled = quantity <= limits.min;
-
-            // Disable plus button if quantity is at maximum
-            plusBtn.disabled = quantity >= limits.max;
-        }
-
-        // Function to update quantity input attributes based on user type
-        function updateQuantityInput() {
-            const quantityInput = document.getElementById('quantity');
-            const limits = getQuantityLimits();
-
-            // Update min, max, and value attributes
-            quantityInput.min = limits.min;
-            quantityInput.max = limits.max;
-
-            // Set initial value to minimum for business users
-            if (limits.min > 1) {
-                quantityInput.value = limits.min;
-            }
-        }
-
-        // Show business minimum note if userType is business
-        function updateBusinessMinNote() {
-            const userType = localStorage.getItem('userType') || 'individual';
-            const note = document.getElementById('business-min-note');
-            if (note) {
-                note.style.display = (userType === 'business') ? '' : 'none';
-            }
-        }
-        document.addEventListener('DOMContentLoaded', updateBusinessMinNote);
-
     </script>
 
 </body>
