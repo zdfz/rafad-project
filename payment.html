@@ -851,12 +851,12 @@
         </h2>
 
         <div class="product-summary">
-            <img src="images/rifad.png" alt="Rafad Ihram's">
+            <img src="images/rifad with belt.png" alt="Rafad Package's">
             <div class="product-details">
                 <h3 data-product-name></h3>
                 <p data-product-description>
-                    <span class="en">A cooling Ihram designed for maximum comfort during your spiritual journey.</span>
-                    <span class="ar">إحرام مبرد مصمم لأقصى درجات الراحة خلال رحلتك الروحية.</span>
+                    <span class="en">Complete package including cooling Ihram with a convenient belt for secure wearing.</span>
+                    <span class="ar">حزمة كاملة تشمل إحرام مبرد مع حزام مريح للارتداء الآمن.</span>
                 </p>
             </div>
         </div>
@@ -971,15 +971,6 @@
 
         // Product prices and names based on type
         const PRODUCT_INFO = {
-            ihram: {
-                name: { en: "Rafad Ihram's", ar: "إحرام رفاد" },
-                price: 80,
-                image: "images/rifad.png",
-                description: {
-                    en: "A cooling Ihram designed for maximum comfort during your spiritual journey.",
-                    ar: "إحرام مبرد مصمم لأقصى درجات الراحة خلال رحلتك الروحية."
-                }
-            },
             package: {
                 name: { en: "Rafad Package's", ar: "حزمة رفاد" },
                 price: 100,
@@ -1000,22 +991,14 @@
             }
         };
 
-        let selectedProductType = 'ihram'; // Default or determined from URL
+        let selectedProductType = 'package'; // Default or determined from URL
 
         // Function to get price based on user type
         function getProductPrice(productType) {
             const userType = localStorage.getItem('userType') || 'individual';
             const prices = {
-                individual: {
-                    ihram: 80,
-                    package: 100,
-                    vest: 60
-                },
-                business: {
-                    ihram: 80,
-                    package: 100,
-                    vest: 70
-                }
+                individual: { package: 100, vest: 60 },
+                business: { package: 100, vest: 70 }
             };
             return prices[userType][productType] || PRODUCT_INFO[productType].price;
         }
@@ -1260,8 +1243,8 @@
                 selectedProductType = type;
             } else {
                 // Default or handle error if type is not valid
-                selectedProductType = 'ihram'; // Fallback
-                console.warn('Invalid or missing product type in URL, defaulting to ihram.');
+                selectedProductType = 'package'; // Fallback
+                console.warn('Invalid or missing product type in URL, defaulting to package.');
             }
 
             // Apply initial language texts and placeholders, which also updates product details
