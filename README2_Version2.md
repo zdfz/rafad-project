@@ -1,4 +1,3 @@
-```markdown
 # CUDA Quick Reference 🚀
 
 **Core idea:** How to run CUDA on a GPU: launch kernels (many threads/blocks), manage device memory, use shared memory + `__syncthreads()` and avoid races.  
@@ -114,5 +113,3 @@
 - Compute capability = GPU feature/version.
 
 ---
-
-```
